@@ -1,5 +1,5 @@
 
-package co.uk.ak.rightmove.propertytracker.model;
+package co.uk.ak.rightmove.propertytracker.dto;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,36 +12,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "latitude",
-    "longitude"
+    "srcUrl",
+    "url"
 })
-public class Location {
+public class Image {
 
-    @JsonProperty("latitude")
-    private Double latitude;
-    @JsonProperty("longitude")
-    private Double longitude;
+    @JsonProperty("srcUrl")
+    private String srcUrl;
+    @JsonProperty("url")
+    private String url;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("latitude")
-    public Double getLatitude() {
-        return latitude;
+    @JsonProperty("srcUrl")
+    public String getSrcUrl() {
+        return srcUrl;
     }
 
-    @JsonProperty("latitude")
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
+    @JsonProperty("srcUrl")
+    public void setSrcUrl(String srcUrl) {
+        this.srcUrl = srcUrl;
     }
 
-    @JsonProperty("longitude")
-    public Double getLongitude() {
-        return longitude;
+    @JsonProperty("url")
+    public String getUrl() {
+        return url;
     }
 
-    @JsonProperty("longitude")
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
+    @JsonProperty("url")
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @JsonAnyGetter

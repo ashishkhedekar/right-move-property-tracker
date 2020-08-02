@@ -16,6 +16,7 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<org.mapstruct.version>1.3.1.Final</org.mapstruct.version>
 	</properties>
 
 	<dependencies>
@@ -44,6 +45,10 @@
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -59,13 +64,25 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 
-
 		<!-- https://mvnrepository.com/artifact/org.jsonschema2pojo/jsonschema2pojo-maven-plugin -->
 		<dependency>
 			<groupId>org.jsonschema2pojo</groupId>
 			<artifactId>jsonschema2pojo-maven-plugin</artifactId>
 			<version>1.0.2</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
+
     </dependencies>
 
 	<build>
@@ -75,12 +92,33 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version> <!-- or newer version -->
+				<configuration>
+					<source>11</source> <!-- depending on your project -->
+					<target>11</target> <!-- depending on your project -->
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${org.mapstruct.version}</version>
+						</path>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>1.18.8</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.jsonschema2pojo</groupId>
 				<artifactId>jsonschema2pojo-maven-plugin</artifactId>
 				<version>1.0.2</version>
 				<configuration>
 					<sourceDirectory>${basedir}/src/main/resources/schema</sourceDirectory>
-					<targetPackage>co.uk.ak.rightmove.propertytracker.model</targetPackage>
+					<targetPackage>co.uk.ak.rightmove.propertytracker.dto</targetPackage>
 				</configuration>
 				<executions>
 					<execution>

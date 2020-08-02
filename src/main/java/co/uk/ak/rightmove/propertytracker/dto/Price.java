@@ -1,5 +1,5 @@
 
-package co.uk.ak.rightmove.propertytracker.model;
+package co.uk.ak.rightmove.propertytracker.dto;
 
 import java.util.HashMap;
 import java.util.List;

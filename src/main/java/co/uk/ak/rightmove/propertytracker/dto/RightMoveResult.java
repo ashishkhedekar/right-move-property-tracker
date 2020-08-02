@@ -1,7 +1,8 @@
 
-package co.uk.ak.rightmove.propertytracker.model;
+package co.uk.ak.rightmove.propertytracker.dto;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -12,36 +13,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "displayPrice",
-    "displayPriceQualifier"
+    "properties",
+    "resultCount"
 })
-public class DisplayPrice {
+public class RightMoveResult {
 
-    @JsonProperty("displayPrice")
-    private String displayPrice;
-    @JsonProperty("displayPriceQualifier")
-    private String displayPriceQualifier;
+    @JsonProperty("properties")
+    private List<Property> properties = null;
+    @JsonProperty("resultCount")
+    private String resultCount;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("displayPrice")
-    public String getDisplayPrice() {
-        return displayPrice;
+    @JsonProperty("properties")
+    public List<Property> getProperties() {
+        return properties;
     }
 
-    @JsonProperty("displayPrice")
-    public void setDisplayPrice(String displayPrice) {
-        this.displayPrice = displayPrice;
+    @JsonProperty("properties")
+    public void setProperties(List<Property> properties) {
+        this.properties = properties;
     }
 
-    @JsonProperty("displayPriceQualifier")
-    public String getDisplayPriceQualifier() {
-        return displayPriceQualifier;
+    @JsonProperty("resultCount")
+    public String getResultCount() {
+        return resultCount;
     }
 
-    @JsonProperty("displayPriceQualifier")
-    public void setDisplayPriceQualifier(String displayPriceQualifier) {
-        this.displayPriceQualifier = displayPriceQualifier;
+    @JsonProperty("resultCount")
+    public void setResultCount(String resultCount) {
+        this.resultCount = resultCount;
     }
 
     @JsonAnyGetter

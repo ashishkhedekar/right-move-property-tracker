@@ -1,8 +1,7 @@
 
-package co.uk.ak.rightmove.propertytracker.model;
+package co.uk.ak.rightmove.propertytracker.dto;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
@@ -13,36 +12,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "properties",
-    "resultCount"
+    "productLabelText"
 })
-public class RightMoveResult {
+public class ProductLabel {
 
-    @JsonProperty("properties")
-    private List<Property> properties = null;
-    @JsonProperty("resultCount")
-    private String resultCount;
+    @JsonProperty("productLabelText")
+    private String productLabelText;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("properties")
-    public List<Property> getProperties() {
-        return properties;
+    @JsonProperty("productLabelText")
+    public String getProductLabelText() {
+        return productLabelText;
     }
 
-    @JsonProperty("properties")
-    public void setProperties(List<Property> properties) {
-        this.properties = properties;
-    }
-
-    @JsonProperty("resultCount")
-    public String getResultCount() {
-        return resultCount;
-    }
-
-    @JsonProperty("resultCount")
-    public void setResultCount(String resultCount) {
-        this.resultCount = resultCount;
+    @JsonProperty("productLabelText")
+    public void setProductLabelText(String productLabelText) {
+        this.productLabelText = productLabelText;
     }
 
     @JsonAnyGetter

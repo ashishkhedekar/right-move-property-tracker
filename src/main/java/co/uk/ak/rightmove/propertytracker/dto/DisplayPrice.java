@@ -1,5 +1,5 @@
 
-package co.uk.ak.rightmove.propertytracker.model;
+package co.uk.ak.rightmove.propertytracker.dto;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,23 +12,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "productLabelText"
+    "displayPrice",
+    "displayPriceQualifier"
 })
-public class ProductLabel {
+public class DisplayPrice {
 
-    @JsonProperty("productLabelText")
-    private String productLabelText;
+    @JsonProperty("displayPrice")
+    private String displayPrice;
+    @JsonProperty("displayPriceQualifier")
+    private String displayPriceQualifier;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("productLabelText")
-    public String getProductLabelText() {
-        return productLabelText;
+    @JsonProperty("displayPrice")
+    public String getDisplayPrice() {
+        return displayPrice;
     }
 
-    @JsonProperty("productLabelText")
-    public void setProductLabelText(String productLabelText) {
-        this.productLabelText = productLabelText;
+    @JsonProperty("displayPrice")
+    public void setDisplayPrice(String displayPrice) {
+        this.displayPrice = displayPrice;
+    }
+
+    @JsonProperty("displayPriceQualifier")
+    public String getDisplayPriceQualifier() {
+        return displayPriceQualifier;
+    }
+
+    @JsonProperty("displayPriceQualifier")
+    public void setDisplayPriceQualifier(String displayPriceQualifier) {
+        this.displayPriceQualifier = displayPriceQualifier;
     }
 
     @JsonAnyGetter

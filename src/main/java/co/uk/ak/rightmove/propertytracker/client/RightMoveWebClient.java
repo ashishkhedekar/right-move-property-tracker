@@ -1,12 +1,9 @@
 package co.uk.ak.rightmove.propertytracker.client;
 
-import co.uk.ak.rightmove.propertytracker.model.Property;
-import co.uk.ak.rightmove.propertytracker.model.RightMoveResult;
-import co.uk.ak.rightmove.propertytracker.model.RightmoveJsonSchema;
+import co.uk.ak.rightmove.propertytracker.dto.RightMoveResult;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.net.URI;
@@ -15,34 +12,20 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 @Service
+@AllArgsConstructor
 public class RightMoveWebClient
 {
-   private static final Logger LOG = LoggerFactory.getLogger(RightMoveWebClient.class);
+   private final ObjectMapper MAPPER = new ObjectMapper();
 
    @SneakyThrows
-   public void callRightMove()
+   public RightMoveResult callRightMove(String locationIdentifier)
    {
-      HttpClient client = HttpClient.newHttpClient();
+      final HttpClient client = HttpClient.newHttpClient();
       HttpRequest request = HttpRequest.newBuilder()
-               .uri(URI.create("https://www.rightmove.co.uk/api/_search?locationIdentifier=REGION%5E239&minBedrooms=3&maxPrice=25000&numberOfPropertiesPerPage=24&radius=0.0&sortType=6&index=0&includeLetAgreed=true&viewType=LIST&channel=RENT&areaSizeUnit=sqft&currencyCode=GBP&isFetching=false"))
+               .uri(URI.create(String.format("https://www.rightmove.co.uk/api/_search?locationIdentifier=%s&minBedrooms=3&maxPrice=25000&numberOfPropertiesPerPage=24&radius=0.0&sortType=6&index=0&includeLetAgreed=true&viewType=LIST&channel=RENT&areaSizeUnit=sqft&currencyCode=GBP&isFetching=false", locationIdentifier)))
                .build();
 
-      HttpResponse<String> response =
-               client.send(request, HttpResponse.BodyHandlers.ofString());
-
-      ObjectMapper objectMapper = new ObjectMapper();
-
-
-      RightMoveResult rightMoveResult = objectMapper.readValue(response.body(), RightMoveResult.class);
-
-      LOG.info("Found [{}] properties on rightmove ", rightMoveResult.getResultCount());
-
-      for (Property property : rightMoveResult.getProperties())
-      {
-         LOG.info("Property [{}] is let agreed [{}] ", property.getId(), property.getDisplayStatus());
-      }
-
-
+      final HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
+      return MAPPER.readValue(response.body(), RightMoveResult.class);
    }
-
 }
