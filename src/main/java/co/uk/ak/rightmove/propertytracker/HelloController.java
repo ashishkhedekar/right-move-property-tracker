@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HelloController
 {
-   @GetMapping(value = "/")
+   @GetMapping(name = "/")
    public ResponseEntity<String> message()
    {
       return ResponseEntity.status(HttpStatus.OK).body("This app is doing some important stuff");
