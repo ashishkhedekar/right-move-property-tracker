@@ -1,0 +1,1777 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": {},
+  "examples": [
+    {
+      "properties": [
+        {
+          "id": 91967702,
+          "bedrooms": 5,
+          "numberOfImages": 7,
+          "numberOfFloorplans": 0,
+          "numberOfVirtualTours": 0,
+          "summary": "Student HMO Property 2020/2021 Academic Year - This 5 double bedroom property benefits from two bathrooms, a large fully fitted kitchen , common room , patio garden and driveway parking. The property has the Buckingham University campus on its doorstep and the town centre within a minute...",
+          "displayAddress": "Buckingham",
+          "countryCode": "GB",
+          "location": {
+            "latitude": 51.9976,
+            "longitude": -0.99027
+          },
+          "propertySubType": "Terraced",
+          "listingUpdate": {
+            "listingUpdateReason": "new",
+            "listingUpdateDate": "2020-05-05T15:41:01Z"
+          },
+          "premiumListing": false,
+          "featuredProperty": true,
+          "price": {
+            "amount": 1850,
+            "frequency": "monthly",
+            "currencyCode": "GBP",
+            "displayPrices": [
+              {
+                "displayPrice": "£1,850 pcm",
+                "displayPriceQualifier": ""
+              },
+              {
+                "displayPrice": "£427 pw",
+                "displayPriceQualifier": ""
+              }
+            ]
+          },
+          "customer": {
+            "branchId": 69152,
+            "brandPlusLogoURI": "/70k/69152/branch_logo_69152_0003.jpeg",
+            "contactTelephone": "01280 475048",
+            "branchDisplayName": "Property Solutions , Buckingham - Lettings",
+            "branchName": "Buckingham - Lettings",
+            "brandTradingName": "Property Solutions ",
+            "branchLandingPageUrl": "/estate-agents/agent/Property-Solutions/Buckingham---Lettings-69152.html",
+            "development": false,
+            "showReducedProperties": true,
+            "commercial": false,
+            "showOnMap": true,
+            "enhancedListing": false,
+            "developmentContent": null,
+            "brandPlusLogoUrl": "https://media.rightmove.co.uk:443/dir/70k/69152/branch_logo_69152_0003_max_100x50.jpeg"
+          },
+          "distance": null,
+          "transactionType": "rent",
+          "productLabel": {
+            "productLabelText": ""
+          },
+          "commercial": false,
+          "development": false,
+          "residential": true,
+          "students": true,
+          "auction": false,
+          "feesApply": true,
+          "feesApplyText": null,
+          "displaySize": "",
+          "showOnMap": true,
+          "propertyUrl": "/property-to-rent/property-91967702.html",
+          "contactUrl": "/property-to-rent/contactBranch.html?propertyId=91967702",
+          "channel": "RENT",
+          "firstVisibleDate": "2020-05-05T15:35:03Z",
+          "keywords": [],
+          "keywordMatchType": "no_keyword",
+          "saved": null,
+          "hidden": null,
+          "onlineViewingsAvailable": false,
+          "heading": "Featured Property",
+          "enhancedListing": false,
+          "propertyTypeFullDescription": "5 bedroom terraced house",
+          "propertyImages": {
+            "images": [
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_476x317.jpg",
+                "url": "70k/69152/91967702/69152_2548866_IMG_01_0001.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_02_0002_max_476x317.jpg",
+                "url": "70k/69152/91967702/69152_2548866_IMG_02_0002.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_03_0000_max_476x317.jpg",
+                "url": "70k/69152/91967702/69152_2548866_IMG_03_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_04_0000_max_476x317.jpg",
+                "url": "70k/69152/91967702/69152_2548866_IMG_04_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_05_0000_max_476x317.jpg",
+                "url": "70k/69152/91967702/69152_2548866_IMG_05_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_06_0000_max_476x317.jpg",
+                "url": "70k/69152/91967702/69152_2548866_IMG_06_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_07_0001_max_476x317.jpg",
+                "url": "70k/69152/91967702/69152_2548866_IMG_07_0001.jpg"
+              }
+            ],
+            "mainImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_476x317.jpg",
+            "mainMapImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_296x197.jpg"
+          },
+          "displayStatus": "",
+          "formattedBranchName": " by Property Solutions , Buckingham - Lettings",
+          "addedOrReduced": "Added on 05/05/2020",
+          "isRecent": false,
+          "formattedDistance": "",
+          "hasBrandPlus": true
+        },
+        {
+          "id": 95552990,
+          "bedrooms": 3,
+          "numberOfImages": 7,
+          "numberOfFloorplans": 3,
+          "numberOfVirtualTours": 0,
+          "summary": "A well presented detached family home situated within walking distance of Buckingham town centre. The spacious modern kitchen/breakfast room is fitted with eye and base level units with a range of built-in appliances including oven/hob, fridge freezer, dishwasher and washing machine. The ground...",
+          "displayAddress": "Lincoln, Buckingham, MK18",
+          "countryCode": "GB",
+          "location": {
+            "latitude": 52.007487,
+            "longitude": -0.983316
+          },
+          "propertySubType": "Detached",
+          "listingUpdate": {
+            "listingUpdateReason": "new",
+            "listingUpdateDate": "2020-08-01T16:25:26Z"
+          },
+          "premiumListing": false,
+          "featuredProperty": false,
+          "price": {
+            "amount": 1300,
+            "frequency": "monthly",
+            "currencyCode": "GBP",
+            "displayPrices": [
+              {
+                "displayPrice": "£1,300 pcm",
+                "displayPriceQualifier": ""
+              },
+              {
+                "displayPrice": "£300 pw",
+                "displayPriceQualifier": ""
+              }
+            ]
+          },
+          "customer": {
+            "branchId": 134666,
+            "brandPlusLogoURI": "/135k/134666/branch_rmchoice_logo_134666_0000.jpeg",
+            "contactTelephone": "01296 535052",
+            "branchDisplayName": "Ella Residential Sales and Lettings, Winslow - Lettings",
+            "branchName": "Winslow - Lettings",
+            "brandTradingName": "Ella Residential Sales and Lettings",
+            "branchLandingPageUrl": "/estate-agents/agent/Ella-Residential-Sales-and-Lettings/Winslow---Lettings-134666.html",
+            "development": false,
+            "showReducedProperties": true,
+            "commercial": false,
+            "showOnMap": true,
+            "enhancedListing": false,
+            "developmentContent": null,
+            "brandPlusLogoUrl": "https://media.rightmove.co.uk:443/dir/135k/134666/branch_rmchoice_logo_134666_0000_max_100x50.jpeg"
+          },
+          "distance": null,
+          "transactionType": "rent",
+          "productLabel": {
+            "productLabelText": ""
+          },
+          "commercial": false,
+          "development": false,
+          "residential": true,
+          "students": false,
+          "auction": false,
+          "feesApply": true,
+          "feesApplyText": null,
+          "displaySize": "",
+          "showOnMap": true,
+          "propertyUrl": "/property-to-rent/property-95552990.html",
+          "contactUrl": "/property-to-rent/contactBranch.html?propertyId=95552990",
+          "channel": "RENT",
+          "firstVisibleDate": "2020-08-01T16:25:24Z",
+          "keywords": [],
+          "keywordMatchType": "no_keyword",
+          "saved": null,
+          "hidden": null,
+          "onlineViewingsAvailable": false,
+          "heading": "",
+          "enhancedListing": false,
+          "propertyTypeFullDescription": "3 bedroom detached house",
+          "propertyImages": {
+            "images": [
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_01_0000_max_476x317.jpg",
+                "url": "135k/134666/95552990/134666_WIN200037_L_IMG_01_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_02_0000_max_476x317.jpg",
+                "url": "135k/134666/95552990/134666_WIN200037_L_IMG_02_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_03_0000_max_476x317.jpg",
+                "url": "135k/134666/95552990/134666_WIN200037_L_IMG_03_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_04_0000_max_476x317.jpg",
+                "url": "135k/134666/95552990/134666_WIN200037_L_IMG_04_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_05_0000_max_476x317.jpg",
+                "url": "135k/134666/95552990/134666_WIN200037_L_IMG_05_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_06_0000_max_476x317.jpg",
+                "url": "135k/134666/95552990/134666_WIN200037_L_IMG_06_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_07_0000_max_476x317.jpg",
+                "url": "135k/134666/95552990/134666_WIN200037_L_IMG_07_0000.jpg"
+              }
+            ],
+            "mainImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_01_0000_max_476x317.jpg",
+            "mainMapImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_01_0000_max_296x197.jpg"
+          },
+          "displayStatus": "",
+          "formattedBranchName": " by Ella Residential Sales and Lettings, Winslow - Lettings",
+          "addedOrReduced": "Added yesterday",
+          "isRecent": true,
+          "formattedDistance": "",
+          "hasBrandPlus": true
+        },
+        {
+          "id": 95525783,
+          "bedrooms": 3,
+          "numberOfImages": 7,
+          "numberOfFloorplans": 0,
+          "numberOfVirtualTours": 0,
+          "summary": "Modern terraced town house situateda short walk to local schools and town centre. Ground floor consists of entrance hall with tiled floor and cloakroom. The kitchen has a range of wall and base units, gas hob, electric oven and other appliances. The lounge is a good size and has pa...",
+          "displayAddress": "Mayflower Street, Windsor Park, Buckingham, Bucks, MK18",
+          "countryCode": "GB",
+          "location": {
+            "latitude": 51.987875,
+            "longitude": -0.974633
+          },
+          "propertySubType": "Terraced",
+          "listingUpdate": {
+            "listingUpdateReason": "new",
+            "listingUpdateDate": "2020-07-31T16:58:22Z"
+          },
+          "premiumListing": true,
+          "featuredProperty": false,
+          "price": {
+            "amount": 1150,
+            "frequency": "monthly",
+            "currencyCode": "GBP",
+            "displayPrices": [
+              {
+                "displayPrice": "£1,150 pcm",
+                "displayPriceQualifier": ""
+              },
+              {
+                "displayPrice": "£265 pw",
+                "displayPriceQualifier": ""
+              }
+            ]
+          },
+          "customer": {
+            "branchId": 134666,
+            "brandPlusLogoURI": "/135k/134666/branch_rmchoice_logo_134666_0000.jpeg",
+            "contactTelephone": "01296 535052",
+            "branchDisplayName": "Ella Residential Sales and Lettings, Winslow - Lettings",
+            "branchName": "Winslow - Lettings",
+            "brandTradingName": "Ella Residential Sales and Lettings",
+            "branchLandingPageUrl": "/estate-agents/agent/Ella-Residential-Sales-and-Lettings/Winslow---Lettings-134666.html",
+            "development": false,
+            "showReducedProperties": true,
+            "commercial": false,
+            "showOnMap": true,
+            "enhancedListing": false,
+            "developmentContent": null,
+            "brandPlusLogoUrl": "https://media.rightmove.co.uk:443/dir/135k/134666/branch_rmchoice_logo_134666_0000_max_100x50.jpeg"
+          },
+          "distance": null,
+          "transactionType": "rent",
+          "productLabel": {
+            "productLabelText": "Premium Listing"
+          },
+          "commercial": false,
+          "development": false,
+          "residential": true,
+          "students": false,
+          "auction": false,
+          "feesApply": true,
+          "feesApplyText": null,
+          "displaySize": "",
+          "showOnMap": true,
+          "propertyUrl": "/property-to-rent/property-95525783.html",
+          "contactUrl": "/property-to-rent/contactBranch.html?propertyId=95525783",
+          "channel": "RENT",
+          "firstVisibleDate": "2020-07-31T16:58:21Z",
+          "keywords": [],
+          "keywordMatchType": "no_keyword",
+          "saved": null,
+          "hidden": null,
+          "onlineViewingsAvailable": false,
+          "heading": "",
+          "enhancedListing": false,
+          "propertyTypeFullDescription": "3 bedroom terraced house",
+          "propertyImages": {
+            "images": [
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95525783/134666_WIN130052_L_IMG_01_0000_max_476x317.jpg",
+                "url": "135k/134666/95525783/134666_WIN130052_L_IMG_01_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95525783/134666_WIN130052_L_IMG_02_0000_max_476x317.jpg",
+                "url": "135k/134666/95525783/134666_WIN130052_L_IMG_02_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95525783/134666_WIN130052_L_IMG_03_0000_max_476x317.jpg",
+                "url": "135k/134666/95525783/134666_WIN130052_L_IMG_03_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95525783/134666_WIN130052_L_IMG_04_0000_max_476x317.jpg",
+                "url": "135k/134666/95525783/134666_WIN130052_L_IMG_04_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95525783/134666_WIN130052_L_IMG_05_0000_max_476x317.jpg",
+                "url": "135k/134666/95525783/134666_WIN130052_L_IMG_05_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95525783/134666_WIN130052_L_IMG_06_0000_max_476x317.jpg",
+                "url": "135k/134666/95525783/134666_WIN130052_L_IMG_06_0000.jpg"
+              },
+              {
+                "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95525783/134666_WIN130052_L_IMG_07_0000_max_476x317.jpg",
+                "url": "135k/134666/95525783/134666_WIN130052_L_IMG_07_0000.jpg"
+              }
+            ],
+            "mainImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95525783/134666_WIN130052_L_IMG_01_0000_max_476x317.jpg",
+            "mainMapImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95525783/134666_WIN130052_L_IMG_01_0000_max_296x197.jpg"
+          },
+          "displayStatus": "",
+          "formattedBranchName": " by Ella Residential Sales and Lettings, Winslow - Lettings",
+          "addedOrReduced": "Added on 31/07/2020",
+          "isRecent": false,
+          "formattedDistance": "",
+          "hasBrandPlus": true
+        }
+      ],
+      "resultCount": "36"
+    }
+  ],
+  "required": [
+    "properties",
+    "resultCount"
+  ],
+  "properties": {
+    "properties": {
+      "$id": "#/properties/properties",
+      "type": "array",
+      "title": "The properties schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": [],
+      "examples": [
+        [
+          {
+            "id": 91967702,
+            "bedrooms": 5,
+            "numberOfImages": 7,
+            "numberOfFloorplans": 0,
+            "numberOfVirtualTours": 0,
+            "summary": "Student HMO Property 2020/2021 Academic Year - This 5 double bedroom property benefits from two bathrooms, a large fully fitted kitchen , common room , patio garden and driveway parking. The property has the Buckingham University campus on its doorstep and the town centre within a minute...",
+            "displayAddress": "Buckingham",
+            "countryCode": "GB",
+            "location": {
+              "latitude": 51.9976,
+              "longitude": -0.99027
+            },
+            "propertySubType": "Terraced",
+            "listingUpdate": {
+              "listingUpdateReason": "new",
+              "listingUpdateDate": "2020-05-05T15:41:01Z"
+            },
+            "premiumListing": false,
+            "featuredProperty": true,
+            "price": {
+              "amount": 1850,
+              "frequency": "monthly",
+              "currencyCode": "GBP",
+              "displayPrices": [
+                {
+                  "displayPrice": "£1,850 pcm",
+                  "displayPriceQualifier": ""
+                },
+                {
+                  "displayPrice": "£427 pw",
+                  "displayPriceQualifier": ""
+                }
+              ]
+            },
+            "customer": {
+              "branchId": 69152,
+              "brandPlusLogoURI": "/70k/69152/branch_logo_69152_0003.jpeg",
+              "contactTelephone": "01280 475048",
+              "branchDisplayName": "Property Solutions , Buckingham - Lettings",
+              "branchName": "Buckingham - Lettings",
+              "brandTradingName": "Property Solutions ",
+              "branchLandingPageUrl": "/estate-agents/agent/Property-Solutions/Buckingham---Lettings-69152.html",
+              "development": false,
+              "showReducedProperties": true,
+              "commercial": false,
+              "showOnMap": true,
+              "enhancedListing": false,
+              "developmentContent": null,
+              "brandPlusLogoUrl": "https://media.rightmove.co.uk:443/dir/70k/69152/branch_logo_69152_0003_max_100x50.jpeg"
+            },
+            "distance": null,
+            "transactionType": "rent",
+            "productLabel": {
+              "productLabelText": ""
+            },
+            "commercial": false,
+            "development": false,
+            "residential": true,
+            "students": true,
+            "auction": false,
+            "feesApply": true,
+            "feesApplyText": null,
+            "displaySize": "",
+            "showOnMap": true,
+            "propertyUrl": "/property-to-rent/property-91967702.html",
+            "contactUrl": "/property-to-rent/contactBranch.html?propertyId=91967702",
+            "channel": "RENT",
+            "firstVisibleDate": "2020-05-05T15:35:03Z",
+            "keywords": [],
+            "keywordMatchType": "no_keyword",
+            "saved": null,
+            "hidden": null,
+            "onlineViewingsAvailable": false,
+            "heading": "Featured Property",
+            "enhancedListing": false,
+            "propertyTypeFullDescription": "5 bedroom terraced house",
+            "propertyImages": {
+              "images": [
+                {
+                  "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_476x317.jpg",
+                  "url": "70k/69152/91967702/69152_2548866_IMG_01_0001.jpg"
+                },
+                {
+                  "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_02_0002_max_476x317.jpg",
+                  "url": "70k/69152/91967702/69152_2548866_IMG_02_0002.jpg"
+                },
+                {
+                  "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_03_0000_max_476x317.jpg",
+                  "url": "70k/69152/91967702/69152_2548866_IMG_03_0000.jpg"
+                },
+                {
+                  "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_04_0000_max_476x317.jpg",
+                  "url": "70k/69152/91967702/69152_2548866_IMG_04_0000.jpg"
+                },
+                {
+                  "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_05_0000_max_476x317.jpg",
+                  "url": "70k/69152/91967702/69152_2548866_IMG_05_0000.jpg"
+                },
+                {
+                  "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_06_0000_max_476x317.jpg",
+                  "url": "70k/69152/91967702/69152_2548866_IMG_06_0000.jpg"
+                },
+                {
+                  "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_07_0001_max_476x317.jpg",
+                  "url": "70k/69152/91967702/69152_2548866_IMG_07_0001.jpg"
+                }
+              ],
+              "mainImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_476x317.jpg",
+              "mainMapImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_296x197.jpg"
+            },
+            "displayStatus": "",
+            "formattedBranchName": " by Property Solutions , Buckingham - Lettings",
+            "addedOrReduced": "Added on 05/05/2020",
+            "isRecent": false,
+            "formattedDistance": "",
+            "hasBrandPlus": true
+          },
+          {
+            "id": 95552990,
+            "bedrooms": 3,
+            "numberOfImages": 7,
+            "numberOfFloorplans": 3,
+            "numberOfVirtualTours": 0,
+            "summary": "A well presented detached family home situated within walking distance of Buckingham town centre. The spacious modern kitchen/breakfast room is fitted with eye and base level units with a range of built-in appliances including oven/hob, fridge freezer, dishwasher and washing machine. The ground...",
+            "displayAddress": "Lincoln, Buckingham, MK18",
+            "countryCode": "GB",
+            "location": {
+              "latitude": 52.007487,
+              "longitude": -0.983316
+            },
+            "propertySubType": "Detached",
+            "listingUpdate": {
+              "listingUpdateReason": "new",
+              "listingUpdateDate": "2020-08-01T16:25:26Z"
+            },
+            "premiumListing": false,
+            "featuredProperty": false,
+            "price": {
+              "amount": 1300,
+              "frequency": "monthly",
+              "currencyCode": "GBP",
+              "displayPrices": [
+                {
+                  "displayPrice": "£1,300 pcm",
+                  "displayPriceQualifier": ""
+                },
+                {
+                  "displayPrice": "£300 pw",
+                  "displayPriceQualifier": ""
+                }
+              ]
+            },
+            "customer": {
+              "branchId": 134666,
+              "brandPlusLogoURI": "/135k/134666/branch_rmchoice_logo_134666_0000.jpeg",
+              "contactTelephone": "01296 535052",
+              "branchDisplayName": "Ella Residential Sales and Lettings, Winslow - Lettings",
+              "branchName": "Winslow - Lettings",
+              "brandTradingName": "Ella Residential Sales and Lettings",
+              "branchLandingPageUrl": "/estate-agents/agent/Ella-Residential-Sales-and-Lettings/Winslow---Lettings-134666.html",
+              "development": false,
+              "showReducedProperties": true,
+              "commercial": false,
+              "showOnMap": true,
+              "enhancedListing": false,
+              "developmentContent": null,
+              "brandPlusLogoUrl": "https://media.rightmove.co.uk:443/dir/135k/134666/branch_rmchoice_logo_134666_0000_max_100x50.jpeg"
+            },
+            "distance": null,
+            "transactionType": "rent",
+            "productLabel": {
+              "productLabelText": ""
+            },
+            "commercial": false,
+            "development": false,
+            "residential": true,
+            "students": false,
+            "auction": false,
+            "feesApply": true,
+            "feesApplyText": null,
+            "displaySize": "",
+            "showOnMap": true,
+            "propertyUrl": "/property-to-rent/property-95552990.html",
+            "contactUrl": "/property-to-rent/contactBranch.html?propertyId=95552990",
+            "channel": "RENT",
+            "firstVisibleDate": "2020-08-01T16:25:24Z",
+            "keywords": [],
+            "keywordMatchType": "no_keyword",
+            "saved": null,
+            "hidden": null,
+            "onlineViewingsAvailable": false,
+            "heading": "",
+            "enhancedListing": false,
+            "propertyTypeFullDescription": "3 bedroom detached house",
+            "propertyImages": {
+              "images": [
+                {
+                  "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_01_0000_max_476x317.jpg",
+                  "url": "135k/134666/95552990/134666_WIN200037_L_IMG_01_0000.jpg"
+                },
+                {
+                  "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_02_0000_max_476x317.jpg",
+                  "url": "135k/134666/95552990/134666_WIN200037_L_IMG_02_0000.jpg"
+                },
+                {
+                  "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_03_0000_max_476x317.jpg",
+                  "url": "135k/134666/95552990/134666_WIN200037_L_IMG_03_0000.jpg"
+                },
+                {
+                  "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_04_0000_max_476x317.jpg",
+                  "url": "135k/134666/95552990/134666_WIN200037_L_IMG_04_0000.jpg"
+                },
+                {
+                  "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_05_0000_max_476x317.jpg",
+                  "url": "135k/134666/95552990/134666_WIN200037_L_IMG_05_0000.jpg"
+                },
+                {
+                  "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_06_0000_max_476x317.jpg",
+                  "url": "135k/134666/95552990/134666_WIN200037_L_IMG_06_0000.jpg"
+                },
+                {
+                  "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_07_0000_max_476x317.jpg",
+                  "url": "135k/134666/95552990/134666_WIN200037_L_IMG_07_0000.jpg"
+                }
+              ],
+              "mainImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_01_0000_max_476x317.jpg",
+              "mainMapImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/135k/134666/95552990/134666_WIN200037_L_IMG_01_0000_max_296x197.jpg"
+            },
+            "displayStatus": "",
+            "formattedBranchName": " by Ella Residential Sales and Lettings, Winslow - Lettings",
+            "addedOrReduced": "Added yesterday",
+            "isRecent": true,
+            "formattedDistance": "",
+            "hasBrandPlus": true
+          }
+        ]
+      ],
+      "additionalItems": true,
+      "items": {
+        "$id": "#/properties/properties/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/properties/items/anyOf/0",
+            "type": "object",
+            "title": "The first anyOf schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "id": 91967702,
+                "bedrooms": 5,
+                "numberOfImages": 7,
+                "numberOfFloorplans": 0,
+                "numberOfVirtualTours": 0,
+                "summary": "Student HMO Property 2020/2021 Academic Year - This 5 double bedroom property benefits from two bathrooms, a large fully fitted kitchen , common room , patio garden and driveway parking. The property has the Buckingham University campus on its doorstep and the town centre within a minute...",
+                "displayAddress": "Buckingham",
+                "countryCode": "GB",
+                "location": {
+                  "latitude": 51.9976,
+                  "longitude": -0.99027
+                },
+                "propertySubType": "Terraced",
+                "listingUpdate": {
+                  "listingUpdateReason": "new",
+                  "listingUpdateDate": "2020-05-05T15:41:01Z"
+                },
+                "premiumListing": false,
+                "featuredProperty": true,
+                "price": {
+                  "amount": 1850,
+                  "frequency": "monthly",
+                  "currencyCode": "GBP",
+                  "displayPrices": [
+                    {
+                      "displayPrice": "£1,850 pcm",
+                      "displayPriceQualifier": ""
+                    },
+                    {
+                      "displayPrice": "£427 pw",
+                      "displayPriceQualifier": ""
+                    }
+                  ]
+                },
+                "customer": {
+                  "branchId": 69152,
+                  "brandPlusLogoURI": "/70k/69152/branch_logo_69152_0003.jpeg",
+                  "contactTelephone": "01280 475048",
+                  "branchDisplayName": "Property Solutions , Buckingham - Lettings",
+                  "branchName": "Buckingham - Lettings",
+                  "brandTradingName": "Property Solutions ",
+                  "branchLandingPageUrl": "/estate-agents/agent/Property-Solutions/Buckingham---Lettings-69152.html",
+                  "development": false,
+                  "showReducedProperties": true,
+                  "commercial": false,
+                  "showOnMap": true,
+                  "enhancedListing": false,
+                  "developmentContent": null,
+                  "brandPlusLogoUrl": "https://media.rightmove.co.uk:443/dir/70k/69152/branch_logo_69152_0003_max_100x50.jpeg"
+                },
+                "distance": null,
+                "transactionType": "rent",
+                "productLabel": {
+                  "productLabelText": ""
+                },
+                "commercial": false,
+                "development": false,
+                "residential": true,
+                "students": true,
+                "auction": false,
+                "feesApply": true,
+                "feesApplyText": null,
+                "displaySize": "",
+                "showOnMap": true,
+                "propertyUrl": "/property-to-rent/property-91967702.html",
+                "contactUrl": "/property-to-rent/contactBranch.html?propertyId=91967702",
+                "channel": "RENT",
+                "firstVisibleDate": "2020-05-05T15:35:03Z",
+                "keywords": [],
+                "keywordMatchType": "no_keyword",
+                "saved": null,
+                "hidden": null,
+                "onlineViewingsAvailable": false,
+                "heading": "Featured Property",
+                "enhancedListing": false,
+                "propertyTypeFullDescription": "5 bedroom terraced house",
+                "propertyImages": {
+                  "images": [
+                    {
+                      "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_476x317.jpg",
+                      "url": "70k/69152/91967702/69152_2548866_IMG_01_0001.jpg"
+                    },
+                    {
+                      "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_02_0002_max_476x317.jpg",
+                      "url": "70k/69152/91967702/69152_2548866_IMG_02_0002.jpg"
+                    },
+                    {
+                      "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_03_0000_max_476x317.jpg",
+                      "url": "70k/69152/91967702/69152_2548866_IMG_03_0000.jpg"
+                    },
+                    {
+                      "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_04_0000_max_476x317.jpg",
+                      "url": "70k/69152/91967702/69152_2548866_IMG_04_0000.jpg"
+                    },
+                    {
+                      "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_05_0000_max_476x317.jpg",
+                      "url": "70k/69152/91967702/69152_2548866_IMG_05_0000.jpg"
+                    },
+                    {
+                      "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_06_0000_max_476x317.jpg",
+                      "url": "70k/69152/91967702/69152_2548866_IMG_06_0000.jpg"
+                    },
+                    {
+                      "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_07_0001_max_476x317.jpg",
+                      "url": "70k/69152/91967702/69152_2548866_IMG_07_0001.jpg"
+                    }
+                  ],
+                  "mainImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_476x317.jpg",
+                  "mainMapImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_296x197.jpg"
+                },
+                "displayStatus": "",
+                "formattedBranchName": " by Property Solutions , Buckingham - Lettings",
+                "addedOrReduced": "Added on 05/05/2020",
+                "isRecent": false,
+                "formattedDistance": "",
+                "hasBrandPlus": true
+              }
+            ],
+            "required": [
+              "id",
+              "bedrooms",
+              "numberOfImages",
+              "numberOfFloorplans",
+              "numberOfVirtualTours",
+              "summary",
+              "displayAddress",
+              "countryCode",
+              "location",
+              "propertySubType",
+              "listingUpdate",
+              "premiumListing",
+              "featuredProperty",
+              "price",
+              "customer",
+              "distance",
+              "transactionType",
+              "productLabel",
+              "commercial",
+              "development",
+              "residential",
+              "students",
+              "auction",
+              "feesApply",
+              "feesApplyText",
+              "displaySize",
+              "showOnMap",
+              "propertyUrl",
+              "contactUrl",
+              "channel",
+              "firstVisibleDate",
+              "keywords",
+              "keywordMatchType",
+              "saved",
+              "hidden",
+              "onlineViewingsAvailable",
+              "heading",
+              "enhancedListing",
+              "propertyTypeFullDescription",
+              "propertyImages",
+              "displayStatus",
+              "formattedBranchName",
+              "addedOrReduced",
+              "isRecent",
+              "formattedDistance",
+              "hasBrandPlus"
+            ],
+            "properties": {
+              "id": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/id",
+                "type": "integer",
+                "title": "The id schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  91967702
+                ]
+              },
+              "bedrooms": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/bedrooms",
+                "type": "integer",
+                "title": "The bedrooms schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  5
+                ]
+              },
+              "numberOfImages": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/numberOfImages",
+                "type": "integer",
+                "title": "The numberOfImages schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  7
+                ]
+              },
+              "numberOfFloorplans": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/numberOfFloorplans",
+                "type": "integer",
+                "title": "The numberOfFloorplans schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "numberOfVirtualTours": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/numberOfVirtualTours",
+                "type": "integer",
+                "title": "The numberOfVirtualTours schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  0
+                ]
+              },
+              "summary": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/summary",
+                "type": "string",
+                "title": "The summary schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Student HMO Property 2020/2021 Academic Year - This 5 double bedroom property benefits from two bathrooms, a large fully fitted kitchen , common room , patio garden and driveway parking. The property has the Buckingham University campus on its doorstep and the town centre within a minute..."
+                ]
+              },
+              "displayAddress": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/displayAddress",
+                "type": "string",
+                "title": "The displayAddress schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Buckingham"
+                ]
+              },
+              "countryCode": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/countryCode",
+                "type": "string",
+                "title": "The countryCode schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "GB"
+                ]
+              },
+              "location": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/location",
+                "type": "object",
+                "title": "The location schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "latitude": 51.9976,
+                    "longitude": -0.99027
+                  }
+                ],
+                "required": [
+                  "latitude",
+                  "longitude"
+                ],
+                "properties": {
+                  "latitude": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/location/properties/latitude",
+                    "type": "number",
+                    "title": "The latitude schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0.0,
+                    "examples": [
+                      51.9976
+                    ]
+                  },
+                  "longitude": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/location/properties/longitude",
+                    "type": "number",
+                    "title": "The longitude schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0.0,
+                    "examples": [
+                      -0.99027
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "propertySubType": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/propertySubType",
+                "type": "string",
+                "title": "The propertySubType schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Terraced"
+                ]
+              },
+              "listingUpdate": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/listingUpdate",
+                "type": "object",
+                "title": "The listingUpdate schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "listingUpdateReason": "new",
+                    "listingUpdateDate": "2020-05-05T15:41:01Z"
+                  }
+                ],
+                "required": [
+                  "listingUpdateReason",
+                  "listingUpdateDate"
+                ],
+                "properties": {
+                  "listingUpdateReason": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/listingUpdate/properties/listingUpdateReason",
+                    "type": "string",
+                    "title": "The listingUpdateReason schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "new"
+                    ]
+                  },
+                  "listingUpdateDate": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/listingUpdate/properties/listingUpdateDate",
+                    "type": "string",
+                    "title": "The listingUpdateDate schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "2020-05-05T15:41:01Z"
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "premiumListing": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/premiumListing",
+                "type": "boolean",
+                "title": "The premiumListing schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "featuredProperty": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/featuredProperty",
+                "type": "boolean",
+                "title": "The featuredProperty schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "price": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/price",
+                "type": "object",
+                "title": "The price schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "amount": 1850,
+                    "frequency": "monthly",
+                    "currencyCode": "GBP",
+                    "displayPrices": [
+                      {
+                        "displayPrice": "£1,850 pcm",
+                        "displayPriceQualifier": ""
+                      },
+                      {
+                        "displayPrice": "£427 pw",
+                        "displayPriceQualifier": ""
+                      }
+                    ]
+                  }
+                ],
+                "required": [
+                  "amount",
+                  "frequency",
+                  "currencyCode",
+                  "displayPrices"
+                ],
+                "properties": {
+                  "amount": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/price/properties/amount",
+                    "type": "integer",
+                    "title": "The amount schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                      1850
+                    ]
+                  },
+                  "frequency": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/price/properties/frequency",
+                    "type": "string",
+                    "title": "The frequency schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "monthly"
+                    ]
+                  },
+                  "currencyCode": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/price/properties/currencyCode",
+                    "type": "string",
+                    "title": "The currencyCode schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "GBP"
+                    ]
+                  },
+                  "displayPrices": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/price/properties/displayPrices",
+                    "type": "array",
+                    "title": "The displayPrices schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": [],
+                    "examples": [
+                      [
+                        {
+                          "displayPrice": "£1,850 pcm",
+                          "displayPriceQualifier": ""
+                        },
+                        {
+                          "displayPrice": "£427 pw",
+                          "displayPriceQualifier": ""
+                        }
+                      ]
+                    ],
+                    "additionalItems": true,
+                    "items": {
+                      "$id": "#/properties/properties/items/anyOf/0/properties/price/properties/displayPrices/items",
+                      "anyOf": [
+                        {
+                          "$id": "#/properties/properties/items/anyOf/0/properties/price/properties/displayPrices/items/anyOf/0",
+                          "type": "object",
+                          "title": "The first anyOf schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "displayPrice": "£1,850 pcm",
+                              "displayPriceQualifier": ""
+                            }
+                          ],
+                          "required": [
+                            "displayPrice",
+                            "displayPriceQualifier"
+                          ],
+                          "properties": {
+                            "displayPrice": {
+                              "$id": "#/properties/properties/items/anyOf/0/properties/price/properties/displayPrices/items/anyOf/0/properties/displayPrice",
+                              "type": "string",
+                              "title": "The displayPrice schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": "",
+                              "examples": [
+                                "£1,850 pcm"
+                              ]
+                            },
+                            "displayPriceQualifier": {
+                              "$id": "#/properties/properties/items/anyOf/0/properties/price/properties/displayPrices/items/anyOf/0/properties/displayPriceQualifier",
+                              "type": "string",
+                              "title": "The displayPriceQualifier schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": "",
+                              "examples": [
+                                ""
+                              ]
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      ]
+                    }
+                  }
+                },
+                "additionalProperties": true
+              },
+              "customer": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/customer",
+                "type": "object",
+                "title": "The customer schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "branchId": 69152,
+                    "brandPlusLogoURI": "/70k/69152/branch_logo_69152_0003.jpeg",
+                    "contactTelephone": "01280 475048",
+                    "branchDisplayName": "Property Solutions , Buckingham - Lettings",
+                    "branchName": "Buckingham - Lettings",
+                    "brandTradingName": "Property Solutions ",
+                    "branchLandingPageUrl": "/estate-agents/agent/Property-Solutions/Buckingham---Lettings-69152.html",
+                    "development": false,
+                    "showReducedProperties": true,
+                    "commercial": false,
+                    "showOnMap": true,
+                    "enhancedListing": false,
+                    "developmentContent": null,
+                    "brandPlusLogoUrl": "https://media.rightmove.co.uk:443/dir/70k/69152/branch_logo_69152_0003_max_100x50.jpeg"
+                  }
+                ],
+                "required": [
+                  "branchId",
+                  "brandPlusLogoURI",
+                  "contactTelephone",
+                  "branchDisplayName",
+                  "branchName",
+                  "brandTradingName",
+                  "branchLandingPageUrl",
+                  "development",
+                  "showReducedProperties",
+                  "commercial",
+                  "showOnMap",
+                  "enhancedListing",
+                  "developmentContent",
+                  "brandPlusLogoUrl"
+                ],
+                "properties": {
+                  "branchId": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/customer/properties/branchId",
+                    "type": "integer",
+                    "title": "The branchId schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": 0,
+                    "examples": [
+                      69152
+                    ]
+                  },
+                  "brandPlusLogoURI": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/customer/properties/brandPlusLogoURI",
+                    "type": "string",
+                    "title": "The brandPlusLogoURI schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "/70k/69152/branch_logo_69152_0003.jpeg"
+                    ]
+                  },
+                  "contactTelephone": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/customer/properties/contactTelephone",
+                    "type": "string",
+                    "title": "The contactTelephone schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "01280 475048"
+                    ]
+                  },
+                  "branchDisplayName": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/customer/properties/branchDisplayName",
+                    "type": "string",
+                    "title": "The branchDisplayName schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Property Solutions , Buckingham - Lettings"
+                    ]
+                  },
+                  "branchName": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/customer/properties/branchName",
+                    "type": "string",
+                    "title": "The branchName schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Buckingham - Lettings"
+                    ]
+                  },
+                  "brandTradingName": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/customer/properties/brandTradingName",
+                    "type": "string",
+                    "title": "The brandTradingName schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Property Solutions "
+                    ]
+                  },
+                  "branchLandingPageUrl": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/customer/properties/branchLandingPageUrl",
+                    "type": "string",
+                    "title": "The branchLandingPageUrl schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "/estate-agents/agent/Property-Solutions/Buckingham---Lettings-69152.html"
+                    ]
+                  },
+                  "development": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/customer/properties/development",
+                    "type": "boolean",
+                    "title": "The development schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                      false
+                    ]
+                  },
+                  "showReducedProperties": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/customer/properties/showReducedProperties",
+                    "type": "boolean",
+                    "title": "The showReducedProperties schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                      true
+                    ]
+                  },
+                  "commercial": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/customer/properties/commercial",
+                    "type": "boolean",
+                    "title": "The commercial schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                      false
+                    ]
+                  },
+                  "showOnMap": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/customer/properties/showOnMap",
+                    "type": "boolean",
+                    "title": "The showOnMap schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                      true
+                    ]
+                  },
+                  "enhancedListing": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/customer/properties/enhancedListing",
+                    "type": "boolean",
+                    "title": "The enhancedListing schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": false,
+                    "examples": [
+                      false
+                    ]
+                  },
+                  "developmentContent": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/customer/properties/developmentContent",
+                    "type": "null",
+                    "title": "The developmentContent schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "brandPlusLogoUrl": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/customer/properties/brandPlusLogoUrl",
+                    "type": "string",
+                    "title": "The brandPlusLogoUrl schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "https://media.rightmove.co.uk:443/dir/70k/69152/branch_logo_69152_0003_max_100x50.jpeg"
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "distance": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/distance",
+                "type": "null",
+                "title": "The distance schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "transactionType": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/transactionType",
+                "type": "string",
+                "title": "The transactionType schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "rent"
+                ]
+              },
+              "productLabel": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/productLabel",
+                "type": "object",
+                "title": "The productLabel schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "productLabelText": ""
+                  }
+                ],
+                "required": [
+                  "productLabelText"
+                ],
+                "properties": {
+                  "productLabelText": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/productLabel/properties/productLabelText",
+                    "type": "string",
+                    "title": "The productLabelText schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      ""
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "commercial": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/commercial",
+                "type": "boolean",
+                "title": "The commercial schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "development": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/development",
+                "type": "boolean",
+                "title": "The development schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "residential": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/residential",
+                "type": "boolean",
+                "title": "The residential schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "students": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/students",
+                "type": "boolean",
+                "title": "The students schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "auction": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/auction",
+                "type": "boolean",
+                "title": "The auction schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "feesApply": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/feesApply",
+                "type": "boolean",
+                "title": "The feesApply schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "feesApplyText": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/feesApplyText",
+                "type": "null",
+                "title": "The feesApplyText schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "displaySize": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/displaySize",
+                "type": "string",
+                "title": "The displaySize schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  ""
+                ]
+              },
+              "showOnMap": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/showOnMap",
+                "type": "boolean",
+                "title": "The showOnMap schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "propertyUrl": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/propertyUrl",
+                "type": "string",
+                "title": "The propertyUrl schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "/property-to-rent/property-91967702.html"
+                ]
+              },
+              "contactUrl": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/contactUrl",
+                "type": "string",
+                "title": "The contactUrl schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "/property-to-rent/contactBranch.html?propertyId=91967702"
+                ]
+              },
+              "channel": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/channel",
+                "type": "string",
+                "title": "The channel schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "RENT"
+                ]
+              },
+              "firstVisibleDate": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/firstVisibleDate",
+                "type": "string",
+                "title": "The firstVisibleDate schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "2020-05-05T15:35:03Z"
+                ]
+              },
+              "keywords": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/keywords",
+                "type": "array",
+                "title": "The keywords schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": [],
+                "examples": [
+                  []
+                ],
+                "additionalItems": true,
+                "items": {
+                  "$id": "#/properties/properties/items/anyOf/0/properties/keywords/items"
+                }
+              },
+              "keywordMatchType": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/keywordMatchType",
+                "type": "string",
+                "title": "The keywordMatchType schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "no_keyword"
+                ]
+              },
+              "saved": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/saved",
+                "type": "null",
+                "title": "The saved schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "hidden": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/hidden",
+                "type": "null",
+                "title": "The hidden schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "onlineViewingsAvailable": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/onlineViewingsAvailable",
+                "type": "boolean",
+                "title": "The onlineViewingsAvailable schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "heading": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/heading",
+                "type": "string",
+                "title": "The heading schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Featured Property"
+                ]
+              },
+              "enhancedListing": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/enhancedListing",
+                "type": "boolean",
+                "title": "The enhancedListing schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "propertyTypeFullDescription": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/propertyTypeFullDescription",
+                "type": "string",
+                "title": "The propertyTypeFullDescription schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "5 bedroom terraced house"
+                ]
+              },
+              "propertyImages": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/propertyImages",
+                "type": "object",
+                "title": "The propertyImages schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "images": [
+                      {
+                        "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_476x317.jpg",
+                        "url": "70k/69152/91967702/69152_2548866_IMG_01_0001.jpg"
+                      },
+                      {
+                        "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_02_0002_max_476x317.jpg",
+                        "url": "70k/69152/91967702/69152_2548866_IMG_02_0002.jpg"
+                      },
+                      {
+                        "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_03_0000_max_476x317.jpg",
+                        "url": "70k/69152/91967702/69152_2548866_IMG_03_0000.jpg"
+                      },
+                      {
+                        "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_04_0000_max_476x317.jpg",
+                        "url": "70k/69152/91967702/69152_2548866_IMG_04_0000.jpg"
+                      },
+                      {
+                        "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_05_0000_max_476x317.jpg",
+                        "url": "70k/69152/91967702/69152_2548866_IMG_05_0000.jpg"
+                      },
+                      {
+                        "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_06_0000_max_476x317.jpg",
+                        "url": "70k/69152/91967702/69152_2548866_IMG_06_0000.jpg"
+                      },
+                      {
+                        "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_07_0001_max_476x317.jpg",
+                        "url": "70k/69152/91967702/69152_2548866_IMG_07_0001.jpg"
+                      }
+                    ],
+                    "mainImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_476x317.jpg",
+                    "mainMapImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_296x197.jpg"
+                  }
+                ],
+                "required": [
+                  "images",
+                  "mainImageSrc",
+                  "mainMapImageSrc"
+                ],
+                "properties": {
+                  "images": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/propertyImages/properties/images",
+                    "type": "array",
+                    "title": "The images schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": [],
+                    "examples": [
+                      [
+                        {
+                          "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_476x317.jpg",
+                          "url": "70k/69152/91967702/69152_2548866_IMG_01_0001.jpg"
+                        },
+                        {
+                          "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_02_0002_max_476x317.jpg",
+                          "url": "70k/69152/91967702/69152_2548866_IMG_02_0002.jpg"
+                        }
+                      ]
+                    ],
+                    "additionalItems": true,
+                    "items": {
+                      "$id": "#/properties/properties/items/anyOf/0/properties/propertyImages/properties/images/items",
+                      "anyOf": [
+                        {
+                          "$id": "#/properties/properties/items/anyOf/0/properties/propertyImages/properties/images/items/anyOf/0",
+                          "type": "object",
+                          "title": "The first anyOf schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": {},
+                          "examples": [
+                            {
+                              "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_476x317.jpg",
+                              "url": "70k/69152/91967702/69152_2548866_IMG_01_0001.jpg"
+                            }
+                          ],
+                          "required": [
+                            "srcUrl",
+                            "url"
+                          ],
+                          "properties": {
+                            "srcUrl": {
+                              "$id": "#/properties/properties/items/anyOf/0/properties/propertyImages/properties/images/items/anyOf/0/properties/srcUrl",
+                              "type": "string",
+                              "title": "The srcUrl schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": "",
+                              "examples": [
+                                "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_476x317.jpg"
+                              ]
+                            },
+                            "url": {
+                              "$id": "#/properties/properties/items/anyOf/0/properties/propertyImages/properties/images/items/anyOf/0/properties/url",
+                              "type": "string",
+                              "title": "The url schema",
+                              "description": "An explanation about the purpose of this instance.",
+                              "default": "",
+                              "examples": [
+                                "70k/69152/91967702/69152_2548866_IMG_01_0001.jpg"
+                              ]
+                            }
+                          },
+                          "additionalProperties": true
+                        }
+                      ]
+                    }
+                  },
+                  "mainImageSrc": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/propertyImages/properties/mainImageSrc",
+                    "type": "string",
+                    "title": "The mainImageSrc schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_476x317.jpg"
+                    ]
+                  },
+                  "mainMapImageSrc": {
+                    "$id": "#/properties/properties/items/anyOf/0/properties/propertyImages/properties/mainMapImageSrc",
+                    "type": "string",
+                    "title": "The mainMapImageSrc schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_296x197.jpg"
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "displayStatus": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/displayStatus",
+                "type": "string",
+                "title": "The displayStatus schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  ""
+                ]
+              },
+              "formattedBranchName": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/formattedBranchName",
+                "type": "string",
+                "title": "The formattedBranchName schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  " by Property Solutions , Buckingham - Lettings"
+                ]
+              },
+              "addedOrReduced": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/addedOrReduced",
+                "type": "string",
+                "title": "The addedOrReduced schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Added on 05/05/2020"
+                ]
+              },
+              "isRecent": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/isRecent",
+                "type": "boolean",
+                "title": "The isRecent schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  false
+                ]
+              },
+              "formattedDistance": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/formattedDistance",
+                "type": "string",
+                "title": "The formattedDistance schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  ""
+                ]
+              },
+              "hasBrandPlus": {
+                "$id": "#/properties/properties/items/anyOf/0/properties/hasBrandPlus",
+                "type": "boolean",
+                "title": "The hasBrandPlus schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              }
+            },
+            "additionalProperties": true
+          }
+        ]
+      }
+    },
+    "resultCount": {
+      "$id": "#/properties/resultCount",
+      "type": "string",
+      "title": "The resultCount schema",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "36"
+      ]
+    }
+  },
+  "additionalProperties": true
+}
