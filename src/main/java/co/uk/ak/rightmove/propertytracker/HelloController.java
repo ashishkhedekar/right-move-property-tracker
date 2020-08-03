@@ -1,5 +1,6 @@
 package co.uk.ak.rightmove.propertytracker;
 
+import co.uk.ak.rightmove.propertytracker.configuration.EmailSender;
 import co.uk.ak.rightmove.propertytracker.facade.DummyFacade;
 import co.uk.ak.rightmove.propertytracker.facade.RightMovePropertiesTrackerFacade;
 import lombok.AllArgsConstructor;
@@ -15,6 +16,7 @@ public class HelloController
    private final RightMovePropertiesTrackerFacade trackerFacade;
 
    private final DummyFacade dummyFacade;
+   private final EmailSender emailSender;
 
    @GetMapping(name = "/")
    public ResponseEntity<String> message()
@@ -29,5 +31,22 @@ public class HelloController
       final long properties = dummyFacade.howManyProperties();
       final long results = dummyFacade.howManyResults();
       return ResponseEntity.status(HttpStatus.OK).body(String.format("There are currently [%s] properties and [%s] results ", properties, results));
+   }
+
+   @GetMapping(path = "/sendemail")
+   public ResponseEntity<String> sendEmail()
+   {
+
+      try
+      {
+         emailSender.sendEmail();
+
+         return ResponseEntity.status(HttpStatus.OK).body("Email was sent successfully");
+      }
+      catch (Exception e)
+      {
+         e.printStackTrace();
+         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Something went wrong, check emails");
+      }
    }
 }
