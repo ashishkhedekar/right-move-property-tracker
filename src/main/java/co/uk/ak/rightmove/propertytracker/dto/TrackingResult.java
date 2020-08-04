@@ -10,4 +10,6 @@ public class TrackingResult
    private int numberOfPropertiesLet;
 
    private int numberOfPropertiesReduced;
+
+   private int newProperties;
 }

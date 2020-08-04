@@ -7,4 +7,5 @@ public interface RightMoveTrackingService
 {
    TrackingResult trackProperties(RightMoveResult rightMoveResult);
 
+   void refreshProperties(RightMoveResult rightMoveResult);
 }
