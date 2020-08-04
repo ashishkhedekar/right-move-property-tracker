@@ -1,6 +1,5 @@
 package co.uk.ak.rightmove.propertytracker.scheduler;
 
-import co.uk.ak.rightmove.propertytracker.client.RightMoveWebClient;
 import co.uk.ak.rightmove.propertytracker.facade.RightMovePropertiesTrackerFacade;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,10 +19,10 @@ public class Scheduler
 
    private RightMovePropertiesTrackerFacade facade;
 
-   @Scheduled(cron = "0 0 1 * * *")
+   //Runs every house between 7am till 10pm
+   @Scheduled(cron = "0 0 7-22 * * *")
    public void runRightMoveQuery()
    {
-      LOG.info("Going to run right move query");
-      facade.trackProperties("");
+      facade.trackProperties("REGION%5E239");
    }
 }
