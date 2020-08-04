@@ -1,6 +1,6 @@
 package co.uk.ak.rightmove.propertytracker.configuration;
 
-import co.uk.ak.rightmove.propertytracker.dto.TrackingResult;
+import co.uk.ak.rightmove.propertytracker.dto.LettingPropertiesTrackingResult;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +16,7 @@ public class EmailSender
 
    private final JavaMailSender sender;
 
-   public void sendEmail(final TrackingResult trackingResult)
+   public void sendEmail(final LettingPropertiesTrackingResult trackingResult)
    {
       sender.send(mimeMessage -> {
          MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");

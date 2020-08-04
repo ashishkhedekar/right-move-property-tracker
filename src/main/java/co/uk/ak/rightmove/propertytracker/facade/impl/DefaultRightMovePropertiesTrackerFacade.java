@@ -2,8 +2,8 @@ package co.uk.ak.rightmove.propertytracker.facade.impl;
 
 import co.uk.ak.rightmove.propertytracker.client.RightMoveWebClient;
 import co.uk.ak.rightmove.propertytracker.configuration.EmailSender;
+import co.uk.ak.rightmove.propertytracker.dto.LettingPropertiesTrackingResult;
 import co.uk.ak.rightmove.propertytracker.dto.RightMoveResult;
-import co.uk.ak.rightmove.propertytracker.dto.TrackingResult;
 import co.uk.ak.rightmove.propertytracker.facade.RightMovePropertiesTrackerFacade;
 import co.uk.ak.rightmove.propertytracker.mapper.TrackingResultMapper;
 import co.uk.ak.rightmove.propertytracker.model.TrackingResultModel;
@@ -31,14 +31,22 @@ public class DefaultRightMovePropertiesTrackerFacade implements RightMovePropert
    {
       final RightMoveResult rightMoveResult = webClient.callRightMove(locationId);
       LOG.info("Found [{}] results for locationId [{}] ", rightMoveResult.getResultCount(), locationId);
-      final TrackingResult trackingResult = trackingService.trackProperties(rightMoveResult);
+      final LettingPropertiesTrackingResult trackingResult = trackingService.trackProperties(rightMoveResult);
       LOG.info("Successfully tracked properties: Summary numberOfPropertiesLet : [{}]", trackingResult.getNumberOfPropertiesLet());
       final TrackingResultModel trackingResultModel = trackingResultMapper.trackingResultToModel(trackingResult);
       trackingResultRepository.save(trackingResultModel);
       LOG.info("Successfully converted and saved tracking result in DB");
       trackingService.refreshProperties(rightMoveResult);
       LOG.info("Successfully converted and saved RightMove properties in DB");
-      emailSender.sendEmail(trackingResult);
-      LOG.info("Email sent...!");
+      if (trackingResult.needsReporting())
+      {
+         emailSender.sendEmail(trackingResult);
+         LOG.info("Email sent...!");
+      }
+      else
+      {
+         LOG.info("Nothing to report.");
+      }
+
    }
 }

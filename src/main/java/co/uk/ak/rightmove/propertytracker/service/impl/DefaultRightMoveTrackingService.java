@@ -1,8 +1,8 @@
 package co.uk.ak.rightmove.propertytracker.service.impl;
 
 import co.uk.ak.rightmove.propertytracker.client.RightMoveWebClient;
+import co.uk.ak.rightmove.propertytracker.dto.LettingPropertiesTrackingResult;
 import co.uk.ak.rightmove.propertytracker.dto.RightMoveResult;
-import co.uk.ak.rightmove.propertytracker.dto.TrackingResult;
 import co.uk.ak.rightmove.propertytracker.mapper.RightMovePropertyMapper;
 import co.uk.ak.rightmove.propertytracker.model.RightMovePropertyModel;
 import co.uk.ak.rightmove.propertytracker.repository.RightMovePropertyRepository;
@@ -29,7 +29,7 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
    private final RightMovePropertyRepository rightMovePropertyRepository;
 
    @Override
-   public TrackingResult trackProperties(final RightMoveResult rightMoveResult)
+   public LettingPropertiesTrackingResult trackProperties(final RightMoveResult rightMoveResult)
    {
       final AtomicInteger numberOfPropertiesLet = new AtomicInteger();
       final AtomicInteger newProperties = new AtomicInteger();
@@ -47,7 +47,7 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
          });
       });
 
-      return TrackingResult.builder()
+      return LettingPropertiesTrackingResult.builder()
                .numberOfPropertiesLet(numberOfPropertiesLet.get())
                .newProperties(newProperties.get())
                .build();

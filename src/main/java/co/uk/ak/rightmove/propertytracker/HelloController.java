@@ -1,7 +1,7 @@
 package co.uk.ak.rightmove.propertytracker;
 
 import co.uk.ak.rightmove.propertytracker.configuration.EmailSender;
-import co.uk.ak.rightmove.propertytracker.dto.TrackingResult;
+import co.uk.ak.rightmove.propertytracker.dto.LettingPropertiesTrackingResult;
 import co.uk.ak.rightmove.propertytracker.facade.DummyFacade;
 import co.uk.ak.rightmove.propertytracker.facade.RightMovePropertiesTrackerFacade;
 import lombok.AllArgsConstructor;
@@ -40,7 +40,7 @@ public class HelloController
 
       try
       {
-         emailSender.sendEmail(TrackingResult.builder().numberOfPropertiesLet(10).build());
+         emailSender.sendEmail(LettingPropertiesTrackingResult.builder().numberOfPropertiesLet(10).build());
 
          return ResponseEntity.status(HttpStatus.OK).body("Email was sent successfully");
       }
