@@ -1,6 +1,6 @@
 package co.uk.ak.rightmove.propertytracker;
 
-import co.uk.ak.rightmove.propertytracker.configuration.EmailSender;
+import co.uk.ak.rightmove.propertytracker.emails.EmailSender;
 import co.uk.ak.rightmove.propertytracker.dto.LettingPropertiesTrackingResult;
 import co.uk.ak.rightmove.propertytracker.facade.DummyFacade;
 import co.uk.ak.rightmove.propertytracker.facade.RightMovePropertiesTrackerFacade;

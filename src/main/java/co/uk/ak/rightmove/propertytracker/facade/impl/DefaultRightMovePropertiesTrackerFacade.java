@@ -1,7 +1,7 @@
 package co.uk.ak.rightmove.propertytracker.facade.impl;
 
 import co.uk.ak.rightmove.propertytracker.client.RightMoveWebClient;
-import co.uk.ak.rightmove.propertytracker.configuration.EmailSender;
+import co.uk.ak.rightmove.propertytracker.emails.EmailSender;
 import co.uk.ak.rightmove.propertytracker.dto.LettingPropertiesTrackingResult;
 import co.uk.ak.rightmove.propertytracker.dto.RightMoveResult;
 import co.uk.ak.rightmove.propertytracker.facade.RightMovePropertiesTrackerFacade;
@@ -27,7 +27,7 @@ public class DefaultRightMovePropertiesTrackerFacade implements RightMovePropert
    private final EmailSender emailSender;
 
    @Override
-   public void trackProperties(String locationId)
+   public void trackProperties(final String locationId)
    {
       final RightMoveResult rightMoveResult = webClient.callRightMove(locationId);
       LOG.info("Found [{}] results for locationId [{}] ", rightMoveResult.getResultCount(), locationId);
@@ -47,6 +47,5 @@ public class DefaultRightMovePropertiesTrackerFacade implements RightMovePropert
       {
          LOG.info("Nothing to report.");
       }
-
    }
 }
