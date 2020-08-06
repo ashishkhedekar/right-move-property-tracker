@@ -1,7 +1,10 @@
 package co.uk.ak.rightmove.propertytracker.configuration;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
@@ -10,4 +13,10 @@ public class ApplicationConfiguration
 {
    @Value( "${current.environment}" )
    private String currentEnvironment;
+
+   @Bean(name = "jsonMapper")
+   @Primary
+   public ObjectMapper jsonMapper() {
+      return new CustomJsonObjectMapper();
+   }
 }

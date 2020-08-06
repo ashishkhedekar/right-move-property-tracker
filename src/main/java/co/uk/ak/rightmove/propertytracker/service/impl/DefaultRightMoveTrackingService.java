@@ -2,6 +2,7 @@ package co.uk.ak.rightmove.propertytracker.service.impl;
 
 import co.uk.ak.rightmove.propertytracker.client.RightMoveWebClient;
 import co.uk.ak.rightmove.propertytracker.dto.LettingPropertiesTrackingResult;
+import co.uk.ak.rightmove.propertytracker.dto.Property;
 import co.uk.ak.rightmove.propertytracker.dto.RightMoveResult;
 import co.uk.ak.rightmove.propertytracker.mapper.RightMovePropertyMapper;
 import co.uk.ak.rightmove.propertytracker.model.RightMovePropertyModel;
@@ -14,6 +15,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -33,12 +36,15 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
    {
       final AtomicInteger numberOfPropertiesLet = new AtomicInteger();
       final AtomicInteger newProperties = new AtomicInteger();
+      final List<Property> letProperties = new ArrayList<>();
+
       rightMoveResult.getProperties().forEach(property -> {
          final Optional<RightMovePropertyModel> rightMovePropertyOptional = rightMovePropertyRepository.findById(Long.valueOf(property.getId()));
          rightMovePropertyOptional.map(p -> {
             if (!StringUtils.equalsIgnoreCase(property.getDisplayStatus(), p.getDisplayStatus()) && property.getDisplayStatus().equalsIgnoreCase("Let agreed"))
             {
                numberOfPropertiesLet.getAndIncrement();
+               letProperties.add(property);
             }
             return p;
          }).orElseGet(() -> {
@@ -50,6 +56,7 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
       return LettingPropertiesTrackingResult.builder()
                .numberOfPropertiesLet(numberOfPropertiesLet.get())
                .newProperties(newProperties.get())
+               .letProperties(letProperties)
                .build();
    }
 

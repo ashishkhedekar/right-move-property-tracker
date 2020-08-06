@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
-@Entity(name = "TrackingResults")
+@Entity
+@Table(name = "tracking_results")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,5 +21,15 @@ public class TrackingResultModel
 
    private int numberOfPropertiesLet;
    private int numberOfPropertiesReduced;
+   private int numberOfPropertiesSold;
    private Date createdDate;
+
+   @OneToMany(fetch = FetchType.LAZY)
+   private List<RightMovePropertyModel> letProperties;
+
+   @OneToMany(fetch = FetchType.LAZY)
+   private List<RightMovePropertyModel> reducedProperties;
+
+   @OneToMany(fetch = FetchType.LAZY)
+   private List<RightMovePropertyModel> soldProperties;
 }

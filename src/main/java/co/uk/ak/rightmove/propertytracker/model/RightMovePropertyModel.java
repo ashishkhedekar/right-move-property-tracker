@@ -6,8 +6,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.Table;
 
-@Entity(name = "Properties")
+@Entity
+@Table(name = "properties")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,10 +20,14 @@ public class RightMovePropertyModel
    private Long id;
 
    private Integer bedrooms;
-//   private String summary;
+   @Lob
+   private String summary;
    private String displayAddress;
    private String propertySubType;
    private String displayStatus;
+
+
+
 
 ////   @OneToOne
 //   private RightMovePriceModel price;
