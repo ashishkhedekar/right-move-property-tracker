@@ -1,6 +1,8 @@
 package co.uk.ak.rightmove.propertytracker.facade;
 
+import co.uk.ak.rightmove.propertytracker.dto.LettingPropertiesTrackingResult;
+
 public interface RightMovePropertiesTrackerFacade
 {
-   void trackProperties(String locationId);
+   LettingPropertiesTrackingResult trackProperties(String locationId);
 }

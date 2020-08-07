@@ -1,0 +1,253 @@
+{
+  "properties": [
+    {
+      "id": 91967702,
+      "bedrooms": 5,
+      "numberOfImages": 7,
+      "numberOfFloorplans": 0,
+      "numberOfVirtualTours": 0,
+      "summary": "Student HMO Property 2020/2021 Academic Year - This 5 double bedroom property benefits from two bathrooms, a large fully fitted kitchen , common room , patio garden and driveway parking. The property has the Buckingham University campus on its doorstep and the town centre within a minute...",
+      "displayAddress": "Buckingham",
+      "countryCode": "GB",
+      "location": {
+        "latitude": 51.9976,
+        "longitude": -0.99027
+      },
+      "propertySubType": "Terraced",
+      "listingUpdate": {
+        "listingUpdateReason": "new",
+        "listingUpdateDate": "2020-05-05T15:41:01Z"
+      },
+      "premiumListing": false,
+      "featuredProperty": true,
+      "price": {
+        "amount": 1850,
+        "frequency": "monthly",
+        "currencyCode": "GBP",
+        "displayPrices": [
+          {
+            "displayPrice": "£1,850 pcm",
+            "displayPriceQualifier": ""
+          },
+          {
+            "displayPrice": "£427 pw",
+            "displayPriceQualifier": ""
+          }
+        ]
+      },
+      "customer": {
+        "branchId": 69152,
+        "brandPlusLogoURI": "/70k/69152/branch_logo_69152_0003.jpeg",
+        "contactTelephone": "01280 475048",
+        "branchDisplayName": "Property Solutions , Buckingham - Lettings",
+        "branchName": "Buckingham - Lettings",
+        "brandTradingName": "Property Solutions ",
+        "branchLandingPageUrl": "/estate-agents/agent/Property-Solutions/Buckingham---Lettings-69152.html",
+        "development": false,
+        "showReducedProperties": true,
+        "commercial": false,
+        "showOnMap": true,
+        "enhancedListing": false,
+        "developmentContent": null,
+        "brandPlusLogoUrl": "https://media.rightmove.co.uk:443/dir/70k/69152/branch_logo_69152_0003_max_100x50.jpeg"
+      },
+      "distance": null,
+      "transactionType": "rent",
+      "productLabel": {
+        "productLabelText": ""
+      },
+      "commercial": false,
+      "development": false,
+      "residential": true,
+      "students": true,
+      "auction": false,
+      "feesApply": true,
+      "feesApplyText": null,
+      "displaySize": "",
+      "showOnMap": true,
+      "propertyUrl": "/property-to-rent/property-91967702.html",
+      "contactUrl": "/property-to-rent/contactBranch.html?propertyId=91967702",
+      "channel": "RENT",
+      "firstVisibleDate": "2020-05-05T15:35:03Z",
+      "keywords": [],
+      "keywordMatchType": "no_keyword",
+      "saved": null,
+      "hidden": null,
+      "onlineViewingsAvailable": false,
+      "enhancedListing": false,
+      "heading": "Featured Property",
+      "propertyImages": {
+        "images": [
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_476x317.jpg",
+            "url": "70k/69152/91967702/69152_2548866_IMG_01_0001.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_02_0002_max_476x317.jpg",
+            "url": "70k/69152/91967702/69152_2548866_IMG_02_0002.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_03_0000_max_476x317.jpg",
+            "url": "70k/69152/91967702/69152_2548866_IMG_03_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_04_0000_max_476x317.jpg",
+            "url": "70k/69152/91967702/69152_2548866_IMG_04_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_05_0000_max_476x317.jpg",
+            "url": "70k/69152/91967702/69152_2548866_IMG_05_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_06_0000_max_476x317.jpg",
+            "url": "70k/69152/91967702/69152_2548866_IMG_06_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_07_0001_max_476x317.jpg",
+            "url": "70k/69152/91967702/69152_2548866_IMG_07_0001.jpg"
+          }
+        ],
+        "mainImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_476x317.jpg",
+        "mainMapImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_296x197.jpg"
+      },
+      "displayStatus": "",
+      "formattedBranchName": " by Property Solutions , Buckingham - Lettings",
+      "addedOrReduced": "Added on 05/05/2020",
+      "isRecent": false,
+      "formattedDistance": "",
+      "hasBrandPlus": true,
+      "propertyTypeFullDescription": "5 bedroom terraced house"
+    },
+    {
+      "id": 72367257,
+      "bedrooms": 4,
+      "numberOfImages": 10,
+      "numberOfFloorplans": 1,
+      "numberOfVirtualTours": 1,
+      "summary": "Well presented four bedroom DETACHED house situated on the popular Lace Hill development. The property benefits from being IN CATCHMENT FOR LOCAL SCHOOLS and WALKING DISTANCE TO THE TOWN CENTRE. The property briefly comprises entrance hallway, dual aspect lounge with French doors leading to sun r...",
+      "displayAddress": "24 Needlepin Way, Buckingham",
+      "countryCode": "GB",
+      "location": {
+        "latitude": 51.98785,
+        "longitude": -0.972843
+      },
+      "propertySubType": "Detached",
+      "listingUpdate": {
+        "listingUpdateReason": "new",
+        "listingUpdateDate": "2020-08-05T17:21:19Z"
+      },
+      "premiumListing": false,
+      "featuredProperty": true,
+      "price": {
+        "amount": 1450,
+        "frequency": "monthly",
+        "currencyCode": "GBP",
+        "displayPrices": [
+          {
+            "displayPrice": "£1,450 pcm",
+            "displayPriceQualifier": ""
+          },
+          {
+            "displayPrice": "£335 pw",
+            "displayPriceQualifier": ""
+          }
+        ]
+      },
+      "customer": {
+        "branchId": 8115,
+        "brandPlusLogoURI": "/company/clogo_rmchoice_2770_0000.jpeg",
+        "contactTelephone": "01280 475040",
+        "branchDisplayName": "Russell & Butler, Bucks, South Northants & North Oxon, Buckingham",
+        "branchName": "Buckingham",
+        "brandTradingName": "Russell & Butler, Bucks, South Northants & North Oxon",
+        "branchLandingPageUrl": "/estate-agents/agent/Russell-and-Butler-Bucks-South-Northants-and-North-Oxon/Buckingham-8115.html",
+        "development": false,
+        "showReducedProperties": true,
+        "commercial": false,
+        "showOnMap": true,
+        "enhancedListing": false,
+        "developmentContent": null,
+        "brandPlusLogoUrl": "https://media.rightmove.co.uk:443/dir/company/clogo_rmchoice_2770_0000_max_100x50.jpeg"
+      },
+      "distance": null,
+      "transactionType": "rent",
+      "productLabel": {
+        "productLabelText": ""
+      },
+      "commercial": false,
+      "development": false,
+      "residential": true,
+      "students": false,
+      "auction": false,
+      "feesApply": true,
+      "feesApplyText": "Permitted Payments\n\nHolding Payment\nOne week s rent. This is to reserve a property. Please Note: This will be withheld if any relevant person (including any guarantor(s)) withdraw from the tenancy, fail a Right-to-Rent check, provide materially significant false or misleading information, or fail to sign their tenancy agreement (and / or Deed of Guarantee) within 15 calendar days (or other Deadline for Agreement as mutually agreed in writing).\n\nSecurity Deposit (per tenancy rent under £50,000 per year)\nFive weeks  rent. This covers damages or defaults on the part of the tenant during the tenancy.\n\nSecurity Deposit (per tenancy rent of £50,000 or over per year)\nSix weeks  rent. This covers damages or defaults on the part of the tenant during the tenancy.\n\nUnpaid Rent\nInterest at 3% above the Bank of England Base Rate from Rent Due Date until paid in order to pursue non-payment of rent. Please Note: This will not be levied until the rent is more than 14 days in arrears.\n\nLost Key(s) or other security device(s)\nTenants are liable to the actual cost of replacing any lost key(s) or other security device(s). If the loss results in locks needing to be changed, the actual costs of a locksmith, new lock and replacement keys for the tenant, landlord any other persons requiring keys will be charged to the tenant. If extra costs are incurred there will be a charge of £15 per hour (inc. VAT) for the time taken replacing lost key(s) or other security device(s).\n\nVariation of contract (tenant's request) \n£50 (inc. VAT) per agreed variation. To cover the costs associated with taking landlord s instructions as well as the preparation and execution of new legal documents.\n\nChange of sharer (tenant's request)\n£50 (inc. VAT) per replacement tenant or any reasonable costs incurred if higher. To cover the costs associated with taking landlord s instructions, new tenant referencing and Right-to-Rent checks, deposit registration as well as the preparation and execution of new legal documents.\n\nEarly termination (tenant's request)\nShould the tenant wish to leave their contract early, they shall be liable to the landlord s costs in re-letting the property as well as all rent due under the tenancy until the start date of the replacement tenancy. \n\nDuring the tenancy (payable to the provider) if permitted and applicable\nUtilities- gas, electricity, water\nCommunications- telephone and broadband\nInstallation of cable/satellite\nSubscription to cable/satellite supplier\nTelevision licence\nCouncil tax\n\nOther permitted payments\nAny other permitted payments, not included above, under the relevant legislation including contractual damages. \n",
+      "displaySize": "",
+      "showOnMap": true,
+      "propertyUrl": "/property-to-rent/property-72367257.html",
+      "contactUrl": "/property-to-rent/contactBranch.html?propertyId=72367257",
+      "channel": "RENT",
+      "firstVisibleDate": "2020-08-06T09:19:17Z",
+      "keywords": [],
+      "keywordMatchType": "no_keyword",
+      "saved": null,
+      "hidden": null,
+      "onlineViewingsAvailable": false,
+      "enhancedListing": false,
+      "heading": "Featured Property",
+      "propertyImages": {
+        "images": [
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72367257/8115_10184969_IMG_01_0000_max_476x317.jpg",
+            "url": "9k/8115/72367257/8115_10184969_IMG_01_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72367257/8115_10184969_IMG_02_0000_max_476x317.jpg",
+            "url": "9k/8115/72367257/8115_10184969_IMG_02_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72367257/8115_10184969_IMG_03_0000_max_476x317.jpg",
+            "url": "9k/8115/72367257/8115_10184969_IMG_03_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72367257/8115_10184969_IMG_04_0000_max_476x317.jpg",
+            "url": "9k/8115/72367257/8115_10184969_IMG_04_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72367257/8115_10184969_IMG_05_0000_max_476x317.jpg",
+            "url": "9k/8115/72367257/8115_10184969_IMG_05_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72367257/8115_10184969_IMG_06_0000_max_476x317.jpg",
+            "url": "9k/8115/72367257/8115_10184969_IMG_06_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72367257/8115_10184969_IMG_07_0000_max_476x317.jpg",
+            "url": "9k/8115/72367257/8115_10184969_IMG_07_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72367257/8115_10184969_IMG_08_0000_max_476x317.jpg",
+            "url": "9k/8115/72367257/8115_10184969_IMG_08_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72367257/8115_10184969_IMG_09_0000_max_476x317.jpg",
+            "url": "9k/8115/72367257/8115_10184969_IMG_09_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72367257/8115_10184969_IMG_10_0000_max_476x317.jpg",
+            "url": "9k/8115/72367257/8115_10184969_IMG_10_0000.jpg"
+          }
+        ],
+        "mainImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72367257/8115_10184969_IMG_01_0000_max_476x317.jpg",
+        "mainMapImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72367257/8115_10184969_IMG_01_0000_max_296x197.jpg"
+      },
+      "displayStatus": "",
+      "formattedBranchName": " by Russell & Butler, Bucks, South Northants & North Oxon, Buckingham",
+      "addedOrReduced": "Added on 05/08/2020",
+      "isRecent": false,
+      "formattedDistance": "",
+      "hasBrandPlus": true,
+      "propertyTypeFullDescription": "4 bedroom detached house"
+    }
+  ],
+  "resultCount": "1"
+}

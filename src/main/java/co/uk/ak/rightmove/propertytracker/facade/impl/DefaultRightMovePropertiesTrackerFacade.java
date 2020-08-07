@@ -27,7 +27,7 @@ public class DefaultRightMovePropertiesTrackerFacade implements RightMovePropert
    private final EmailSender emailSender;
 
    @Override
-   public void trackProperties(final String locationId)
+   public LettingPropertiesTrackingResult trackProperties(final String locationId)
    {
       final RightMoveResult rightMoveResult = webClient.callRightMove(locationId);
       LOG.info("Found [{}] results for locationId [{}] ", rightMoveResult.getResultCount(), locationId);
@@ -47,5 +47,6 @@ public class DefaultRightMovePropertiesTrackerFacade implements RightMovePropert
       {
          LOG.info("Nothing to report.");
       }
+      return trackingResult;
    }
 }
