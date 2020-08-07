@@ -7,13 +7,12 @@ import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 
 @Service
 @AllArgsConstructor
@@ -30,23 +29,25 @@ public class RightMoveWebClient
    @Value("${right.move.search.api.url}")
    private String rightMoveSearchApiUrl;
 
+   @Autowired
+   private RestTemplate restTemplate;
+
    @SneakyThrows
    public RightMoveResult callRightMove(String locationIdentifier)
    {
-      final HttpClient client = HttpClient.newHttpClient();
-      HttpRequest request = HttpRequest.newBuilder()
-               .uri(URI.create(buildSearchUrl(locationIdentifier)))
-               .build();
-
-      final HttpResponse<String> response =  client.send(request, HttpResponse.BodyHandlers.ofString());
-      return MAPPER.readValue(response.body(), RightMoveResult.class);
+      return restTemplate.getForObject(URI.create(buildSearchUrl(locationIdentifier)), RightMoveResult.class);
    }
 
    private String buildSearchUrl(final String locationIdentifier)
    {
-      String url = rightMoveBaseUrl + rightMoveSearchApiUrl +
+      final String url = rightMoveBaseUrl + rightMoveSearchApiUrl +
                "locationIdentifier=%s&minBedrooms=3&maxPrice=25000&numberOfPropertiesPerPage=24&radius=0.0&sortType=6&index=0&includeLetAgreed=true&viewType=LIST&channel=RENT&areaSizeUnit=sqft&currencyCode=GBP&isFetching=false";
 
       return String.format(url, locationIdentifier);
+   }
+
+   public String go() {
+      return this.restTemplate.getForEntity(this.rightMoveBaseUrl + "/resource", String.class)
+               .getBody();
    }
 }
