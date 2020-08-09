@@ -31,6 +31,9 @@
             <th>
                 Number of Beds
             </th>
+            <th>
+                Days to Let
+            </th>
         </tr>
         <#list letProperties as letProperty>
         <tr>
@@ -50,6 +53,9 @@
             </td>
             <td>
                 <p>${letProperty.bedrooms}
+            </td>
+            <td>
+                <p>${letProperty.daysOnMarket}
             </td>
         </tr>
         </#list>

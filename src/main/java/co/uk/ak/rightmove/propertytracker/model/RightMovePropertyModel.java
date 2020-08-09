@@ -29,6 +29,7 @@ public class RightMovePropertyModel
    private String propertySubType;
    private String displayStatus;
    private Date firstVisibleDate;
+   private long daysOnMarket;
 
 
 

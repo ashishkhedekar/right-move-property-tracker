@@ -18,6 +18,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -56,6 +59,9 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
                numberOfPropertiesLet.getAndIncrement();
                property.setFullPropertyUrl(rightMoveBaseUrl + property.getPropertyUrl());
                letProperties.add(property);
+               final Period period = Period.between(propertyModel.getFirstVisibleDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalDate.now());
+               System.out.println("The period is " + period.getDays());
+               property.setDaysOnMarket(period.getDays());
             }
             return propertyModel;
          }).orElseGet(() -> {
@@ -85,6 +91,7 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
          }
          else
          {
+            //todo update number of days on the market
             LOG.info("New property with id [{}] recently added, adding it to db", property.getId());
             rightMovePropertyModel = rightMovePropertyMapper.propertyToPropertyModel(property);
             LOG.info("The converted property model is [{}]", rightMovePropertyModel);

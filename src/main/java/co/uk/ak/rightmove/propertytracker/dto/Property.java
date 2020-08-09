@@ -160,6 +160,8 @@ public class Property {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     @JsonIgnore
     private String fullPropertyUrl;
+    @JsonIgnore
+    private long daysOnMarket;
 
     @JsonProperty("id")
     public Integer getId() {
@@ -639,5 +641,15 @@ public class Property {
     public void setFullPropertyUrl(String fullPropertyUrl)
     {
         this.fullPropertyUrl = fullPropertyUrl;
+    }
+
+    public long getDaysOnMarket()
+    {
+        return daysOnMarket;
+    }
+
+    public void setDaysOnMarket(long daysOnMarket)
+    {
+        this.daysOnMarket = daysOnMarket;
     }
 }
