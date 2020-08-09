@@ -1,13 +1,16 @@
 package co.uk.ak.rightmove.propertytracker.emails;
 
-import co.uk.ak.rightmove.propertytracker.dto.LettingPropertiesTrackingResult;
-import org.joda.time.DateTime;
+import co.uk.ak.rightmove.propertytracker.emails.dto.Mail;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.freemarker.FreeMarkerTemplateUtils;
 
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 
 @Service
@@ -24,30 +27,19 @@ public class EmailSender
    @Autowired
    private JavaMailSender sender;
 
-   public void sendEmail(final LettingPropertiesTrackingResult trackingResult)
+   @Autowired
+   private Configuration configuration;
+
+   public void sendEmail(final Mail mail, final String emailTemplateName)
    {
       sender.send(mimeMessage -> {
-         MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-         message.setFrom("no-reply-rightmove-tracker@gmail.com");
-         message.setTo(emailNotificationRecipients);
-         message.setSubject(buildSubject());
-         message.setText(String.format("Number of properties let [%s]%n Number of new properties [%s] ", trackingResult.getNumberOfPropertiesLet(), trackingResult.getNewProperties()), true);
+         MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, StandardCharsets.UTF_8.name());
+         message.setFrom(mail.getFrom());
+         message.setTo(mail.getTo());
+         message.setSubject(mail.getSubject());
+
+         final Template t = configuration.getTemplate(emailTemplateName);
+         message.setText(FreeMarkerTemplateUtils.processTemplateIntoString(t, mail.getModel()), true);
       });
-   }
-
-   private String buildSubject()
-   {
-
-      final StringBuilder subject = new StringBuilder();
-      if (currentEnvironment == null || !currentEnvironment.equalsIgnoreCase("PRODUCTION"))
-      {
-         subject.append("[TEST] ");
-      }
-      subject.append("RightMove property alert for Buckingham")
-               .append(" - ")
-               .append("[")
-               .append(simpleDateFormat.format(DateTime.now().toDate()))
-               .append("]");
-      return subject.toString();
    }
 }

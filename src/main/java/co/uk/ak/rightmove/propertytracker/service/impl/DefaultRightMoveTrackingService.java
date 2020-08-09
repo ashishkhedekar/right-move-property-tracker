@@ -10,9 +10,12 @@ import co.uk.ak.rightmove.propertytracker.repository.RightMovePropertyRepository
 import co.uk.ak.rightmove.propertytracker.service.RightMoveTrackingService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,13 +26,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Service
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class DefaultRightMoveTrackingService implements RightMoveTrackingService
 {
    private static final Logger LOG = LoggerFactory.getLogger(DefaultRightMoveTrackingService.class);
 
-   private final RightMoveWebClient rightMoveWebClient;
-   private final RightMovePropertyMapper rightMovePropertyMapper;
-   private final RightMovePropertyRepository rightMovePropertyRepository;
+   @Autowired
+   private RightMoveWebClient rightMoveWebClient;
+   @Autowired
+   private RightMovePropertyMapper rightMovePropertyMapper;
+   @Autowired
+   private RightMovePropertyRepository rightMovePropertyRepository;
+
+   @Value("${right.move.base.url}")
+   private String rightMoveBaseUrl;
 
    @Override
    public LettingPropertiesTrackingResult trackProperties(final RightMoveResult rightMoveResult)
@@ -44,6 +54,7 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
             if (!StringUtils.equalsIgnoreCase(property.getDisplayStatus(), p.getDisplayStatus()) && property.getDisplayStatus().equalsIgnoreCase("Let agreed"))
             {
                numberOfPropertiesLet.getAndIncrement();
+               property.setFullPropertyUrl(rightMoveBaseUrl + property.getPropertyUrl());
                letProperties.add(property);
             }
             return p;

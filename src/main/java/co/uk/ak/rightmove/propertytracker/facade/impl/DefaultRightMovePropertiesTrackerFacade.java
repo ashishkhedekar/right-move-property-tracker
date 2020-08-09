@@ -1,9 +1,9 @@
 package co.uk.ak.rightmove.propertytracker.facade.impl;
 
 import co.uk.ak.rightmove.propertytracker.client.RightMoveWebClient;
-import co.uk.ak.rightmove.propertytracker.emails.EmailSender;
 import co.uk.ak.rightmove.propertytracker.dto.LettingPropertiesTrackingResult;
 import co.uk.ak.rightmove.propertytracker.dto.RightMoveResult;
+import co.uk.ak.rightmove.propertytracker.emails.EmailService;
 import co.uk.ak.rightmove.propertytracker.facade.RightMovePropertiesTrackerFacade;
 import co.uk.ak.rightmove.propertytracker.mapper.TrackingResultMapper;
 import co.uk.ak.rightmove.propertytracker.model.TrackingResultModel;
@@ -24,7 +24,7 @@ public class DefaultRightMovePropertiesTrackerFacade implements RightMovePropert
    private final RightMoveTrackingService trackingService;
    private final TrackingResultRepository trackingResultRepository;
    private final TrackingResultMapper trackingResultMapper;
-   private final EmailSender emailSender;
+   private final EmailService emailSender;
 
    @Override
    public LettingPropertiesTrackingResult trackProperties(final String locationId)
@@ -40,7 +40,7 @@ public class DefaultRightMovePropertiesTrackerFacade implements RightMovePropert
       LOG.info("Successfully converted and saved RightMove properties in DB");
       if (trackingResult.needsReporting())
       {
-         emailSender.sendEmail(trackingResult);
+         emailSender.sendLettingReportsEmail(trackingResult);
          LOG.info("Email sent...!");
       }
       else

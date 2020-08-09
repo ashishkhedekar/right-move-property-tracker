@@ -1,16 +1,12 @@
 
 package co.uk.ak.rightmove.propertytracker.dto;
 
+import com.fasterxml.jackson.annotation.*;
+import lombok.Builder;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
@@ -61,6 +57,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "formattedDistance",
     "hasBrandPlus"
 })
+@Builder
+
 public class Property {
 
     @JsonProperty("id")
@@ -157,6 +155,8 @@ public class Property {
     private Boolean hasBrandPlus;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    @JsonIgnore
+    private String fullPropertyUrl;
 
     @JsonProperty("id")
     public Integer getId() {
@@ -628,4 +628,13 @@ public class Property {
         this.additionalProperties.put(name, value);
     }
 
+    public String getFullPropertyUrl()
+    {
+        return fullPropertyUrl;
+    }
+
+    public void setFullPropertyUrl(String fullPropertyUrl)
+    {
+        this.fullPropertyUrl = fullPropertyUrl;
+    }
 }
