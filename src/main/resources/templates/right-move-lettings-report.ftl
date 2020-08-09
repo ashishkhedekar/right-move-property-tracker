@@ -35,9 +35,8 @@
         <#list letProperties as letProperty>
         <tr>
             <td>
-                <!-- todo image -->
                 <a href="${letProperty.fullPropertyUrl}">
-                    <img src="${letProperty.propertyImages.mainImageSrc}" alt="image" >
+                    <img src="${letProperty.propertyImages.mainMapImageSrc}" alt="image" >
                 </a>
             </td>
             <td>

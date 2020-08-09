@@ -50,14 +50,14 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
 
       rightMoveResult.getProperties().forEach(property -> {
          final Optional<RightMovePropertyModel> rightMovePropertyOptional = rightMovePropertyRepository.findById(Long.valueOf(property.getId()));
-         rightMovePropertyOptional.map(p -> {
-            if (!StringUtils.equalsIgnoreCase(property.getDisplayStatus(), p.getDisplayStatus()) && property.getDisplayStatus().equalsIgnoreCase("Let agreed"))
+         rightMovePropertyOptional.map(propertyModel -> {
+            if (!StringUtils.equalsIgnoreCase(property.getDisplayStatus(), propertyModel.getDisplayStatus()) && property.getDisplayStatus().equalsIgnoreCase("Let agreed"))
             {
                numberOfPropertiesLet.getAndIncrement();
                property.setFullPropertyUrl(rightMoveBaseUrl + property.getPropertyUrl());
                letProperties.add(property);
             }
-            return p;
+            return propertyModel;
          }).orElseGet(() -> {
             newProperties.getAndIncrement();
             return null;
@@ -85,7 +85,7 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
          }
          else
          {
-            LOG.info("New property with id [{}] recently added, ading it to db", property.getId());
+            LOG.info("New property with id [{}] recently added, adding it to db", property.getId());
             rightMovePropertyModel = rightMovePropertyMapper.propertyToPropertyModel(property);
             LOG.info("The converted property model is [{}]", rightMovePropertyModel);
          }

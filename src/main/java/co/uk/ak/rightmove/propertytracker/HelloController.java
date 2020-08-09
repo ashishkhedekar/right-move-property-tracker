@@ -49,7 +49,7 @@ public class HelloController
                .summary("Student HMO Property 2020/2021 Academic Year - This 5 double bedroom property benefits from two bathrooms, a large fully fitted kitchen , common room , patio garden and driveway parking. The property has the Buckingham University campus on its doorstep and the town centre within a minute...")
                .propertySubType("Terraced")
                .bedrooms(5)
-               .propertyImages(PropertyImages.builder().mainImageSrc("https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_476x317.jpg").build())
+               .propertyImages(PropertyImages.builder().mainMapImageSrc("https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_296x197.jpg").build())
                .fullPropertyUrl("https://www.rightmove.co.uk/property-to-rent/property-91967702.html")
                .build();
 
@@ -59,7 +59,7 @@ public class HelloController
                .summary("Well presented four bedroom DETACHED house situated on the popular Lace Hill development. The property benefits from being IN CATCHMENT FOR LOCAL SCHOOLS and WALKING DISTANCE TO THE TOWN CENTRE. The property briefly comprises entrance hallway, dual aspect lounge with French doors leading to sun r...")
                .propertySubType("Detached")
                .bedrooms(4)
-               .propertyImages(PropertyImages.builder().mainImageSrc("https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72367257/8115_10184969_IMG_01_0000_max_476x317.jpg").build())
+               .propertyImages(PropertyImages.builder().mainMapImageSrc("https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72367257/8115_10184969_IMG_01_0000_max_296x197.jpg").build())
                .fullPropertyUrl("https://www.rightmove.co.uk/property-to-rent/property-72367257.html")
                .build();
 

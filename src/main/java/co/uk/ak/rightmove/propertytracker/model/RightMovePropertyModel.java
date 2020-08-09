@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Table(name = "properties")
@@ -27,6 +28,7 @@ public class RightMovePropertyModel
    private String displayAddress;
    private String propertySubType;
    private String displayStatus;
+   private Date firstVisibleDate;
 
 
 

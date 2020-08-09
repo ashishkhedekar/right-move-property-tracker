@@ -2,7 +2,9 @@
 package co.uk.ak.rightmove.propertytracker.dto;
 
 import com.fasterxml.jackson.annotation.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import java.util.HashMap;
 import java.util.List;
@@ -58,7 +60,8 @@ import java.util.Map;
     "hasBrandPlus"
 })
 @Builder
-
+@NoArgsConstructor
+@AllArgsConstructor
 public class Property {
 
     @JsonProperty("id")

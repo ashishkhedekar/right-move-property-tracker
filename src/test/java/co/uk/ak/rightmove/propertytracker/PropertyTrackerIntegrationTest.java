@@ -38,6 +38,21 @@ public class PropertyTrackerIntegrationTest
    private RightMovePropertyRepository propertyRepository;
 
    @Test
+   public void testSingleProperty_newProperty()
+   {
+      stubFor(get(urlMatching("/api/_search\\?locationIdentifier=london(.)*"))
+               .willReturn(aResponse()
+                        .withStatus(HttpStatus.OK.value())
+                        .withHeader("Content-Type", APPLICATION_JSON_VALUE)
+                        .withBodyFile("single-property-not-let.json")));
+
+      final LettingPropertiesTrackingResult trackingResult = facade.trackProperties("london");
+
+      assertThat(trackingResult.getNumberOfPropertiesLet()).isOne();
+      assertThat(trackingResult.getNewProperties()).isOne();
+   }
+
+   @Test
    public void testSingleProperty_noChange()
    {
       //given property exists
