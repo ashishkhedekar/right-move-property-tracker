@@ -1,8 +1,8 @@
 package co.uk.ak.rightmove.propertytracker;
 
 import co.uk.ak.rightmove.propertytracker.dto.LettingPropertiesTrackingResult;
-import co.uk.ak.rightmove.propertytracker.dto.Property;
-import co.uk.ak.rightmove.propertytracker.dto.PropertyImages;
+import co.uk.ak.rightmove.propertytracker.rightmove.dto.Property;
+import co.uk.ak.rightmove.propertytracker.rightmove.dto.PropertyImages;
 import co.uk.ak.rightmove.propertytracker.emails.EmailService;
 import co.uk.ak.rightmove.propertytracker.facade.DummyFacade;
 import co.uk.ak.rightmove.propertytracker.facade.RightMovePropertiesTrackerFacade;

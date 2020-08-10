@@ -1,4 +1,4 @@
-package co.uk.ak.rightmove.propertytracker.client;
+package co.uk.ak.rightmove.propertytracker.rightmove.client;
 
 import co.uk.ak.rightmove.propertytracker.dto.RightMoveResult;
 import lombok.AllArgsConstructor;

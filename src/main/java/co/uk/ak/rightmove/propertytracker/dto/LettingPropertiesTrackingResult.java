@@ -1,5 +1,6 @@
 package co.uk.ak.rightmove.propertytracker.dto;
 
+import co.uk.ak.rightmove.propertytracker.rightmove.dto.Property;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.SuperBuilder;

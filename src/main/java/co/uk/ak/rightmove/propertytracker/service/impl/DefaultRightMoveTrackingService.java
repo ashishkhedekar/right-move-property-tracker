@@ -1,8 +1,8 @@
 package co.uk.ak.rightmove.propertytracker.service.impl;
 
-import co.uk.ak.rightmove.propertytracker.client.RightMoveWebClient;
+import co.uk.ak.rightmove.propertytracker.rightmove.client.RightMoveWebClient;
 import co.uk.ak.rightmove.propertytracker.dto.LettingPropertiesTrackingResult;
-import co.uk.ak.rightmove.propertytracker.dto.Property;
+import co.uk.ak.rightmove.propertytracker.rightmove.dto.Property;
 import co.uk.ak.rightmove.propertytracker.dto.RightMoveResult;
 import co.uk.ak.rightmove.propertytracker.mapper.RightMovePropertyMapper;
 import co.uk.ak.rightmove.propertytracker.model.RightMovePropertyModel;

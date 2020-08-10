@@ -1,6 +1,6 @@
 package co.uk.ak.rightmove.propertytracker.mapper;
 
-import co.uk.ak.rightmove.propertytracker.dto.Property;
+import co.uk.ak.rightmove.propertytracker.rightmove.dto.Property;
 import co.uk.ak.rightmove.propertytracker.model.RightMovePropertyModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

@@ -1,5 +1,5 @@
 
-package co.uk.ak.rightmove.propertytracker.dto;
+package co.uk.ak.rightmove.propertytracker.rightmove.dto;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.AllArgsConstructor;
