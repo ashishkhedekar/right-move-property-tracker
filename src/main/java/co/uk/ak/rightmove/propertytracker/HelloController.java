@@ -51,6 +51,7 @@ public class HelloController
                .propertyImages(PropertyImages.builder().mainMapImageSrc("https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/70k/69152/91967702/69152_2548866_IMG_01_0001_max_296x197.jpg").build())
                .fullPropertyUrl("https://www.rightmove.co.uk/property-to-rent/property-91967702.html")
                .daysOnMarket(10)
+//               .premiumListing(true)
                .build();
 
       Property property2 = Property.builder()
@@ -62,6 +63,7 @@ public class HelloController
                .propertyImages(PropertyImages.builder().mainMapImageSrc("https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72367257/8115_10184969_IMG_01_0000_max_296x197.jpg").build())
                .fullPropertyUrl("https://www.rightmove.co.uk/property-to-rent/property-72367257.html")
                .daysOnMarket(50)
+               .premiumListing(true)
                .build();
 
       List<Property> properties = new ArrayList<>();

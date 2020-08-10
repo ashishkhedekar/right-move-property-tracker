@@ -61,7 +61,7 @@
                 <p>${letProperty.daysOnMarket}
             </td>
             <td>
-                <p>${letProperty.premiumListing?string(true, false)}
+                <p><#if letProperty.premiumListing??>${letProperty.premiumListing?string('Yes', 'No')}<#else>No</#if>
             </td>
         </tr>
         </#list>
