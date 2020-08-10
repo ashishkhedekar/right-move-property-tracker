@@ -26,6 +26,7 @@ public class RightMovePropertyModel
    private String propertySubType;
    private String displayStatus;
    private Date firstVisibleDate;
+   @Column(nullable = true)
    private long daysOnMarket;
    @Column(nullable = true)
    private boolean premiumListing;
