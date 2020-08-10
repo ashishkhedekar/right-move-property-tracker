@@ -61,7 +61,7 @@
                 <p>${letProperty.daysOnMarket}
             </td>
             <td>
-                <p>${letProperty.premiumListing}
+                <p>${letProperty.premiumListing?string(true, false)}
             </td>
         </tr>
         </#list>

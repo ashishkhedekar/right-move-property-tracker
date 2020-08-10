@@ -27,9 +27,9 @@ public class RightMovePropertyModel
    private String displayStatus;
    private Date firstVisibleDate;
    @Column(nullable = true)
-   private long daysOnMarket;
+   private Long daysOnMarket;
    @Column(nullable = true)
-   private boolean premiumListing;
+   private Boolean premiumListing;
 
 ////   @OneToOne
 //   private RightMovePriceModel price;
