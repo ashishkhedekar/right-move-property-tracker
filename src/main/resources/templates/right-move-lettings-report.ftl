@@ -34,6 +34,9 @@
             <th>
                 Days to Let
             </th>
+            <th>
+                Is Premium
+            </th>
         </tr>
         <#list letProperties as letProperty>
         <tr>
@@ -56,6 +59,9 @@
             </td>
             <td>
                 <p>${letProperty.daysOnMarket}
+            </td>
+            <td>
+                <p>${letProperty.premiumListing}
             </td>
         </tr>
         </#list>

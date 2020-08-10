@@ -1,7 +1,6 @@
 package co.uk.ak.rightmove.propertytracker.client;
 
 import co.uk.ak.rightmove.propertytracker.dto.RightMoveResult;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
@@ -20,8 +19,6 @@ import java.net.URI;
 public class RightMoveWebClient
 {
    private static final Logger LOG = LoggerFactory.getLogger(RightMoveWebClient.class);
-
-   private final ObjectMapper MAPPER = new ObjectMapper();
 
    @Value("${right.move.base.url}")
    private String rightMoveBaseUrl;

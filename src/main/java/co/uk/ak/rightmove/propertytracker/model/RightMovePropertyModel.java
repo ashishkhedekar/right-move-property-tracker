@@ -5,10 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -30,9 +27,8 @@ public class RightMovePropertyModel
    private String displayStatus;
    private Date firstVisibleDate;
    private long daysOnMarket;
-
-
-
+   @Column(nullable = true)
+   private boolean premiumListing;
 
 ////   @OneToOne
 //   private RightMovePriceModel price;
