@@ -52,10 +52,13 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
       final List<Property> letProperties = new ArrayList<>();
 
       rightMoveResult.getProperties().forEach(property -> {
+         LOG.info("Processing property [{}]", property.getId());
          final Optional<RightMovePropertyModel> rightMovePropertyOptional = rightMovePropertyRepository.findById(Long.valueOf(property.getId()));
          rightMovePropertyOptional.map(propertyModel -> {
+            LOG.info("Property [{}] found and going to udpate ", property.getId());
             if (!StringUtils.equalsIgnoreCase(property.getDisplayStatus(), propertyModel.getDisplayStatus()) && property.getDisplayStatus().equalsIgnoreCase("Let agreed"))
             {
+               LOG.info("The property's stauts changed from [{}] to [{}] ", propertyModel.getDisplayStatus(), property.getDisplayStatus());
                numberOfPropertiesLet.getAndIncrement();
                property.setFullPropertyUrl(rightMoveBaseUrl + property.getPropertyUrl());
                letProperties.add(property);
