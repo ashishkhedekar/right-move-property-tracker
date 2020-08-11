@@ -1,16 +1,19 @@
 package co.uk.ak.rightmove.propertytracker;
 
 import co.uk.ak.rightmove.propertytracker.dto.LettingPropertiesTrackingResult;
-import co.uk.ak.rightmove.propertytracker.rightmove.dto.Property;
-import co.uk.ak.rightmove.propertytracker.rightmove.dto.PropertyImages;
 import co.uk.ak.rightmove.propertytracker.emails.EmailService;
 import co.uk.ak.rightmove.propertytracker.facade.DummyFacade;
 import co.uk.ak.rightmove.propertytracker.facade.RightMovePropertiesTrackerFacade;
+import co.uk.ak.rightmove.propertytracker.rightmove.dto.Property;
+import co.uk.ak.rightmove.propertytracker.rightmove.dto.PropertyImages;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,15 +22,26 @@ import java.util.List;
 @AllArgsConstructor
 public class HelloController
 {
+   private static final Logger LOG = LoggerFactory.getLogger(HelloController.class);
+
    private final RightMovePropertiesTrackerFacade trackerFacade;
 
    private final DummyFacade dummyFacade;
    private final EmailService emailService;
 
-   @GetMapping(name = "/")
-   public ResponseEntity<String> message()
+   @GetMapping("/properties-to-let")
+   public ResponseEntity<String> message(@RequestParam String locationId)
    {
-      trackerFacade.trackProperties("REGION%5E239");
+      if (locationId.equalsIgnoreCase("leeds") || locationId.equalsIgnoreCase("london"))
+      {
+         LOG.info("Getting properties for location [{}]", locationId);
+         trackerFacade.trackProperties(locationId);
+      }
+      else
+      {
+         LOG.info("Getting properties for default loation [{}] ", "REGION%5E239");
+         trackerFacade.trackProperties("REGION%5E239");
+      }
       return ResponseEntity.status(HttpStatus.OK).body("This app is doing some important stuff");
    }
 

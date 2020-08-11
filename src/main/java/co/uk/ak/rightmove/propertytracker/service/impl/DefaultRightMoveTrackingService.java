@@ -1,12 +1,12 @@
 package co.uk.ak.rightmove.propertytracker.service.impl;
 
-import co.uk.ak.rightmove.propertytracker.rightmove.client.RightMoveWebClient;
 import co.uk.ak.rightmove.propertytracker.dto.LettingPropertiesTrackingResult;
-import co.uk.ak.rightmove.propertytracker.rightmove.dto.Property;
 import co.uk.ak.rightmove.propertytracker.dto.RightMoveResult;
 import co.uk.ak.rightmove.propertytracker.mapper.RightMovePropertyMapper;
 import co.uk.ak.rightmove.propertytracker.model.RightMovePropertyModel;
 import co.uk.ak.rightmove.propertytracker.repository.RightMovePropertyRepository;
+import co.uk.ak.rightmove.propertytracker.rightmove.client.RightMoveWebClient;
+import co.uk.ak.rightmove.propertytracker.rightmove.dto.Property;
 import co.uk.ak.rightmove.propertytracker.service.RightMoveTrackingService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -60,7 +60,6 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
                property.setFullPropertyUrl(rightMoveBaseUrl + property.getPropertyUrl());
                letProperties.add(property);
                final Period period = Period.between(propertyModel.getFirstVisibleDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalDate.now());
-               System.out.println("The period is " + period.getDays());
                property.setDaysOnMarket(period.getDays());
             }
             return propertyModel;

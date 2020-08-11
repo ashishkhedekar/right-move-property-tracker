@@ -1,6 +1,5 @@
 package co.uk.ak.rightmove.propertytracker.facade.impl;
 
-import co.uk.ak.rightmove.propertytracker.rightmove.client.RightMoveWebClient;
 import co.uk.ak.rightmove.propertytracker.dto.LettingPropertiesTrackingResult;
 import co.uk.ak.rightmove.propertytracker.dto.RightMoveResult;
 import co.uk.ak.rightmove.propertytracker.emails.EmailService;
@@ -8,6 +7,7 @@ import co.uk.ak.rightmove.propertytracker.facade.RightMovePropertiesTrackerFacad
 import co.uk.ak.rightmove.propertytracker.mapper.TrackingResultMapper;
 import co.uk.ak.rightmove.propertytracker.model.TrackingResultModel;
 import co.uk.ak.rightmove.propertytracker.repository.TrackingResultRepository;
+import co.uk.ak.rightmove.propertytracker.rightmove.client.RightMoveWebClient;
 import co.uk.ak.rightmove.propertytracker.service.RightMoveTrackingService;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
