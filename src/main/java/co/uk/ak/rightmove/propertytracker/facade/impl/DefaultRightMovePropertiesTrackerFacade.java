@@ -33,6 +33,10 @@ public class DefaultRightMovePropertiesTrackerFacade implements RightMovePropert
       LOG.info("Found [{}] results for locationId [{}] ", rightMoveResult.getResultCount(), locationId);
       final LettingPropertiesTrackingResult trackingResult = trackingService.trackProperties(rightMoveResult);
       LOG.info("Successfully tracked properties: Summary numberOfPropertiesLet : [{}]", trackingResult.getNumberOfPropertiesLet());
+      trackingResult.getLetProperties().forEach(property -> {
+         LOG.info("The property let [{}}", property.getId());
+      });
+
       final TrackingResultModel trackingResultModel = trackingResultMapper.trackingResultToModel(trackingResult);
       trackingResultRepository.save(trackingResultModel);
       LOG.info("Successfully converted and saved tracking result in DB");
