@@ -1,9 +1,10 @@
 package co.uk.ak.propertytracker;
 
+import co.uk.ak.builder.PropertyModelBuilder;
 import co.uk.ak.propertytracker.dto.LettingPropertiesTrackingResult;
 import co.uk.ak.propertytracker.repository.RightMovePropertyRepository;
 import co.uk.ak.propertytracker.facade.RightMovePropertiesTrackerFacade;
-import co.uk.ak.propertytracker.model.RightMovePropertyModel;
+import co.uk.ak.propertytracker.model.PropertyModel;
 import co.uk.ak.propertytracker.rule.SmtpServerRule;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import org.junit.Rule;
@@ -126,7 +127,7 @@ public class RightMovePropertyTrackerIntegrationTest
 
    private void givenPropertyExists(final long id)
    {
-      final RightMovePropertyModel propertyModel = RightMovePropertyModel.builder()
+      final PropertyModel propertyModel = PropertyModelBuilder.builder()
                .id(id)
                .bedrooms(5)
                .propertySubType("Terraced")

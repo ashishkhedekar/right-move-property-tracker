@@ -25,11 +25,11 @@ public class TrackingResultModel
    private Date createdDate;
 
    @OneToMany(fetch = FetchType.LAZY)
-   private List<RightMovePropertyModel> letProperties;
+   private List<PropertyModel> letProperties;
 
    @OneToMany(fetch = FetchType.LAZY)
-   private List<RightMovePropertyModel> reducedProperties;
+   private List<PropertyModel> reducedProperties;
 
    @OneToMany(fetch = FetchType.LAZY)
-   private List<RightMovePropertyModel> soldProperties;
+   private List<PropertyModel> soldProperties;
 }

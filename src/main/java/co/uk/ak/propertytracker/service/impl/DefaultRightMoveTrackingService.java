@@ -4,7 +4,7 @@ import co.uk.ak.propertytracker.dto.LettingPropertiesTrackingResult;
 import co.uk.ak.propertytracker.mapper.RightMovePropertyMapper;
 import co.uk.ak.propertytracker.repository.RightMovePropertyRepository;
 import co.uk.ak.propertytracker.dto.RightMoveResult;
-import co.uk.ak.propertytracker.model.RightMovePropertyModel;
+import co.uk.ak.propertytracker.model.PropertyModel;
 import co.uk.ak.propertytracker.rightmove.client.RightMoveWebClient;
 import co.uk.ak.propertytracker.rightmove.dto.RightMoveProperty;
 import co.uk.ak.propertytracker.service.RightMoveTrackingService;
@@ -53,7 +53,7 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
 
       rightMoveResult.getProperties().forEach(property -> {
          LOG.info("Processing property [{}]", property.getId());
-         final Optional<RightMovePropertyModel> rightMovePropertyOptional = rightMovePropertyRepository.findById(Long.valueOf(property.getId()));
+         final Optional<PropertyModel> rightMovePropertyOptional = rightMovePropertyRepository.findById(Long.valueOf(property.getId()));
          rightMovePropertyOptional.map(propertyModel -> {
             LOG.debug("Property [{}] found and going to udpate ", property.getId());
             if (!StringUtils.equalsIgnoreCase(property.getDisplayStatus(), propertyModel.getDisplayStatus()) && property.getDisplayStatus().equalsIgnoreCase("Let agreed"))
@@ -98,23 +98,23 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
    public void refreshProperties(final RightMoveResult rightMoveResult)
    {
       rightMoveResult.getProperties().forEach(property -> {
-         final Optional<RightMovePropertyModel> rightMovePropertyOptional = rightMovePropertyRepository.findById(Long.valueOf(property.getId()));
-         final RightMovePropertyModel rightMovePropertyModel;
+         final Optional<PropertyModel> rightMovePropertyOptional = rightMovePropertyRepository.findById(Long.valueOf(property.getId()));
+         final PropertyModel propertyModel;
          if (rightMovePropertyOptional.isPresent())
          {
-            rightMovePropertyModel = rightMovePropertyOptional.get();
-            LOG.info("Property with id [{}] already exists, updating the status", rightMovePropertyModel.getId());
-            rightMovePropertyModel.setDisplayStatus(property.getDisplayStatus());
+            propertyModel = rightMovePropertyOptional.get();
+            LOG.info("Property with id [{}] already exists, updating the status", propertyModel.getId());
+            propertyModel.setDisplayStatus(property.getDisplayStatus());
          }
          else
          {
             //todo update number of days on the market
             LOG.info("New property with id [{}] recently added, adding it to db", property.getId());
-            rightMovePropertyModel = rightMovePropertyMapper.propertyToPropertyModel(property);
-            LOG.info("The converted property model is [{}]", rightMovePropertyModel);
+            propertyModel = rightMovePropertyMapper.propertyToPropertyModel(property);
+            LOG.info("The converted property model is [{}]", propertyModel);
          }
-         rightMovePropertyRepository.save(rightMovePropertyModel);
-         LOG.info("Property with id [{}] was successfully saved in db ", rightMovePropertyModel.getId());
+         rightMovePropertyRepository.save(propertyModel);
+         LOG.info("Property with id [{}] was successfully saved in db ", propertyModel.getId());
       });
    }
 }

@@ -1,9 +1,11 @@
-package co.uk.ak.propertytracker;
+package co.uk.ak.propertytracker.endpoints.controller;
 
 import co.uk.ak.propertytracker.dto.LettingPropertiesTrackingResult;
 import co.uk.ak.propertytracker.emails.EmailService;
+import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
 import co.uk.ak.propertytracker.facade.DummyFacade;
 import co.uk.ak.propertytracker.facade.RightMovePropertiesTrackerFacade;
+import co.uk.ak.propertytracker.facade.DefaultSearchCriteriaFacade;
 import co.uk.ak.propertytracker.rightmove.dto.RightMoveProperty;
 import co.uk.ak.propertytracker.rightmove.dto.RightMovePropertyImages;
 import lombok.AllArgsConstructor;
@@ -13,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
@@ -20,14 +24,15 @@ import java.util.List;
 
 @Controller
 @AllArgsConstructor
-public class HelloController
+public class PropertiesController
 {
-   private static final Logger LOG = LoggerFactory.getLogger(HelloController.class);
+   private static final Logger LOG = LoggerFactory.getLogger(PropertiesController.class);
 
    private final RightMovePropertiesTrackerFacade trackerFacade;
 
    private final DummyFacade dummyFacade;
    private final EmailService emailService;
+   private final DefaultSearchCriteriaFacade defaultSearchCriteriaFacade;
 
    @GetMapping("/properties-to-let")
    public ResponseEntity<String> message(@RequestParam String locationId)
@@ -43,6 +48,13 @@ public class HelloController
          trackerFacade.trackProperties("REGION%5E239");
       }
       return ResponseEntity.status(HttpStatus.OK).body("This app is doing some important stuff");
+   }
+
+   @PostMapping(path = "/search-criteria")
+   public ResponseEntity<String> createSearchCriteria(@RequestBody final SearchCriteriaDto searchCriteriaDto)
+   {
+      defaultSearchCriteriaFacade.save(searchCriteriaDto);
+      return ResponseEntity.status(HttpStatus.OK).body("Your search criteria was successfully saved");
    }
 
    @GetMapping(path = "/howmany")

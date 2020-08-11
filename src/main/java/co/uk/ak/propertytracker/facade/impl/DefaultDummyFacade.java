@@ -2,7 +2,7 @@ package co.uk.ak.propertytracker.facade.impl;
 
 import co.uk.ak.propertytracker.facade.DummyFacade;
 import co.uk.ak.propertytracker.repository.RightMovePropertyRepository;
-import co.uk.ak.propertytracker.model.RightMovePropertyModel;
+import co.uk.ak.propertytracker.model.PropertyModel;
 import co.uk.ak.propertytracker.model.TrackingResultModel;
 import co.uk.ak.propertytracker.repository.TrackingResultRepository;
 import lombok.AllArgsConstructor;
@@ -21,7 +21,7 @@ public class DefaultDummyFacade implements DummyFacade
    @Override
    public long howManyProperties()
    {
-      final Iterable<RightMovePropertyModel> all = propertyRepository.findAll();
+      final Iterable<PropertyModel> all = propertyRepository.findAll();
       return StreamSupport.stream(all.spliterator(), false).count();
    }
 

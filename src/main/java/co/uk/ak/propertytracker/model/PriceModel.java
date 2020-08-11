@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RightMovePriceModel
+public class PriceModel
 {
 //   @Id
    private Long id;
@@ -20,5 +20,5 @@ public class RightMovePriceModel
    private String currencyCode;
 
 //   @OneToMany
-   private List<RightMoveDisplayPriceModel> displayPrices;
+   private List<DisplayPriceModel> displayPrices;
 }

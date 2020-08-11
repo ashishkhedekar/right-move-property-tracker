@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RightMoveDisplayPriceModel
+public class DisplayPriceModel
 {
 //   @Id
    private Long id;
@@ -17,5 +17,5 @@ public class RightMoveDisplayPriceModel
    private String displayPriceQualifier;
 
 //   @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-   private RightMovePriceModel price;
+   private PriceModel price;
 }
