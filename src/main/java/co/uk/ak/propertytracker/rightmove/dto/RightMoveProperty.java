@@ -62,7 +62,8 @@ import java.util.Map;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Property {
+public class RightMoveProperty
+{
 
     @JsonProperty("id")
     private Integer id;
@@ -81,25 +82,25 @@ public class Property {
     @JsonProperty("countryCode")
     private String countryCode;
     @JsonProperty("location")
-    private Location location;
+    private RightMoveLocation rightMoveLocation;
     @JsonProperty("propertySubType")
     private String propertySubType;
     @JsonProperty("listingUpdate")
-    private ListingUpdate listingUpdate;
+    private RightMoveListingUpdate rightMoveListingUpdate;
     @JsonProperty("premiumListing")
     private Boolean premiumListing;
     @JsonProperty("featuredProperty")
     private Boolean featuredProperty;
     @JsonProperty("price")
-    private Price price;
+    private RightMovePrice rightMovePrice;
     @JsonProperty("customer")
-    private Customer customer;
+    private RightMoveCustomer rightMoveCustomer;
     @JsonProperty("distance")
     private Object distance;
     @JsonProperty("transactionType")
     private String transactionType;
     @JsonProperty("productLabel")
-    private ProductLabel productLabel;
+    private RightMoveProductLabel rightMoveProductLabel;
     @JsonProperty("commercial")
     private Boolean commercial;
     @JsonProperty("development")
@@ -143,7 +144,7 @@ public class Property {
     @JsonProperty("propertyTypeFullDescription")
     private String propertyTypeFullDescription;
     @JsonProperty("propertyImages")
-    private PropertyImages propertyImages;
+    private RightMovePropertyImages rightMovePropertyImages;
     @JsonProperty("displayStatus")
     private String displayStatus;
     @JsonProperty("formattedBranchName")
@@ -244,13 +245,13 @@ public class Property {
     }
 
     @JsonProperty("location")
-    public Location getLocation() {
-        return location;
+    public RightMoveLocation getRightMoveLocation() {
+        return rightMoveLocation;
     }
 
     @JsonProperty("location")
-    public void setLocation(Location location) {
-        this.location = location;
+    public void setRightMoveLocation(RightMoveLocation rightMoveLocation) {
+        this.rightMoveLocation = rightMoveLocation;
     }
 
     @JsonProperty("propertySubType")
@@ -264,13 +265,13 @@ public class Property {
     }
 
     @JsonProperty("listingUpdate")
-    public ListingUpdate getListingUpdate() {
-        return listingUpdate;
+    public RightMoveListingUpdate getRightMoveListingUpdate() {
+        return rightMoveListingUpdate;
     }
 
     @JsonProperty("listingUpdate")
-    public void setListingUpdate(ListingUpdate listingUpdate) {
-        this.listingUpdate = listingUpdate;
+    public void setRightMoveListingUpdate(RightMoveListingUpdate rightMoveListingUpdate) {
+        this.rightMoveListingUpdate = rightMoveListingUpdate;
     }
 
     @JsonProperty("premiumListing")
@@ -294,23 +295,23 @@ public class Property {
     }
 
     @JsonProperty("price")
-    public Price getPrice() {
-        return price;
+    public RightMovePrice getRightMovePrice() {
+        return rightMovePrice;
     }
 
     @JsonProperty("price")
-    public void setPrice(Price price) {
-        this.price = price;
+    public void setRightMovePrice(RightMovePrice rightMovePrice) {
+        this.rightMovePrice = rightMovePrice;
     }
 
     @JsonProperty("customer")
-    public Customer getCustomer() {
-        return customer;
+    public RightMoveCustomer getRightMoveCustomer() {
+        return rightMoveCustomer;
     }
 
     @JsonProperty("customer")
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setRightMoveCustomer(RightMoveCustomer rightMoveCustomer) {
+        this.rightMoveCustomer = rightMoveCustomer;
     }
 
     @JsonProperty("distance")
@@ -334,13 +335,13 @@ public class Property {
     }
 
     @JsonProperty("productLabel")
-    public ProductLabel getProductLabel() {
-        return productLabel;
+    public RightMoveProductLabel getRightMoveProductLabel() {
+        return rightMoveProductLabel;
     }
 
     @JsonProperty("productLabel")
-    public void setProductLabel(ProductLabel productLabel) {
-        this.productLabel = productLabel;
+    public void setRightMoveProductLabel(RightMoveProductLabel rightMoveProductLabel) {
+        this.rightMoveProductLabel = rightMoveProductLabel;
     }
 
     @JsonProperty("commercial")
@@ -554,13 +555,13 @@ public class Property {
     }
 
     @JsonProperty("propertyImages")
-    public PropertyImages getPropertyImages() {
-        return propertyImages;
+    public RightMovePropertyImages getRightMovePropertyImages() {
+        return rightMovePropertyImages;
     }
 
     @JsonProperty("propertyImages")
-    public void setPropertyImages(PropertyImages propertyImages) {
-        this.propertyImages = propertyImages;
+    public void setRightMovePropertyImages(RightMovePropertyImages rightMovePropertyImages) {
+        this.rightMovePropertyImages = rightMovePropertyImages;
     }
 
     @JsonProperty("displayStatus")

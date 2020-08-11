@@ -42,7 +42,7 @@
         <tr>
             <td>
                 <a href="${letProperty.fullPropertyUrl}">
-                    <img src="${letProperty.propertyImages.mainMapImageSrc}" alt="image" >
+                    <img src="${letProperty.rightMovePropertyImages.mainMapImageSrc}" alt="image" >
                 </a>
             </td>
             <td>

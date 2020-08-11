@@ -23,7 +23,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("dev")
-public class PropertyTrackerIntegrationTest
+public class RightMovePropertyTrackerIntegrationTest
 {
    @Rule
    public WireMockRule wireMockRule = new WireMockRule(wireMockConfig().port(8089));

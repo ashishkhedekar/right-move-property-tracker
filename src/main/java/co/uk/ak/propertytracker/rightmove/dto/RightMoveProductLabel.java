@@ -10,7 +10,8 @@ import java.util.Map;
 @JsonPropertyOrder({
     "productLabelText"
 })
-public class ProductLabel {
+public class RightMoveProductLabel
+{
 
     @JsonProperty("productLabelText")
     private String productLabelText;

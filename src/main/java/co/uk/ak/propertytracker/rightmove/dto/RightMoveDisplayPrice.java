@@ -11,7 +11,8 @@ import java.util.Map;
     "displayPrice",
     "displayPriceQualifier"
 })
-public class DisplayPrice {
+public class RightMoveDisplayPrice
+{
 
     @JsonProperty("displayPrice")
     private String displayPrice;

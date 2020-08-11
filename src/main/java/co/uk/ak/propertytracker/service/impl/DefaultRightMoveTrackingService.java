@@ -6,7 +6,7 @@ import co.uk.ak.propertytracker.repository.RightMovePropertyRepository;
 import co.uk.ak.propertytracker.dto.RightMoveResult;
 import co.uk.ak.propertytracker.model.RightMovePropertyModel;
 import co.uk.ak.propertytracker.rightmove.client.RightMoveWebClient;
-import co.uk.ak.propertytracker.rightmove.dto.Property;
+import co.uk.ak.propertytracker.rightmove.dto.RightMoveProperty;
 import co.uk.ak.propertytracker.service.RightMoveTrackingService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -49,7 +49,7 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
    {
       final AtomicInteger numberOfPropertiesLet = new AtomicInteger();
       final AtomicInteger newProperties = new AtomicInteger();
-      final List<Property> letProperties = new ArrayList<>();
+      final List<RightMoveProperty> letProperties = new ArrayList<>();
 
       rightMoveResult.getProperties().forEach(property -> {
          LOG.info("Processing property [{}]", property.getId());
@@ -88,10 +88,10 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
                .build();
    }
 
-   private boolean propertyAlreadyAdded(final List<Property> letProperties, final Property property)
+   private boolean propertyAlreadyAdded(final List<RightMoveProperty> letProperties, final RightMoveProperty rightMoveProperty)
    {
       return letProperties.stream()
-               .anyMatch(e -> e.getId().equals(property.getId()));
+               .anyMatch(e -> e.getId().equals(rightMoveProperty.getId()));
    }
 
    @Override

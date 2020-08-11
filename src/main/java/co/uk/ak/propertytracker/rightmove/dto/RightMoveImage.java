@@ -17,7 +17,8 @@ import java.util.Map;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Image {
+public class RightMoveImage
+{
 
     @JsonProperty("srcUrl")
     private String srcUrl;

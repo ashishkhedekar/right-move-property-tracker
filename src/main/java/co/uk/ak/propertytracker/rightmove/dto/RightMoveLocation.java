@@ -11,7 +11,8 @@ import java.util.Map;
     "latitude",
     "longitude"
 })
-public class Location {
+public class RightMoveLocation
+{
 
     @JsonProperty("latitude")
     private Double latitude;

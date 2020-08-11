@@ -11,7 +11,8 @@ import java.util.Map;
     "listingUpdateReason",
     "listingUpdateDate"
 })
-public class ListingUpdate {
+public class RightMoveListingUpdate
+{
 
     @JsonProperty("listingUpdateReason")
     private String listingUpdateReason;

@@ -19,10 +19,11 @@ import java.util.Map;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PropertyImages {
+public class RightMovePropertyImages
+{
 
     @JsonProperty("images")
-    private List<Image> images = null;
+    private List<RightMoveImage> rightMoveImages = null;
     @JsonProperty("mainImageSrc")
     private String mainImageSrc;
     @JsonProperty("mainMapImageSrc")
@@ -31,13 +32,13 @@ public class PropertyImages {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     @JsonProperty("images")
-    public List<Image> getImages() {
-        return images;
+    public List<RightMoveImage> getRightMoveImages() {
+        return rightMoveImages;
     }
 
     @JsonProperty("images")
-    public void setImages(List<Image> images) {
-        this.images = images;
+    public void setRightMoveImages(List<RightMoveImage> rightMoveImages) {
+        this.rightMoveImages = rightMoveImages;
     }
 
     @JsonProperty("mainImageSrc")

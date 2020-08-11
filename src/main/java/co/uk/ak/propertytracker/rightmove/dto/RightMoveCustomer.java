@@ -23,7 +23,8 @@ import java.util.Map;
     "developmentContent",
     "brandPlusLogoUrl"
 })
-public class Customer {
+public class RightMoveCustomer
+{
 
     @JsonProperty("branchId")
     private Integer branchId;

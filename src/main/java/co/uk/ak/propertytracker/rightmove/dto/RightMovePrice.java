@@ -14,7 +14,8 @@ import java.util.Map;
     "currencyCode",
     "displayPrices"
 })
-public class Price {
+public class RightMovePrice
+{
 
     @JsonProperty("amount")
     private Integer amount;
@@ -23,7 +24,7 @@ public class Price {
     @JsonProperty("currencyCode")
     private String currencyCode;
     @JsonProperty("displayPrices")
-    private List<DisplayPrice> displayPrices = null;
+    private List<RightMoveDisplayPrice> rightMoveDisplayPrices = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -58,13 +59,13 @@ public class Price {
     }
 
     @JsonProperty("displayPrices")
-    public List<DisplayPrice> getDisplayPrices() {
-        return displayPrices;
+    public List<RightMoveDisplayPrice> getRightMoveDisplayPrices() {
+        return rightMoveDisplayPrices;
     }
 
     @JsonProperty("displayPrices")
-    public void setDisplayPrices(List<DisplayPrice> displayPrices) {
-        this.displayPrices = displayPrices;
+    public void setRightMoveDisplayPrices(List<RightMoveDisplayPrice> rightMoveDisplayPrices) {
+        this.rightMoveDisplayPrices = rightMoveDisplayPrices;
     }
 
     @JsonAnyGetter
