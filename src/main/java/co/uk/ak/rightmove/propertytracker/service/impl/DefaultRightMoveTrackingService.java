@@ -61,7 +61,7 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
                LOG.debug("The property's stauts changed from [{}] to [{}] ", propertyModel.getDisplayStatus(), property.getDisplayStatus());
                numberOfPropertiesLet.getAndIncrement();
                property.setFullPropertyUrl(rightMoveBaseUrl + property.getPropertyUrl());
-               if (letProperties.contains(property))
+               if (propertyAlreadyAdded(letProperties, property))
                {
                   LOG.info("Property [{}] has already been added so going to ignore it", property.getId());
 
@@ -86,6 +86,12 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
                .newProperties(newProperties.get())
                .letProperties(letProperties)
                .build();
+   }
+
+   private boolean propertyAlreadyAdded(final List<Property> letProperties, final Property property)
+   {
+      return letProperties.stream()
+               .anyMatch(e -> e.getId().equals(property.getId()));
    }
 
    @Override
