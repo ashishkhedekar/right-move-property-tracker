@@ -55,13 +55,22 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
          LOG.info("Processing property [{}]", property.getId());
          final Optional<RightMovePropertyModel> rightMovePropertyOptional = rightMovePropertyRepository.findById(Long.valueOf(property.getId()));
          rightMovePropertyOptional.map(propertyModel -> {
-            LOG.info("Property [{}] found and going to udpate ", property.getId());
+            LOG.debug("Property [{}] found and going to udpate ", property.getId());
             if (!StringUtils.equalsIgnoreCase(property.getDisplayStatus(), propertyModel.getDisplayStatus()) && property.getDisplayStatus().equalsIgnoreCase("Let agreed"))
             {
-               LOG.info("The property's stauts changed from [{}] to [{}] ", propertyModel.getDisplayStatus(), property.getDisplayStatus());
+               LOG.debug("The property's stauts changed from [{}] to [{}] ", propertyModel.getDisplayStatus(), property.getDisplayStatus());
                numberOfPropertiesLet.getAndIncrement();
                property.setFullPropertyUrl(rightMoveBaseUrl + property.getPropertyUrl());
-               letProperties.add(property);
+               if (letProperties.contains(property))
+               {
+                  LOG.info("Property [{}] has already been added so going to ignore it", property.getId());
+
+               }
+               else
+               {
+                  LOG.info("New property [{}] let, going to add to the let", property.getId());
+                  letProperties.add(property);
+               }
                final Period period = Period.between(propertyModel.getFirstVisibleDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalDate.now());
                property.setDaysOnMarket(period.getDays());
             }
