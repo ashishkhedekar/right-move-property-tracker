@@ -5,7 +5,7 @@ import co.uk.ak.propertytracker.emails.EmailService;
 import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
 import co.uk.ak.propertytracker.facade.DummyFacade;
 import co.uk.ak.propertytracker.facade.RightMovePropertiesTrackerFacade;
-import co.uk.ak.propertytracker.facade.DefaultSearchCriteriaFacade;
+import co.uk.ak.propertytracker.facade.SearchCriteriaFacade;
 import co.uk.ak.propertytracker.rightmove.dto.RightMoveProperty;
 import co.uk.ak.propertytracker.rightmove.dto.RightMovePropertyImages;
 import lombok.AllArgsConstructor;
@@ -32,7 +32,7 @@ public class PropertiesController
 
    private final DummyFacade dummyFacade;
    private final EmailService emailService;
-   private final DefaultSearchCriteriaFacade defaultSearchCriteriaFacade;
+   private final SearchCriteriaFacade searchCriteriaFacade;
 
    @GetMapping("/properties-to-let")
    public ResponseEntity<String> message(@RequestParam String locationId)
@@ -53,7 +53,7 @@ public class PropertiesController
    @PostMapping(path = "/search-criteria")
    public ResponseEntity<String> createSearchCriteria(@RequestBody final SearchCriteriaDto searchCriteriaDto)
    {
-      defaultSearchCriteriaFacade.save(searchCriteriaDto);
+      searchCriteriaFacade.save(searchCriteriaDto);
       return ResponseEntity.status(HttpStatus.OK).body("Your search criteria was successfully saved");
    }
 
