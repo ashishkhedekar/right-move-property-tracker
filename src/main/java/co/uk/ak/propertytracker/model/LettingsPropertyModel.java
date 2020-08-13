@@ -9,7 +9,6 @@ import java.util.Date;
 @Table(name="lettings_properties")
 public class LettingsPropertyModel extends PropertyModel
 {
-
    // Optional fields
    @Column(nullable = true)
    private Date propertyLetDate;

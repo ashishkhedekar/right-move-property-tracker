@@ -5,12 +5,8 @@ import javax.persistence.*;
 @Entity
 @Table(name = "search_criteria")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class SearchCriteriaModel
+public class SearchCriteriaModel extends AbstractModel
 {
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
-   private Long id;
-
    private String locationIdentifier;
    private int minBedrooms;
    private long maxPrice;
@@ -23,16 +19,6 @@ public class SearchCriteriaModel
    private String currencyCode;
    private String channel;
    private boolean isFetching;
-
-   public Long getId()
-   {
-      return id;
-   }
-
-   public void setId(Long id)
-   {
-      this.id = id;
-   }
 
    public String getLocationIdentifier()
    {

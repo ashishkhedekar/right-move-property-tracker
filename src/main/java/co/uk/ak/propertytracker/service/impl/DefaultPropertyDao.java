@@ -27,7 +27,7 @@ public class DefaultPropertyDao implements PropertyDao
    @Override
    public void save(final PropertyDto propertyDto)
    {
-      final Optional<PropertyModel> propertyModelOptional = propertyRepository.findById(Long.valueOf(propertyDto.getId()));
+      final Optional<PropertyModel> propertyModelOptional = propertyRepository.findByPropertyId(Long.valueOf(propertyDto.getId()));
       if (propertyModelOptional.isPresent())
       {
          LOG.info("Property model found, going to update some attributes");
@@ -39,8 +39,10 @@ public class DefaultPropertyDao implements PropertyDao
             propertyUpdateRecordModel.setField("displayStatus");
             propertyUpdateRecordModel.setOldValue(propertyModel.getDisplayStatus());
             propertyUpdateRecordModel.setNewValue(propertyDto.getDisplayStatus());
-            propertyUpdateRecordModel.setCreationDate(DateTime.now().toDate());
             propertyModel.getPropertyUpdateRecords().add(propertyUpdateRecordModel);
+
+            propertyModel.setDisplayStatus(propertyDto.getDisplayStatus());
+            propertyModel.setModificationTime(DateTime.now().toDate());
             propertyRepository.save(propertyModel);
             LOG.info("Display Status saved successfully");
          }
@@ -55,6 +57,5 @@ public class DefaultPropertyDao implements PropertyDao
          final PropertyModel propertyModel = propertyDtoToPropertyModelMapper.propertyDtoPropertyModelMapper(propertyDto);
          propertyRepository.save(propertyModel);
       }
-
    }
 }

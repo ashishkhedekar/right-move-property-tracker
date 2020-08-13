@@ -9,16 +9,13 @@ import java.util.List;
 @Entity
 @Table(name = "properties")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class PropertyModel
+public class PropertyModel extends AbstractModel
 {
-   @Id
-   private Long id;
-   private Date creationTime = DateTime.now().toDate();
-   private Date modificationTime;
+   private Long propertyId;
 
    //Mandatory fields
    private Integer bedrooms;
-   @Lob
+   @Column(length=350)
    private String summary;
    private String displayAddress;
    private String propertySubType;
@@ -38,6 +35,8 @@ public class PropertyModel
    @Column(nullable = true)
    private Boolean premiumListing;
 
+   private Date dummyDate = DateTime.now().toDate();
+
    @OneToMany(
             mappedBy = "property",
             cascade = CascadeType.ALL,
@@ -45,34 +44,14 @@ public class PropertyModel
    )
    private List<PropertyUpdateRecordModel> propertyUpdateRecords;
 
-   public Long getId()
+   public Long getPropertyId()
    {
-      return id;
+      return propertyId;
    }
 
-   public void setId(Long id)
+   public void setPropertyId(Long propertyId)
    {
-      this.id = id;
-   }
-
-   public Date getCreationTime()
-   {
-      return creationTime;
-   }
-
-   public void setCreationTime(Date creationTime)
-   {
-      this.creationTime = creationTime;
-   }
-
-   public Date getModificationTime()
-   {
-      return modificationTime;
-   }
-
-   public void setModificationTime(Date modificationTime)
-   {
-      this.modificationTime = modificationTime;
+      this.propertyId = propertyId;
    }
 
    public Integer getBedrooms()

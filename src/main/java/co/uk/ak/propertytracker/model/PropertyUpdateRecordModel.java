@@ -1,32 +1,20 @@
 package co.uk.ak.propertytracker.model;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class PropertyUpdateRecordModel
+public class PropertyUpdateRecordModel extends AbstractModel
 {
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
-   private Long id;
-
    private String field;
+
    private String oldValue;
+
    private String newValue;
-   private Date CreationDate;
 
    @ManyToOne(fetch = FetchType.LAZY)
    private PropertyModel property;
-
-   public Long getId()
-   {
-      return id;
-   }
-
-   public void setId(Long id)
-   {
-      this.id = id;
-   }
 
    public String getField()
    {
@@ -66,15 +54,5 @@ public class PropertyUpdateRecordModel
    public void setProperty(PropertyModel property)
    {
       this.property = property;
-   }
-
-   public Date getCreationDate()
-   {
-      return CreationDate;
-   }
-
-   public void setCreationDate(Date creationDate)
-   {
-      CreationDate = creationDate;
    }
 }
