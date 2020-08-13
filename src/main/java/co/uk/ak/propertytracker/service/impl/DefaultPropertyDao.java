@@ -3,16 +3,15 @@ package co.uk.ak.propertytracker.service.impl;
 import co.uk.ak.propertytracker.dto.PropertyDto;
 import co.uk.ak.propertytracker.mapper.PropertyDtoToPropertyModelMapper;
 import co.uk.ak.propertytracker.model.PropertyModel;
-import co.uk.ak.propertytracker.model.PropertyUpdateRecordModel;
 import co.uk.ak.propertytracker.repository.PropertyRepository;
 import co.uk.ak.propertytracker.service.PropertyDao;
+import co.uk.ak.propertytracker.strategy.ChangeDetector;
 import lombok.AllArgsConstructor;
-import org.apache.commons.lang.StringUtils;
-import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,32 +23,20 @@ public class DefaultPropertyDao implements PropertyDao
    private final PropertyRepository propertyRepository;
    private final PropertyDtoToPropertyModelMapper propertyDtoToPropertyModelMapper;
 
+   private final List<ChangeDetector> changeDetectors;
+
    @Override
-   public void save(final PropertyDto propertyDto)
+   public void createOrUpdate(final PropertyDto propertyDto)
    {
+      LOG.info("Number of change detectors are [{}]", changeDetectors.size() );
+
       final Optional<PropertyModel> propertyModelOptional = propertyRepository.findByPropertyId(Long.valueOf(propertyDto.getId()));
       if (propertyModelOptional.isPresent())
       {
          LOG.info("Property model found, going to update some attributes");
          final PropertyModel propertyModel = propertyModelOptional.get();
-         if (!StringUtils.equalsIgnoreCase(propertyDto.getDisplayStatus(), propertyModel.getDisplayStatus()))
-         {
-            final PropertyUpdateRecordModel propertyUpdateRecordModel = new PropertyUpdateRecordModel();
-            propertyUpdateRecordModel.setProperty(propertyModel);
-            propertyUpdateRecordModel.setField("displayStatus");
-            propertyUpdateRecordModel.setOldValue(propertyModel.getDisplayStatus());
-            propertyUpdateRecordModel.setNewValue(propertyDto.getDisplayStatus());
-            propertyModel.getPropertyUpdateRecords().add(propertyUpdateRecordModel);
-
-            propertyModel.setDisplayStatus(propertyDto.getDisplayStatus());
-            propertyModel.setModificationTime(DateTime.now().toDate());
-            propertyRepository.save(propertyModel);
-            LOG.info("Display Status saved successfully");
-         }
-         else
-         {
-            LOG.info("Display Status did not change");
-         }
+         changeDetectors.forEach(cd -> cd.detect(propertyModel, propertyDto));
+         propertyRepository.save(propertyModel);
       }
       else
       {

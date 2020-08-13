@@ -4,5 +4,5 @@ import co.uk.ak.propertytracker.dto.PropertyDto;
 
 public interface PropertyDao
 {
-   void save(PropertyDto propertyDto);
+   void createOrUpdate(PropertyDto propertyDto);
 }

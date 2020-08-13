@@ -43,7 +43,7 @@ public class DefaultRightMovePropertiesTrackerFacade implements RightMovePropert
       rightMoveResult.getProperties().forEach(rightMoveProperty -> {
          final PropertyDto propertyDto = rightMovePropertyToPropertyDtoMapper.rightMovePropertyToPropertyModel(rightMoveProperty);
          LOG.info("Property DTO found for id [{}] ", propertyDto.getId());
-         propertyDao.save(propertyDto);
+         propertyDao.createOrUpdate(propertyDto);
 
       });
 
