@@ -1,7 +1,6 @@
 
-package co.uk.ak.propertytracker.dto;
+package co.uk.ak.propertytracker.rightmove.dto;
 
-import co.uk.ak.propertytracker.rightmove.dto.RightMoveProperty;
 import com.fasterxml.jackson.annotation.*;
 
 import java.util.HashMap;

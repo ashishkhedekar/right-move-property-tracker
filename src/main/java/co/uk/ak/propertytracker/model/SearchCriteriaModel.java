@@ -21,6 +21,7 @@ public class SearchCriteriaModel
    private String viewType;
    private String areaSizeUnit;
    private String currencyCode;
+   private String channel;
    private boolean isFetching;
 
    public Long getId()
@@ -131,6 +132,16 @@ public class SearchCriteriaModel
    public void setCurrencyCode(String currencyCode)
    {
       this.currencyCode = currencyCode;
+   }
+
+   public String getChannel()
+   {
+      return channel;
+   }
+
+   public void setChannel(String channel)
+   {
+      this.channel = channel;
    }
 
    public boolean isFetching()

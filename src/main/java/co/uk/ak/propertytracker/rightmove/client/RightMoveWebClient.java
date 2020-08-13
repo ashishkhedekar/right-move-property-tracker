@@ -1,6 +1,7 @@
 package co.uk.ak.propertytracker.rightmove.client;
 
-import co.uk.ak.propertytracker.dto.RightMoveResult;
+import co.uk.ak.propertytracker.rightmove.dto.RightMoveResult;
+import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
@@ -30,21 +31,15 @@ public class RightMoveWebClient
    private RestTemplate restTemplate;
 
    @SneakyThrows
-   public RightMoveResult callRightMove(String locationIdentifier)
+   public RightMoveResult callRightMove(final SearchCriteriaDto searchCriteria)
    {
-      return restTemplate.getForObject(URI.create(buildSearchUrl(locationIdentifier)), RightMoveResult.class);
+      return restTemplate.getForObject(URI.create(buildSearchUrl(searchCriteria)), RightMoveResult.class);
    }
 
-   private String buildSearchUrl(final String locationIdentifier)
+   private String buildSearchUrl(final SearchCriteriaDto searchCriteriaDto)
    {
-      final String url = rightMoveBaseUrl + rightMoveSearchApiUrl +
-               "locationIdentifier=%s&minBedrooms=3&maxPrice=25000&numberOfPropertiesPerPage=24&radius=0.0&sortType=6&index=0&includeLetAgreed=true&viewType=LIST&channel=RENT&areaSizeUnit=sqft&currencyCode=GBP&isFetching=false";
-
-      return String.format(url, locationIdentifier);
-   }
-
-   public String go() {
-      return this.restTemplate.getForEntity(this.rightMoveBaseUrl + "/resource", String.class)
-               .getBody();
+      final String url = rightMoveBaseUrl + rightMoveSearchApiUrl + searchCriteriaDto.buildQueryString();
+      LOG.info("The url is [{}] ", url);
+      return url;
    }
 }

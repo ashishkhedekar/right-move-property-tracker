@@ -6,8 +6,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
-public interface RightMovePropertyMapper
+public interface RightMovePropertyToPropertModelMapper
 {
    @Mapping(target = "firstVisibleDate", source = "firstVisibleDate", dateFormat = "yyyy-MM-dd'T'HH:mm:ss")
-   PropertyModel propertyToPropertyModel(RightMoveProperty rightMoveProperty);
+   PropertyModel rightMovePropertyToPropertyModel(RightMoveProperty rightMoveProperty);
 }

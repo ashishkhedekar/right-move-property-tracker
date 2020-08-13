@@ -1,13 +1,17 @@
 package co.uk.ak.propertytracker.facade.impl;
 
 import co.uk.ak.propertytracker.dto.LettingPropertiesTrackingResult;
+import co.uk.ak.propertytracker.dto.PropertyDto;
 import co.uk.ak.propertytracker.emails.EmailService;
+import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
+import co.uk.ak.propertytracker.facade.RightMovePropertiesTrackerFacade;
+import co.uk.ak.propertytracker.mapper.RightMovePropertyToPropertyDtoMapper;
 import co.uk.ak.propertytracker.mapper.TrackingResultMapper;
 import co.uk.ak.propertytracker.model.TrackingResultModel;
-import co.uk.ak.propertytracker.rightmove.client.RightMoveWebClient;
-import co.uk.ak.propertytracker.dto.RightMoveResult;
-import co.uk.ak.propertytracker.facade.RightMovePropertiesTrackerFacade;
 import co.uk.ak.propertytracker.repository.TrackingResultRepository;
+import co.uk.ak.propertytracker.rightmove.client.RightMoveWebClient;
+import co.uk.ak.propertytracker.rightmove.dto.RightMoveResult;
+import co.uk.ak.propertytracker.service.PropertyDao;
 import co.uk.ak.propertytracker.service.RightMoveTrackingService;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -26,11 +30,35 @@ public class DefaultRightMovePropertiesTrackerFacade implements RightMovePropert
    private final TrackingResultMapper trackingResultMapper;
    private final EmailService emailSender;
 
+   private final RightMovePropertyToPropertyDtoMapper rightMovePropertyToPropertyDtoMapper;
+   private final PropertyDao propertyDao;
+
    @Override
-   public LettingPropertiesTrackingResult trackProperties(final String locationId)
+   public void trackPropertiesV2(final SearchCriteriaDto searchCriteria)
    {
-      final RightMoveResult rightMoveResult = webClient.callRightMove(locationId);
-      LOG.info("Found [{}] results for locationId [{}] ", rightMoveResult.getResultCount(), locationId);
+      //Query RightMove
+      final RightMoveResult rightMoveResult = webClient.callRightMove(searchCriteria);
+
+      //Save in DB
+      rightMoveResult.getProperties().forEach(rightMoveProperty -> {
+         final PropertyDto propertyDto = rightMovePropertyToPropertyDtoMapper.rightMovePropertyToPropertyModel(rightMoveProperty);
+         LOG.info("Property DTO found for id [{}] ", propertyDto.getId());
+         propertyDao.save(propertyDto);
+
+      });
+
+      //Generate Reports
+
+
+      //Send Emails
+
+   }
+
+   @Override
+   public LettingPropertiesTrackingResult trackProperties(final SearchCriteriaDto searchCriteria)
+   {
+      final RightMoveResult rightMoveResult = webClient.callRightMove(searchCriteria);
+      LOG.info("Found [{}] results for locationId [{}] ", rightMoveResult.getResultCount(), searchCriteria.getLocationIdentifier());
       final LettingPropertiesTrackingResult trackingResult = trackingService.trackProperties(rightMoveResult);
       LOG.info("Successfully tracked properties: Summary numberOfPropertiesLet : [{}]", trackingResult.getNumberOfPropertiesLet());
       trackingResult.getLetProperties().forEach(property -> {

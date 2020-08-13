@@ -1,9 +1,9 @@
 package co.uk.ak.propertytracker.service.impl;
 
 import co.uk.ak.propertytracker.dto.LettingPropertiesTrackingResult;
-import co.uk.ak.propertytracker.mapper.RightMovePropertyMapper;
-import co.uk.ak.propertytracker.repository.RightMovePropertyRepository;
-import co.uk.ak.propertytracker.dto.RightMoveResult;
+import co.uk.ak.propertytracker.mapper.RightMovePropertyToPropertModelMapper;
+import co.uk.ak.propertytracker.repository.PropertyRepository;
+import co.uk.ak.propertytracker.rightmove.dto.RightMoveResult;
 import co.uk.ak.propertytracker.model.PropertyModel;
 import co.uk.ak.propertytracker.rightmove.client.RightMoveWebClient;
 import co.uk.ak.propertytracker.rightmove.dto.RightMoveProperty;
@@ -37,9 +37,9 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
    @Autowired
    private RightMoveWebClient rightMoveWebClient;
    @Autowired
-   private RightMovePropertyMapper rightMovePropertyMapper;
+   private RightMovePropertyToPropertModelMapper rightMovePropertyToPropertModelMapper;
    @Autowired
-   private RightMovePropertyRepository rightMovePropertyRepository;
+   private PropertyRepository propertyRepository;
 
    @Value("${right.move.base.url}")
    private String rightMoveBaseUrl;
@@ -53,7 +53,7 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
 
       rightMoveResult.getProperties().forEach(property -> {
          LOG.info("Processing property [{}]", property.getId());
-         final Optional<PropertyModel> rightMovePropertyOptional = rightMovePropertyRepository.findById(Long.valueOf(property.getId()));
+         final Optional<PropertyModel> rightMovePropertyOptional = propertyRepository.findById(Long.valueOf(property.getId()));
          rightMovePropertyOptional.map(propertyModel -> {
             LOG.debug("Property [{}] found and going to udpate ", property.getId());
             if (!StringUtils.equalsIgnoreCase(property.getDisplayStatus(), propertyModel.getDisplayStatus()) && property.getDisplayStatus().equalsIgnoreCase("Let agreed"))
@@ -98,7 +98,7 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
    public void refreshProperties(final RightMoveResult rightMoveResult)
    {
       rightMoveResult.getProperties().forEach(property -> {
-         final Optional<PropertyModel> rightMovePropertyOptional = rightMovePropertyRepository.findById(Long.valueOf(property.getId()));
+         final Optional<PropertyModel> rightMovePropertyOptional = propertyRepository.findById(Long.valueOf(property.getId()));
          final PropertyModel propertyModel;
          if (rightMovePropertyOptional.isPresent())
          {
@@ -110,10 +110,10 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
          {
             //todo update number of days on the market
             LOG.info("New property with id [{}] recently added, adding it to db", property.getId());
-            propertyModel = rightMovePropertyMapper.propertyToPropertyModel(property);
+            propertyModel = rightMovePropertyToPropertModelMapper.rightMovePropertyToPropertyModel(property);
             LOG.info("The converted property model is [{}]", propertyModel);
          }
-         rightMovePropertyRepository.save(propertyModel);
+         propertyRepository.save(propertyModel);
          LOG.info("Property with id [{}] was successfully saved in db ", propertyModel.getId());
       });
    }

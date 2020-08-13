@@ -1,7 +1,7 @@
 package co.uk.ak.propertytracker.facade.impl;
 
 import co.uk.ak.propertytracker.facade.DummyFacade;
-import co.uk.ak.propertytracker.repository.RightMovePropertyRepository;
+import co.uk.ak.propertytracker.repository.PropertyRepository;
 import co.uk.ak.propertytracker.model.PropertyModel;
 import co.uk.ak.propertytracker.model.TrackingResultModel;
 import co.uk.ak.propertytracker.repository.TrackingResultRepository;
@@ -16,7 +16,7 @@ public class DefaultDummyFacade implements DummyFacade
 {
    private final TrackingResultRepository trackingResultRepository;
 
-   private final RightMovePropertyRepository propertyRepository;
+   private final PropertyRepository propertyRepository;
 
    @Override
    public long howManyProperties()

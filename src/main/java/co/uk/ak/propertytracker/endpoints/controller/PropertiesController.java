@@ -29,23 +29,38 @@ public class PropertiesController
    private static final Logger LOG = LoggerFactory.getLogger(PropertiesController.class);
 
    private final RightMovePropertiesTrackerFacade trackerFacade;
+   private final SearchCriteriaFacade searchCriteriaFacade;
 
    private final DummyFacade dummyFacade;
    private final EmailService emailService;
-   private final SearchCriteriaFacade searchCriteriaFacade;
 
    @GetMapping("/properties-to-let")
-   public ResponseEntity<String> message(@RequestParam String locationId)
+   public ResponseEntity<String> message(@RequestParam String locationId, @RequestParam String version)
    {
+      // Used for testing
       if (locationId.equalsIgnoreCase("leeds") || locationId.equalsIgnoreCase("london"))
       {
-         LOG.info("Getting properties for location [{}]", locationId);
-         trackerFacade.trackProperties(locationId);
+         if (version!=null && version.equalsIgnoreCase("v2"))
+         {
+            LOG.info("V2 : Getting properties for location [{}]", locationId);
+            SearchCriteriaDto searchCriteria = new SearchCriteriaDto();
+            searchCriteria.setLocationIdentifier(locationId);
+            trackerFacade.trackPropertiesV2(searchCriteria);
+         }
+         else
+         {
+            LOG.info("Getting properties for location [{}]", locationId);
+            SearchCriteriaDto searchCriteria = new SearchCriteriaDto();
+            searchCriteria.setLocationIdentifier(locationId);
+            trackerFacade.trackProperties(searchCriteria);
+         }
+
       }
       else
       {
-         LOG.info("Getting properties for default loation [{}] ", "REGION%5E239");
-         trackerFacade.trackProperties("REGION%5E239");
+         // Generating report for all search results
+         LOG.info("Generating report for all search results");
+         searchCriteriaFacade.getAll().forEach(trackerFacade::trackProperties);
       }
       return ResponseEntity.status(HttpStatus.OK).body("This app is doing some important stuff");
    }

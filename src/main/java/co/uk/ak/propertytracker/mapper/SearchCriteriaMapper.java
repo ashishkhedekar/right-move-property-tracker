@@ -23,4 +23,7 @@ public interface SearchCriteriaMapper
 
    LettingsSearchCriteriaModel toLettingsSearchCriteriaModel(SearchCriteriaDto searchCriteriaDto);
    SalesSearchCriteriaModel toSalesSearchCriteriaModel(SearchCriteriaDto searchCriteriaDto);
+
+   SearchCriteriaDto lettingsSearchCriteriaModelToSearchCriteriaDto(LettingsSearchCriteriaModel lettingsSearchCriteriaModel);
+   SearchCriteriaDto salesSearchCriteriaModelToSearchCriteriaDto(SalesSearchCriteriaModel salesSearchCriteriaModel);
 }

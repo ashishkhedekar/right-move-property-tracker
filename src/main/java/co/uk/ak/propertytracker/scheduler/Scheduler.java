@@ -1,6 +1,7 @@
 package co.uk.ak.propertytracker.scheduler;
 
 import co.uk.ak.propertytracker.facade.RightMovePropertiesTrackerFacade;
+import co.uk.ak.propertytracker.facade.SearchCriteriaFacade;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -15,12 +16,13 @@ public class Scheduler
 {
    private static final Logger LOG = LoggerFactory.getLogger(Scheduler.class);
 
-   private final RightMovePropertiesTrackerFacade facade;
+   private final RightMovePropertiesTrackerFacade rightMovePropertiesTrackerFacade;
+   private final SearchCriteriaFacade searchCriteriaFacade;
 
    //Runs every house between 7am till 10pm
    @Scheduled(cron = "0 0 7-22 * * *")
    public void runRightMoveQuery()
    {
-      facade.trackProperties("REGION%5E239");
+      searchCriteriaFacade.getAll().forEach(rightMovePropertiesTrackerFacade::trackProperties);
    }
 }
