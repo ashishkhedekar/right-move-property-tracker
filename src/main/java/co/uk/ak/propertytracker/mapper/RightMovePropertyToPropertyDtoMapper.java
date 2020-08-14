@@ -17,8 +17,9 @@ public interface RightMovePropertyToPropertyDtoMapper
    @Mapping(target = "propertyImages", source = "rightMovePropertyImages")
    @Mapping(target = "displayPrice", expression = "java(displayPrice(rightMoveProperty))")
    @Mapping(target = "amount", source = "rightMovePrice.amount")
-   PropertyDto rightMovePropertyToPropertyModel(RightMoveProperty rightMoveProperty);
+   PropertyDto rightMovePropertyToPropertyDto(RightMoveProperty rightMoveProperty);
 
+   @Mapping(target = "images", source = "rightMoveImages")
    PropertyImagesDto rightMovePropertyImagesToPropertyImagesDto(final RightMovePropertyImages rightMovePropertyImages);
 
    default String displayPrice(final RightMoveProperty rightMoveProperty)

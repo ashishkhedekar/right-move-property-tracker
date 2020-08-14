@@ -35,7 +35,7 @@ public class DefaultPropertyDao implements PropertyDao
       {
          LOG.info("Property model found, going to update some attributes");
          final PropertyModel propertyModel = propertyModelOptional.get();
-         changeDetectors.forEach(cd -> cd.detect(propertyModel, propertyDto));
+         changeDetectors.forEach(cd -> cd.detectAndPersist(propertyModel, propertyDto));
          propertyRepository.save(propertyModel);
       }
       else

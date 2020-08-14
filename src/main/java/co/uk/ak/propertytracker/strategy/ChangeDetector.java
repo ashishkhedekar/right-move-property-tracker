@@ -17,7 +17,7 @@ public interface ChangeDetector
 {
    Logger LOG = LoggerFactory.getLogger(ChangeDetector.class);
 
-   default PropertyModel detect(final PropertyModel propertyModel, final PropertyDto propertyDto)
+   default PropertyModel detectAndPersist(final PropertyModel propertyModel, final PropertyDto propertyDto)
    {
       try
       {

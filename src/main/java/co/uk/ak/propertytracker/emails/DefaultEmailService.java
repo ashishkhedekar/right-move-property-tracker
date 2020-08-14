@@ -29,9 +29,10 @@ public class DefaultEmailService implements EmailService
    public void sendLettingReportsEmail(final LettingPropertiesTrackingResult trackingResult)
    {
       final Map<String, Object> model = new HashMap<>();
-      model.put("numberOfPropertiesLet", trackingResult.getNumberOfPropertiesLet());
-      model.put("newProperties", trackingResult.getNewProperties());
+      model.put("numberOfLetProperties", trackingResult.getNumberOfLetProperties());
       model.put("letProperties", trackingResult.getLetProperties());
+      model.put("numberOfNewProperties", trackingResult.getNumberOfNewPropertiesOnMarket());
+      model.put("newProperties", trackingResult.getNewPropertiesOnMarket());
 
       final Mail mail = Mail.builder().
                to(emailNotificationRecipients)

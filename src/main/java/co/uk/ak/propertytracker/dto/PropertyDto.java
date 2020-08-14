@@ -1,8 +1,14 @@
 package co.uk.ak.propertytracker.dto;
 
+import lombok.Builder;
 import lombok.Data;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 @Data
+@Builder
 public class PropertyDto
 {
    private Integer id;
@@ -30,7 +36,14 @@ public class PropertyDto
    private String displayStatus;
    private String addedOrReduced;
    private Boolean isRecent;
-
    private Integer numberOfImages;
    private PropertyImagesDto propertyImages;
+
+   private String fullPropertyUrl;
+   private String mainMapImageSrc;
+
+   public int daysOnMarket()
+   {
+      return Period.between(LocalDate.parse(firstVisibleDate, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")), LocalDate.now()).getDays();
+   }
 }

@@ -1,7 +1,7 @@
 package co.uk.ak.propertytracker;
 
 import co.uk.ak.builder.PropertyModelBuilder;
-import co.uk.ak.propertytracker.facade.RightMovePropertiesTrackerFacade;
+import co.uk.ak.propertytracker.facade.PropertiesTrackerFacade;
 import co.uk.ak.propertytracker.model.PropertyModel;
 import co.uk.ak.propertytracker.repository.PropertyRepository;
 import co.uk.ak.propertytracker.rule.SmtpServerRule;
@@ -28,7 +28,7 @@ public class RightMovePropertyTrackerIntegrationTest
    public SmtpServerRule smtpServerRule = new SmtpServerRule(2525);
 
    @Autowired
-   private RightMovePropertiesTrackerFacade facade;
+   private PropertiesTrackerFacade facade;
 
    @Autowired
    private PropertyRepository propertyRepository;

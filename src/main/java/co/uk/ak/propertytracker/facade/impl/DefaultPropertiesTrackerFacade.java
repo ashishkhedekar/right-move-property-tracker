@@ -4,7 +4,7 @@ import co.uk.ak.propertytracker.dto.LettingPropertiesTrackingResult;
 import co.uk.ak.propertytracker.dto.PropertyDto;
 import co.uk.ak.propertytracker.emails.EmailService;
 import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
-import co.uk.ak.propertytracker.facade.RightMovePropertiesTrackerFacade;
+import co.uk.ak.propertytracker.facade.PropertiesTrackerFacade;
 import co.uk.ak.propertytracker.mapper.PropertyDtoToPropertyModelMapper;
 import co.uk.ak.propertytracker.mapper.RightMovePropertyToPropertyDtoMapper;
 import co.uk.ak.propertytracker.mapper.TrackingResultMapper;
@@ -32,9 +32,9 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-public class DefaultRightMovePropertiesTrackerFacade implements RightMovePropertiesTrackerFacade
+public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
 {
-   private static final Logger LOG = LoggerFactory.getLogger(DefaultRightMovePropertiesTrackerFacade.class);
+   private static final Logger LOG = LoggerFactory.getLogger(DefaultPropertiesTrackerFacade.class);
 
    private final RightMoveWebClient webClient;
    private final RightMoveTrackingService trackingService;
@@ -55,7 +55,7 @@ public class DefaultRightMovePropertiesTrackerFacade implements RightMovePropert
       //Query RightMove
       final RightMoveResult rightMoveResult = webClient.callRightMove(searchCriteria);
 
-      //Save in DB
+      //Save/update in DB
       rightMoveResult.getProperties().forEach(rightMoveProperty -> {
          final PropertyDto propertyDto = rightMovePropertyToPropertyDtoMapper.rightMovePropertyToPropertyDto(rightMoveProperty);
          LOG.info("Property DTO found for id [{}] ", propertyDto.getId());
@@ -63,7 +63,7 @@ public class DefaultRightMovePropertiesTrackerFacade implements RightMovePropert
       });
 
       //Generate Reports
-      final AtomicInteger numberOfPropertiesLet = new AtomicInteger();
+      final AtomicInteger numberOfLetProperties = new AtomicInteger();
       final List<PropertyDto> letProperties = new ArrayList<>();
 
       final List<PropertyUpdateRecordModel> propertyUpdates = propertyUpdateRecordRepository.findByCreationTimeGreaterThan(reportStartTime);
@@ -71,7 +71,7 @@ public class DefaultRightMovePropertiesTrackerFacade implements RightMovePropert
       propertyUpdates.stream()
                .filter(p -> p.getField().equalsIgnoreCase("displayStatus"))
                .forEach(p -> {
-                  numberOfPropertiesLet.incrementAndGet();
+                  numberOfLetProperties.incrementAndGet();
                   letProperties.add(propertyDtoToPropertyModelMapper.propertyModelPropertyDtoMapper(p.getProperty()));
                });
 
@@ -83,7 +83,7 @@ public class DefaultRightMovePropertiesTrackerFacade implements RightMovePropert
 
       //Send Emails
       final LettingPropertiesTrackingResult trackingResult = LettingPropertiesTrackingResult.builder()
-               .numberOfLetProperties(numberOfPropertiesLet.get())
+               .numberOfLetProperties(numberOfLetProperties.get())
                .letProperties(letProperties)
                .numberOfNewPropertiesOnMarket(newPropertiesDtoOnTheMarket.size())
                .newPropertiesOnMarket(newPropertiesDtoOnTheMarket)

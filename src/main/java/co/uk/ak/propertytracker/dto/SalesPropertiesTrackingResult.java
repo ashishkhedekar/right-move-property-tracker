@@ -4,16 +4,20 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.SuperBuilder;
 
+import java.util.List;
+
 @EqualsAndHashCode(callSuper = true)
 @SuperBuilder
 @Data
 public class SalesPropertiesTrackingResult extends AbstractTrackingResult
 {
-   private int numberOfPropertiesSold;
+   private int numberOfSoldProperties;
+
+   private List<PropertyDto> soldProperties;
 
    @Override
    public boolean needsReporting()
    {
-      return getNumberOfPropertiesSold() > 0 || getNewProperties() > 0;
+      return getNumberOfSoldProperties() > 0 || getNumberOfNewPropertiesOnMarket() > 0;
    }
 }

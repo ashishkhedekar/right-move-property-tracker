@@ -82,9 +82,8 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
       });
 
       return LettingPropertiesTrackingResult.builder()
-               .numberOfPropertiesLet(numberOfPropertiesLet.get())
-               .newProperties(newProperties.get())
-               .letProperties(letProperties)
+               .numberOfLetProperties(numberOfPropertiesLet.get())
+               .numberOfNewPropertiesOnMarket(newProperties.get())
                .build();
    }
 

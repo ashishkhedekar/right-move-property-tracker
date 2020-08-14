@@ -1,7 +1,5 @@
 package co.uk.ak.propertytracker.model;
 
-import org.joda.time.DateTime;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -34,8 +32,7 @@ public class PropertyModel extends AbstractModel
    private Long daysOnMarket;
    @Column(nullable = true)
    private Boolean premiumListing;
-
-   private Date dummyDate = DateTime.now().toDate();
+   private String mainMapImageSrc;
 
    @OneToMany(
             mappedBy = "property",
@@ -192,6 +189,16 @@ public class PropertyModel extends AbstractModel
    public void setPropertyUpdateRecords(List<PropertyUpdateRecordModel> propertyUpdateRecords)
    {
       this.propertyUpdateRecords = propertyUpdateRecords;
+   }
+
+   public String getMainMapImageSrc()
+   {
+      return mainMapImageSrc;
+   }
+
+   public void setMainMapImageSrc(String mainMapImageSrc)
+   {
+      this.mainMapImageSrc = mainMapImageSrc;
    }
 
    ////   @OneToOne

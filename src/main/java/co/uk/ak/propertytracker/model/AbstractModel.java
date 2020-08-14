@@ -12,9 +12,9 @@ public class AbstractModel
    @GeneratedValue(strategy = GenerationType.AUTO)
    private Long id;
 
-   @Column
+   @Temporal(TemporalType.TIMESTAMP)
    private Date creationTime = DateTime.now().toDate();
-   @Column
+   @Temporal(TemporalType.TIMESTAMP)
    private Date modificationTime = DateTime.now().toDate();
 
    public Long getId()
