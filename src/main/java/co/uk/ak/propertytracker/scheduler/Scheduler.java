@@ -20,9 +20,11 @@ public class Scheduler
    private final SearchCriteriaFacade searchCriteriaFacade;
 
    //Runs every house between 7am till 10pm
-   @Scheduled(cron = "0 0 7-22 * * *")
+   @Scheduled(cron = "0 0 6-23 * * *")
    public void runRightMoveQuery()
    {
-      searchCriteriaFacade.getAll().forEach(propertiesTrackerFacade::trackProperties);
+      LOG.info("Scheduler triggered");
+      searchCriteriaFacade.getAll().forEach(propertiesTrackerFacade::trackPropertiesV2);
+      LOG.info("Scheduler finished");
    }
 }
