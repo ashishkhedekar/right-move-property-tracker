@@ -45,7 +45,7 @@ public class PropertiesController
             LOG.info("V2 : Getting properties for location [{}]", locationId);
             SearchCriteriaDto searchCriteria = new SearchCriteriaDto();
             searchCriteria.setLocationIdentifier(locationId);
-            trackerFacade.trackPropertiesV2(searchCriteria);
+            trackerFacade.trackProperties(searchCriteria);
          }
          else
          {
@@ -60,7 +60,7 @@ public class PropertiesController
       {
          // Generating report for all search results
          LOG.info("Generating report for all search results");
-         searchCriteriaFacade.getAll().forEach(trackerFacade::trackPropertiesV2);
+         searchCriteriaFacade.getAll().forEach(trackerFacade::trackProperties);
       }
       return ResponseEntity.status(HttpStatus.OK).body("This app is doing some important stuff");
    }

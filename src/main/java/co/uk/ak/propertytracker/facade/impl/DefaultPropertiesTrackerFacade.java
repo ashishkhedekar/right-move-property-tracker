@@ -7,17 +7,13 @@ import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
 import co.uk.ak.propertytracker.facade.PropertiesTrackerFacade;
 import co.uk.ak.propertytracker.mapper.PropertyDtoToPropertyModelMapper;
 import co.uk.ak.propertytracker.mapper.RightMovePropertyToPropertyDtoMapper;
-import co.uk.ak.propertytracker.mapper.TrackingResultMapper;
 import co.uk.ak.propertytracker.model.PropertyModel;
 import co.uk.ak.propertytracker.model.PropertyUpdateRecordModel;
-import co.uk.ak.propertytracker.model.TrackingResultModel;
 import co.uk.ak.propertytracker.repository.PropertyRepository;
 import co.uk.ak.propertytracker.repository.PropertyUpdateRecordRepository;
-import co.uk.ak.propertytracker.repository.TrackingResultRepository;
 import co.uk.ak.propertytracker.rightmove.client.RightMoveWebClient;
 import co.uk.ak.propertytracker.rightmove.dto.RightMoveResult;
 import co.uk.ak.propertytracker.service.PropertyDao;
-import co.uk.ak.propertytracker.service.RightMoveTrackingService;
 import lombok.AllArgsConstructor;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
@@ -37,9 +33,6 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
    private static final Logger LOG = LoggerFactory.getLogger(DefaultPropertiesTrackerFacade.class);
 
    private final RightMoveWebClient webClient;
-   private final RightMoveTrackingService trackingService;
-   private final TrackingResultRepository trackingResultRepository;
-   private final TrackingResultMapper trackingResultMapper;
    private final EmailService emailSender;
 
    private final RightMovePropertyToPropertyDtoMapper rightMovePropertyToPropertyDtoMapper;
@@ -49,7 +42,7 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
    private final PropertyRepository propertyRepository;
 
    @Override
-   public void trackPropertiesV2(final SearchCriteriaDto searchCriteria)
+   public void trackProperties(final SearchCriteriaDto searchCriteria)
    {
       final Date reportStartTime = DateTime.now().toDate();
       //Query RightMove
@@ -98,34 +91,5 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
       {
          LOG.info("Nothing to report.");
       }
-
-   }
-
-   @Override
-   public LettingPropertiesTrackingResult trackProperties(final SearchCriteriaDto searchCriteria)
-   {
-      final RightMoveResult rightMoveResult = webClient.callRightMove(searchCriteria);
-      LOG.info("Found [{}] results for locationId [{}] ", rightMoveResult.getResultCount(), searchCriteria.getLocationIdentifier());
-      final LettingPropertiesTrackingResult trackingResult = trackingService.trackProperties(rightMoveResult);
-      LOG.info("Successfully tracked properties: Summary numberOfPropertiesLet : [{}]", trackingResult.getNumberOfLetProperties());
-      trackingResult.getLetProperties().forEach(property -> {
-         LOG.info("The property let [{}}", property.getId());
-      });
-
-      final TrackingResultModel trackingResultModel = trackingResultMapper.trackingResultToModel(trackingResult);
-      trackingResultRepository.save(trackingResultModel);
-      LOG.info("Successfully converted and saved tracking result in DB");
-      trackingService.refreshProperties(rightMoveResult);
-      LOG.info("Successfully converted and saved RightMove properties in DB");
-      if (trackingResult.needsReporting())
-      {
-         emailSender.sendLettingReportsEmail(trackingResult);
-         LOG.info("Email sent...!");
-      }
-      else
-      {
-         LOG.info("Nothing to report.");
-      }
-      return trackingResult;
    }
 }

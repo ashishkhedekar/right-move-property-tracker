@@ -24,7 +24,7 @@ public class Scheduler
    public void runRightMoveQuery()
    {
       LOG.info("Scheduler triggered");
-      searchCriteriaFacade.getAll().forEach(propertiesTrackerFacade::trackPropertiesV2);
+      searchCriteriaFacade.getAll().forEach(propertiesTrackerFacade::trackProperties);
       LOG.info("Scheduler finished");
    }
 }
