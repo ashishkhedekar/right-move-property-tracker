@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface PropertyUpdateRecordRepository extends CrudRepository<PropertyUpdateRecordModel, Long>
 {
+   //todo: get based on the channel
    List<PropertyUpdateRecordModel> findByCreationTimeGreaterThan(Date referenceDate);
 }

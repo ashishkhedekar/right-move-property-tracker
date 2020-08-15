@@ -24,9 +24,6 @@
                     Address
                 </th>
                 <th>
-                    Summary
-                </th>
-                <th>
                     Type
                 </th>
                 <th>
@@ -48,9 +45,6 @@
                 </td>
                 <td>
                     <p>${letProperty.displayAddress}
-                </td>
-                <td>
-                    <p>${letProperty.summary}
                 </td>
                 <td>
                     <p>${letProperty.propertySubType}
@@ -80,9 +74,6 @@
                 Address
             </th>
             <th>
-                Summary
-            </th>
-            <th>
                 Type
             </th>
             <th>
@@ -104,9 +95,6 @@
                 </td>
                 <td>
                     <p>${newProperty.displayAddress}
-                </td>
-                <td>
-                    <p>${newProperty.summary}
                 </td>
                 <td>
                     <p>${newProperty.propertySubType}

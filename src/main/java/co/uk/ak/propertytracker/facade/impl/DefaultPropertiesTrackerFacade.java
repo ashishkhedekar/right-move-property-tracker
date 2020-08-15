@@ -5,26 +5,18 @@ import co.uk.ak.propertytracker.dto.PropertyDto;
 import co.uk.ak.propertytracker.emails.EmailService;
 import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
 import co.uk.ak.propertytracker.facade.PropertiesTrackerFacade;
-import co.uk.ak.propertytracker.mapper.PropertyDtoToPropertyModelMapper;
 import co.uk.ak.propertytracker.mapper.RightMovePropertyToPropertyDtoMapper;
-import co.uk.ak.propertytracker.model.PropertyModel;
-import co.uk.ak.propertytracker.model.PropertyUpdateRecordModel;
-import co.uk.ak.propertytracker.repository.PropertyRepository;
-import co.uk.ak.propertytracker.repository.PropertyUpdateRecordRepository;
 import co.uk.ak.propertytracker.rightmove.client.RightMoveWebClient;
 import co.uk.ak.propertytracker.rightmove.dto.RightMoveResult;
 import co.uk.ak.propertytracker.service.PropertyDao;
+import co.uk.ak.propertytracker.service.MarketMovementReportService;
 import lombok.AllArgsConstructor;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -33,13 +25,10 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
    private static final Logger LOG = LoggerFactory.getLogger(DefaultPropertiesTrackerFacade.class);
 
    private final RightMoveWebClient webClient;
-   private final EmailService emailSender;
-
    private final RightMovePropertyToPropertyDtoMapper rightMovePropertyToPropertyDtoMapper;
    private final PropertyDao propertyDao;
-   private final PropertyUpdateRecordRepository propertyUpdateRecordRepository;
-   private final PropertyDtoToPropertyModelMapper propertyDtoToPropertyModelMapper;
-   private final PropertyRepository propertyRepository;
+   private final MarketMovementReportService marketMovementReportService;
+   private final EmailService emailSender;
 
    @Override
    public void trackProperties(final SearchCriteriaDto searchCriteria)
@@ -56,32 +45,9 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
       });
 
       //Generate Reports
-      final AtomicInteger numberOfLetProperties = new AtomicInteger();
-      final List<PropertyDto> letProperties = new ArrayList<>();
+      final LettingPropertiesTrackingResult trackingResult = marketMovementReportService.generateMarketMovementReport(reportStartTime);
 
-      final List<PropertyUpdateRecordModel> propertyUpdates = propertyUpdateRecordRepository.findByCreationTimeGreaterThan(reportStartTime);
-      LOG.info("update records found [{}]", propertyUpdates.size());
-      propertyUpdates.stream()
-               .filter(p -> p.getField().equalsIgnoreCase("displayStatus"))
-               .forEach(p -> {
-                  numberOfLetProperties.incrementAndGet();
-                  letProperties.add(propertyDtoToPropertyModelMapper.propertyModelPropertyDtoMapper(p.getProperty()));
-               });
-
-      final List<PropertyModel> newPropertiesOnTheMarket = propertyRepository.findByCreationTimeGreaterThan(reportStartTime);
-      LOG.info("Number of new properties found [{}]", newPropertiesOnTheMarket.size());
-      final List<PropertyDto> newPropertiesDtoOnTheMarket = newPropertiesOnTheMarket.stream()
-               .map(propertyDtoToPropertyModelMapper::propertyModelPropertyDtoMapper)
-               .collect(Collectors.toList());
-
-      //Send Emails
-      final LettingPropertiesTrackingResult trackingResult = LettingPropertiesTrackingResult.builder()
-               .numberOfLetProperties(numberOfLetProperties.get())
-               .letProperties(letProperties)
-               .numberOfNewPropertiesOnMarket(newPropertiesDtoOnTheMarket.size())
-               .newPropertiesOnMarket(newPropertiesDtoOnTheMarket)
-               .build();
-
+      //send email
       if (trackingResult.needsReporting())
       {
          emailSender.sendLettingReportsEmail(trackingResult);

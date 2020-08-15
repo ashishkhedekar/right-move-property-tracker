@@ -9,30 +9,32 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class PropertyModel extends AbstractModel
 {
+   //Id
    private Long propertyId;
 
-   //Mandatory fields
+   //Attributes
    private Integer bedrooms;
    @Column(length=350)
    private String summary;
-   private String displayAddress;
    private String propertySubType;
-   private Date firstVisibleDate;
-   private String displayPrice;
    //todo need mapping
    private String propertyType;
-   private String propertyUrl;
-   private String channel;
-   private Integer amount;
 
-   // Optional fields
-   @Column(nullable = true)
+   // Price related information
+   private Integer amount;
+   private String displayPrice;
+
+   //Display information
    private String displayStatus;
-   @Column(nullable = true)
-   private Long daysOnMarket;
-   @Column(nullable = true)
-   private Boolean premiumListing;
+   private String displayAddress;
    private String mainMapImageSrc;
+   private String propertyUrl;
+
+   //Market information
+   private String channel;
+   private Date firstVisibleDate;
+   private Date offMarketDate;
+   private Long daysOnMarket;
 
    @OneToMany(
             mappedBy = "property",
@@ -71,16 +73,6 @@ public class PropertyModel extends AbstractModel
       this.summary = summary;
    }
 
-   public String getDisplayAddress()
-   {
-      return displayAddress;
-   }
-
-   public void setDisplayAddress(String displayAddress)
-   {
-      this.displayAddress = displayAddress;
-   }
-
    public String getPropertySubType()
    {
       return propertySubType;
@@ -91,14 +83,24 @@ public class PropertyModel extends AbstractModel
       this.propertySubType = propertySubType;
    }
 
-   public Date getFirstVisibleDate()
+   public String getPropertyType()
    {
-      return firstVisibleDate;
+      return propertyType;
    }
 
-   public void setFirstVisibleDate(Date firstVisibleDate)
+   public void setPropertyType(String propertyType)
    {
-      this.firstVisibleDate = firstVisibleDate;
+      this.propertyType = propertyType;
+   }
+
+   public Integer getAmount()
+   {
+      return amount;
+   }
+
+   public void setAmount(Integer amount)
+   {
+      this.amount = amount;
    }
 
    public String getDisplayPrice()
@@ -111,14 +113,34 @@ public class PropertyModel extends AbstractModel
       this.displayPrice = displayPrice;
    }
 
-   public String getPropertyType()
+   public String getDisplayStatus()
    {
-      return propertyType;
+      return displayStatus;
    }
 
-   public void setPropertyType(String propertyType)
+   public void setDisplayStatus(String displayStatus)
    {
-      this.propertyType = propertyType;
+      this.displayStatus = displayStatus;
+   }
+
+   public String getDisplayAddress()
+   {
+      return displayAddress;
+   }
+
+   public void setDisplayAddress(String displayAddress)
+   {
+      this.displayAddress = displayAddress;
+   }
+
+   public String getMainMapImageSrc()
+   {
+      return mainMapImageSrc;
+   }
+
+   public void setMainMapImageSrc(String mainMapImageSrc)
+   {
+      this.mainMapImageSrc = mainMapImageSrc;
    }
 
    public String getPropertyUrl()
@@ -141,24 +163,24 @@ public class PropertyModel extends AbstractModel
       this.channel = channel;
    }
 
-   public Integer getAmount()
+   public Date getFirstVisibleDate()
    {
-      return amount;
+      return firstVisibleDate;
    }
 
-   public void setAmount(Integer amount)
+   public void setFirstVisibleDate(Date firstVisibleDate)
    {
-      this.amount = amount;
+      this.firstVisibleDate = firstVisibleDate;
    }
 
-   public String getDisplayStatus()
+   public Date getOffMarketDate()
    {
-      return displayStatus;
+      return offMarketDate;
    }
 
-   public void setDisplayStatus(String displayStatus)
+   public void setOffMarketDate(Date offMarketDate)
    {
-      this.displayStatus = displayStatus;
+      this.offMarketDate = offMarketDate;
    }
 
    public Long getDaysOnMarket()
@@ -171,16 +193,6 @@ public class PropertyModel extends AbstractModel
       this.daysOnMarket = daysOnMarket;
    }
 
-   public Boolean getPremiumListing()
-   {
-      return premiumListing;
-   }
-
-   public void setPremiumListing(Boolean premiumListing)
-   {
-      this.premiumListing = premiumListing;
-   }
-
    public List<PropertyUpdateRecordModel> getPropertyUpdateRecords()
    {
       return propertyUpdateRecords;
@@ -190,23 +202,4 @@ public class PropertyModel extends AbstractModel
    {
       this.propertyUpdateRecords = propertyUpdateRecords;
    }
-
-   public String getMainMapImageSrc()
-   {
-      return mainMapImageSrc;
-   }
-
-   public void setMainMapImageSrc(String mainMapImageSrc)
-   {
-      this.mainMapImageSrc = mainMapImageSrc;
-   }
-
-   ////   @OneToOne
-//   private RightMovePriceModel price;
-//   private String propertyUrl;
-//   private String firstVisibleDate;
-
-//   private String addedOrReduced;
-//   private Boolean isRecent;
-//   private String formattedDistance;
 }

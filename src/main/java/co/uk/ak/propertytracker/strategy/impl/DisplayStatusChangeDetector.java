@@ -11,7 +11,6 @@ import java.util.function.Predicate;
 @Service
 public class DisplayStatusChangeDetector implements ChangeDetector
 {
-
    public Predicate<PropertyModel> propertyChangedPredicate(final PropertyDto propertyDto)
    {
       return model -> (!StringUtils.equalsIgnoreCase(propertyDto.getDisplayStatus(), model.getDisplayStatus()));
