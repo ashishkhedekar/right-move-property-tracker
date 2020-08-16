@@ -58,6 +58,7 @@ public class DefaultMarketMovementReportService implements MarketMovementReportS
                .offMarketProperties(letProperties)
                .numberOfNewProperties(newPropertiesDtoOnTheMarket.size())
                .newProperties(newPropertiesDtoOnTheMarket)
+               .channel(channel)
                .build();
    }
 }

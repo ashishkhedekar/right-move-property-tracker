@@ -37,25 +37,30 @@ public class DefaultEmailService implements EmailService
       final Mail mail = Mail.builder().
                to(emailNotificationRecipients)
                .from("right.move.property.alerts@gmail.com")
-               .subject(buildSubject())
+               .subject(buildSubject(trackingResult.getChannel()))
                .model(model)
                .build();
 
       emailSender.sendEmail(mail, "right-move-lettings-report.ftl");
    }
 
-   private String buildSubject()
+   private String buildSubject(final String channel)
    {
       final StringBuilder subject = new StringBuilder();
       if (currentEnvironment == null || !currentEnvironment.equalsIgnoreCase("PRODUCTION"))
       {
          subject.append("[TEST] ");
       }
-      subject.append("RightMove property alert for Buckingham") // todo - change the hard-coding of buckingham
+      subject.append(String.format("%s report for Buckingham", getChannelDisplayText(channel))) // todo - change the hard-coding of buckingham
                .append(" - ")
                .append("[")
                .append(simpleDateFormat.format(DateTime.now().toDate()))
                .append("]");
       return subject.toString();
+   }
+
+   private String getChannelDisplayText(final String channel)
+   {
+      return channel.equalsIgnoreCase("BUY") ? "Sales" : "Lettings";
    }
 }
