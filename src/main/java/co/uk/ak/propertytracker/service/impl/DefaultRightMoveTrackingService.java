@@ -1,6 +1,6 @@
 package co.uk.ak.propertytracker.service.impl;
 
-import co.uk.ak.propertytracker.dto.LettingPropertiesTrackingResult;
+import co.uk.ak.propertytracker.dto.MarketMovementReport;
 import co.uk.ak.propertytracker.mapper.RightMovePropertyToPropertModelMapper;
 import co.uk.ak.propertytracker.repository.PropertyRepository;
 import co.uk.ak.propertytracker.rightmove.dto.RightMoveResult;
@@ -30,6 +30,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Deprecated(forRemoval = true)
 public class DefaultRightMoveTrackingService implements RightMoveTrackingService
 {
    private static final Logger LOG = LoggerFactory.getLogger(DefaultRightMoveTrackingService.class);
@@ -45,7 +46,7 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
    private String rightMoveBaseUrl;
 
    @Override
-   public LettingPropertiesTrackingResult trackProperties(final RightMoveResult rightMoveResult)
+   public MarketMovementReport trackProperties(final RightMoveResult rightMoveResult)
    {
       final AtomicInteger numberOfPropertiesLet = new AtomicInteger();
       final AtomicInteger newProperties = new AtomicInteger();
@@ -81,10 +82,7 @@ public class DefaultRightMoveTrackingService implements RightMoveTrackingService
          });
       });
 
-      return LettingPropertiesTrackingResult.builder()
-               .numberOfLetProperties(numberOfPropertiesLet.get())
-               .numberOfNewPropertiesOnMarket(newProperties.get())
-               .build();
+      return null;
    }
 
    private boolean propertyAlreadyAdded(final List<RightMoveProperty> letProperties, final RightMoveProperty rightMoveProperty)

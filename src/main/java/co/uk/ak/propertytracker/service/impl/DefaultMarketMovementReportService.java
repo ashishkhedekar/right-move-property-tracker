@@ -1,6 +1,6 @@
 package co.uk.ak.propertytracker.service.impl;
 
-import co.uk.ak.propertytracker.dto.LettingPropertiesTrackingResult;
+import co.uk.ak.propertytracker.dto.MarketMovementReport;
 import co.uk.ak.propertytracker.dto.PropertyDto;
 import co.uk.ak.propertytracker.mapper.PropertyDtoToPropertyModelMapper;
 import co.uk.ak.propertytracker.model.PropertyModel;
@@ -30,13 +30,14 @@ public class DefaultMarketMovementReportService implements MarketMovementReportS
    private final PropertyRepository propertyRepository;
 
    @Override
-   public LettingPropertiesTrackingResult generateMarketMovementReport(final Date reportStartTime)
+   public MarketMovementReport generateMarketMovementReport(final Date reportStartTime, final String channel)
    {
       //Generate Reports
       final AtomicInteger numberOfLetProperties = new AtomicInteger();
       final List<PropertyDto> letProperties = new ArrayList<>();
 
-      final List<PropertyUpdateRecordModel> propertyUpdates = propertyUpdateRecordRepository.findByCreationTimeGreaterThan(reportStartTime);
+      // Get Property Updates based on the channel
+      final List<PropertyUpdateRecordModel> propertyUpdates = propertyUpdateRecordRepository.findByCreationTimeGreaterThanAndPropertyChannel(reportStartTime, channel);
       LOG.info("update records found [{}]", propertyUpdates.size());
       propertyUpdates.stream()
                .filter(p -> p.getField().equalsIgnoreCase("displayStatus"))
@@ -52,13 +53,11 @@ public class DefaultMarketMovementReportService implements MarketMovementReportS
                .collect(Collectors.toList());
 
       //Send Emails
-      final LettingPropertiesTrackingResult trackingResult = LettingPropertiesTrackingResult.builder()
-               .numberOfLetProperties(numberOfLetProperties.get())
-               .letProperties(letProperties)
-               .numberOfNewPropertiesOnMarket(newPropertiesDtoOnTheMarket.size())
-               .newPropertiesOnMarket(newPropertiesDtoOnTheMarket)
+      return MarketMovementReport.builder()
+               .numberOfOffMarketProperties(numberOfLetProperties.get())
+               .offMarketProperties(letProperties)
+               .numberOfNewProperties(newPropertiesDtoOnTheMarket.size())
+               .newProperties(newPropertiesDtoOnTheMarket)
                .build();
-
-      return trackingResult;
    }
 }

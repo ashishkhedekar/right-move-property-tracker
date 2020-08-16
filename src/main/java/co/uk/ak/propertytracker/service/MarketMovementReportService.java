@@ -1,10 +1,10 @@
 package co.uk.ak.propertytracker.service;
 
-import co.uk.ak.propertytracker.dto.LettingPropertiesTrackingResult;
+import co.uk.ak.propertytracker.dto.MarketMovementReport;
 
 import java.util.Date;
 
 public interface MarketMovementReportService
 {
-   LettingPropertiesTrackingResult generateMarketMovementReport(Date reportStartTime);
+   MarketMovementReport generateMarketMovementReport(Date reportStartTime, String channel);
 }

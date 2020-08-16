@@ -38,7 +38,7 @@ public class DefaultSearchCriteriaFacade implements SearchCriteriaFacade
       final List<SearchCriteriaDto> searchCriteriaDtos = new ArrayList<>();
       searchCriteriaRepository.findAll()
                .forEach(e -> {
-                  LOG.debug("The type of object received has channel [{}] and class is [{}] ", e.getChannel(), e.getClass().getName());
+                  LOG.info("The type of object received has channel [{}] and class is [{}] ", e.getChannel(), e.getClass().getName());
                   if (e instanceof LettingsSearchCriteriaModel)
                   {
                      searchCriteriaDtos.add(searchCriteriaMapper.lettingsSearchCriteriaModelToSearchCriteriaDto((LettingsSearchCriteriaModel) e));

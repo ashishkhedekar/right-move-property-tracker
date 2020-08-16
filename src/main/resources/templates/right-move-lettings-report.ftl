@@ -9,10 +9,10 @@
 <body class="bg-light">
 <h1>Today's summary!</h1>
 
-    <h3> Number of let properties:  ${numberOfLetProperties} </h3>
+    <h3> Number of let properties:  ${numberOfOffMarketProperties} </h3>
     <h3> Number of new properties on market:  ${numberOfNewProperties} </h3>
 
-    <#if letProperties?size != 0>
+    <#if offMarketProperties?size != 0>
 
         <h3>Recently Let Properties:</h3>
         <table border="true" style="text-align: center">
@@ -36,27 +36,27 @@
                     Is Premium
                 </th>
             </tr>
-            <#list letProperties as letProperty>
+            <#list offMarketProperties as offMarketProperties>
             <tr>
                 <td>
-                    <a href="${letProperty.fullPropertyUrl}">
-                        <img src="${letProperty.mainMapImageSrc}" alt="image" >
+                    <a href="${offMarketProperties.fullPropertyUrl}">
+                        <img src="${offMarketProperties.mainMapImageSrc}" alt="image" >
                     </a>
                 </td>
                 <td>
-                    <p>${letProperty.displayAddress}
+                    <p>${offMarketProperties.displayAddress}
                 </td>
                 <td>
-                    <p>${letProperty.propertySubType}
+                    <p>${offMarketProperties.propertySubType}
                 </td>
                 <td>
-                    <p>${letProperty.bedrooms}
+                    <p>${offMarketProperties.bedrooms}
                 </td>
                 <td>
-                    <p>${letProperty.daysOnMarket()}
+                    <p>${offMarketProperties.daysOnMarket()}
                 </td>
                 <td>
-                    <p><#if letProperty.premiumListing??>${letProperty.premiumListing?string('Yes', 'No')}<#else>No</#if>
+                    <p><#if offMarketProperties.premiumListing??>${offMarketProperties.premiumListing?string('Yes', 'No')}<#else>No</#if>
                 </td>
             </tr>
             </#list>

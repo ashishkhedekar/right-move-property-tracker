@@ -1,6 +1,6 @@
 package co.uk.ak.propertytracker.emails;
 
-import co.uk.ak.propertytracker.dto.LettingPropertiesTrackingResult;
+import co.uk.ak.propertytracker.dto.MarketMovementReport;
 import co.uk.ak.propertytracker.emails.dto.Mail;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +26,13 @@ public class DefaultEmailService implements EmailService
    private EmailSender emailSender;
 
    @Override
-   public void sendLettingReportsEmail(final LettingPropertiesTrackingResult trackingResult)
+   public void sendLettingReportsEmail(final MarketMovementReport trackingResult)
    {
       final Map<String, Object> model = new HashMap<>();
-      model.put("numberOfLetProperties", trackingResult.getNumberOfLetProperties());
-      model.put("letProperties", trackingResult.getLetProperties());
-      model.put("numberOfNewProperties", trackingResult.getNumberOfNewPropertiesOnMarket());
-      model.put("newProperties", trackingResult.getNewPropertiesOnMarket());
+      model.put("numberOfOffMarketProperties", trackingResult.getNumberOfOffMarketProperties());
+      model.put("offMarketProperties", trackingResult.getOffMarketProperties());
+      model.put("numberOfNewProperties", trackingResult.getNumberOfNewProperties());
+      model.put("newProperties", trackingResult.getNewProperties());
 
       final Mail mail = Mail.builder().
                to(emailNotificationRecipients)

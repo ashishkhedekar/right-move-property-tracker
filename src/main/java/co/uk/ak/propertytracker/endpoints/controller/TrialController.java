@@ -1,6 +1,6 @@
 package co.uk.ak.propertytracker.endpoints.controller;
 
-import co.uk.ak.propertytracker.dto.LettingPropertiesTrackingResult;
+import co.uk.ak.propertytracker.dto.MarketMovementReport;
 import co.uk.ak.propertytracker.dto.PropertyDto;
 import co.uk.ak.propertytracker.dto.PropertyImagesDto;
 import co.uk.ak.propertytracker.emails.EmailService;
@@ -70,9 +70,9 @@ public class TrialController
       properties.add(propertyDto1);
       properties.add(propertyDto2);
 
-      final LettingPropertiesTrackingResult build = LettingPropertiesTrackingResult.builder()
-               .numberOfLetProperties(2)
-               .letProperties(properties)
+      final MarketMovementReport build = MarketMovementReport.builder()
+               .numberOfOffMarketProperties(2)
+               .offMarketProperties(properties)
                .build();
 
       emailService.sendLettingReportsEmail(build);

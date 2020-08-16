@@ -1,6 +1,6 @@
 package co.uk.ak.propertytracker.facade.impl;
 
-import co.uk.ak.propertytracker.dto.LettingPropertiesTrackingResult;
+import co.uk.ak.propertytracker.dto.MarketMovementReport;
 import co.uk.ak.propertytracker.dto.PropertyDto;
 import co.uk.ak.propertytracker.emails.EmailService;
 import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
@@ -36,6 +36,7 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
       final Date reportStartTime = DateTime.now().toDate();
       //Query RightMove
       final RightMoveResult rightMoveResult = webClient.callRightMove(searchCriteria);
+      LOG.info("Found [{}] properties from web", rightMoveResult.getProperties().size());
 
       //Save/update in DB
       rightMoveResult.getProperties().forEach(rightMoveProperty -> {
@@ -45,7 +46,7 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
       });
 
       //Generate Reports
-      final LettingPropertiesTrackingResult trackingResult = marketMovementReportService.generateMarketMovementReport(reportStartTime);
+      final MarketMovementReport trackingResult = marketMovementReportService.generateMarketMovementReport(reportStartTime, searchCriteria.getChannel());
 
       //send email
       if (trackingResult.needsReporting())

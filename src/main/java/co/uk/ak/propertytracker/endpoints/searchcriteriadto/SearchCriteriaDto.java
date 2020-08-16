@@ -26,7 +26,6 @@ public class SearchCriteriaDto
 
    public String buildQueryString()
    {
-
       return "locationIdentifier=" + locationIdentifier +
                "&minBedrooms=" + minBedrooms +
                "&maxPrice=" + maxPrice +
@@ -34,18 +33,11 @@ public class SearchCriteriaDto
                "&sortType=" + sortType +
                "&index=" + index +
                "&includeLetAgreed=" + includeLetAgreed +
+               "&includeSSTC=" + includeSSTC +
                "&viewType=" + viewType +
                "&channel=" + channel +
                "&areaSizeUnit=" + areaSizeUnit  +
                "&currencyCode=" + currencyCode +
                "&isFetching=" + isFetching;
-
-      //"locationIdentifier=%s&minBedrooms=3&maxPrice=25000&
-      // numberOfPropertiesPerPage=24&radius=0.0
-      // &sortType=6&
-      // index=0&includeLetAgreed=true&viewType=LIST&channel=RENT&areaSizeUnit=sqft&currencyCode=GBP&isFetching=false";
-
-
-
    }
 }
