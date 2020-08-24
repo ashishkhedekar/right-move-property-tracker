@@ -1,0 +1,282 @@
+{
+  "properties": [
+    {
+      "id": 94524230,
+      "bedrooms": 4,
+      "numberOfImages": 14,
+      "numberOfFloorplans": 1,
+      "numberOfVirtualTours": 0,
+      "summary": "This four bedroom detached property is situated on the edge of Page Hill, just a few minutes from Buckingham town centre. The spacious lounge is to the front of the property and comes with a feature fireplace. The impressive recently fitted kitchen- diner runs the entire width of the proper (cont.)",
+      "displayAddress": "Stratford Road, Buckingham",
+      "countryCode": "GB",
+      "location": {
+        "latitude": 52.00247,
+        "longitude": -0.98259
+      },
+      "propertySubType": "Detached",
+      "listingUpdate": {
+        "listingUpdateReason": "new",
+        "listingUpdateDate": "2020-07-07T15:45:05Z"
+      },
+      "premiumListing": false,
+      "featuredProperty": false,
+      "price": {
+        "amount": 415000,
+        "frequency": "not specified",
+        "currencyCode": "GBP",
+        "displayPrices": [
+          {
+            "displayPrice": "£415,000",
+            "displayPriceQualifier": ""
+          }
+        ]
+      },
+      "customer": {
+        "branchId": 9976,
+        "brandPlusLogoURI": "/company/clogo_rmchoice_3424_0002.jpeg",
+        "contactTelephone": "01280 475036",
+        "branchDisplayName": "Apple Homes Limited, Buckingham",
+        "branchName": "Buckingham",
+        "brandTradingName": "Apple Homes Limited",
+        "branchLandingPageUrl": "/estate-agents/agent/Apple-Homes-Limited/Buckingham-9976.html",
+        "development": false,
+        "showReducedProperties": true,
+        "commercial": false,
+        "showOnMap": true,
+        "enhancedListing": false,
+        "developmentContent": null,
+        "brandPlusLogoUrl": "https://media.rightmove.co.uk:443/dir/company/clogo_rmchoice_3424_0002_max_100x50.jpeg"
+      },
+      "distance": null,
+      "transactionType": "buy",
+      "productLabel": {
+        "productLabelText": ""
+      },
+      "commercial": false,
+      "development": false,
+      "residential": true,
+      "students": false,
+      "auction": false,
+      "feesApply": false,
+      "feesApplyText": null,
+      "displaySize": "",
+      "showOnMap": true,
+      "propertyUrl": "/property-for-sale/property-94524230.html",
+      "contactUrl": "/property-for-sale/contactBranch.html?propertyId=94524230",
+      "channel": "BUY",
+      "firstVisibleDate": "2020-07-07T15:40:02Z",
+      "keywords": [],
+      "keywordMatchType": "no_keyword",
+      "saved": null,
+      "hidden": null,
+      "onlineViewingsAvailable": false,
+      "propertyTypeFullDescription": "4 bedroom detached house for sale",
+      "heading": "",
+      "enhancedListing": false,
+      "propertyImages": {
+        "images": [
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_01_0000_max_476x317.jpg",
+            "url": "10k/9976/94524230/9976_APP1002803_IMG_01_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_02_0000_max_476x317.jpg",
+            "url": "10k/9976/94524230/9976_APP1002803_IMG_02_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_03_0000_max_476x317.jpg",
+            "url": "10k/9976/94524230/9976_APP1002803_IMG_03_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_04_0000_max_476x317.jpg",
+            "url": "10k/9976/94524230/9976_APP1002803_IMG_04_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_05_0001_max_476x317.jpg",
+            "url": "10k/9976/94524230/9976_APP1002803_IMG_05_0001.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_06_0001_max_476x317.jpg",
+            "url": "10k/9976/94524230/9976_APP1002803_IMG_06_0001.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_07_0001_max_476x317.jpg",
+            "url": "10k/9976/94524230/9976_APP1002803_IMG_07_0001.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_08_0001_max_476x317.jpg",
+            "url": "10k/9976/94524230/9976_APP1002803_IMG_08_0001.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_09_0001_max_476x317.jpg",
+            "url": "10k/9976/94524230/9976_APP1002803_IMG_09_0001.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_10_0001_max_476x317.jpg",
+            "url": "10k/9976/94524230/9976_APP1002803_IMG_10_0001.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_11_0001_max_476x317.jpg",
+            "url": "10k/9976/94524230/9976_APP1002803_IMG_11_0001.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_12_0001_max_476x317.jpg",
+            "url": "10k/9976/94524230/9976_APP1002803_IMG_12_0001.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_13_0001_max_476x317.jpg",
+            "url": "10k/9976/94524230/9976_APP1002803_IMG_13_0001.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_15_0000_max_476x317.jpg",
+            "url": "10k/9976/94524230/9976_APP1002803_IMG_15_0000.jpg"
+          }
+        ],
+        "mainImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_01_0000_max_476x317.jpg",
+        "mainMapImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/94524230/9976_APP1002803_IMG_01_0000_max_296x197.jpg"
+      },
+      "displayStatus": "",
+      "formattedBranchName": " by Apple Homes Limited, Buckingham",
+      "addedOrReduced": "Added on 07/07/2020",
+      "isRecent": false,
+      "formattedDistance": "",
+      "hasBrandPlus": true
+    },
+    {
+      "id": 95677817,
+      "bedrooms": 3,
+      "numberOfImages": 12,
+      "numberOfFloorplans": 1,
+      "numberOfVirtualTours": 0,
+      "summary": "This impressive 1930's three bed detached property is immaculately presented throughout and is located in a non estate position within close walking distance of Buckingham town centre. The sitting room has an open fireplace and a bay window to the front of the property. The beautiful kitchen (cont.)",
+      "displayAddress": "Bourton Road, Buckingham",
+      "countryCode": "GB",
+      "location": {
+        "latitude": 51.99717,
+        "longitude": -0.98242
+      },
+      "propertySubType": "Detached",
+      "listingUpdate": {
+        "listingUpdateReason": "new",
+        "listingUpdateDate": "2020-08-04T20:25:06Z"
+      },
+      "premiumListing": false,
+      "featuredProperty": false,
+      "price": {
+        "amount": 410000,
+        "frequency": "not specified",
+        "currencyCode": "GBP",
+        "displayPrices": [
+          {
+            "displayPrice": "£410,000",
+            "displayPriceQualifier": ""
+          }
+        ]
+      },
+      "customer": {
+        "branchId": 9976,
+        "brandPlusLogoURI": "/company/clogo_rmchoice_3424_0002.jpeg",
+        "contactTelephone": "01280 475036",
+        "branchDisplayName": "Apple Homes Limited, Buckingham",
+        "branchName": "Buckingham",
+        "brandTradingName": "Apple Homes Limited",
+        "branchLandingPageUrl": "/estate-agents/agent/Apple-Homes-Limited/Buckingham-9976.html",
+        "development": false,
+        "showReducedProperties": true,
+        "commercial": false,
+        "showOnMap": true,
+        "enhancedListing": false,
+        "developmentContent": null,
+        "brandPlusLogoUrl": "https://media.rightmove.co.uk:443/dir/company/clogo_rmchoice_3424_0002_max_100x50.jpeg"
+      },
+      "distance": null,
+      "transactionType": "buy",
+      "productLabel": {
+        "productLabelText": ""
+      },
+      "commercial": false,
+      "development": false,
+      "residential": true,
+      "students": false,
+      "auction": false,
+      "feesApply": false,
+      "feesApplyText": null,
+      "displaySize": "",
+      "showOnMap": true,
+      "propertyUrl": "/property-for-sale/property-95677817.html",
+      "contactUrl": "/property-for-sale/contactBranch.html?propertyId=95677817",
+      "channel": "BUY",
+      "firstVisibleDate": "2020-08-04T20:25:02Z",
+      "keywords": [],
+      "keywordMatchType": "no_keyword",
+      "saved": null,
+      "hidden": null,
+      "onlineViewingsAvailable": false,
+      "propertyTypeFullDescription": "3 bedroom detached house for sale",
+      "heading": "",
+      "enhancedListing": false,
+      "propertyImages": {
+        "images": [
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/95677817/9976_APP1002822_IMG_01_0000_max_476x317.jpg",
+            "url": "10k/9976/95677817/9976_APP1002822_IMG_01_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/95677817/9976_APP1002822_IMG_02_0000_max_476x317.jpg",
+            "url": "10k/9976/95677817/9976_APP1002822_IMG_02_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/95677817/9976_APP1002822_IMG_03_0000_max_476x317.jpg",
+            "url": "10k/9976/95677817/9976_APP1002822_IMG_03_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/95677817/9976_APP1002822_IMG_04_0000_max_476x317.jpg",
+            "url": "10k/9976/95677817/9976_APP1002822_IMG_04_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/95677817/9976_APP1002822_IMG_05_0000_max_476x317.jpg",
+            "url": "10k/9976/95677817/9976_APP1002822_IMG_05_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/95677817/9976_APP1002822_IMG_06_0000_max_476x317.jpg",
+            "url": "10k/9976/95677817/9976_APP1002822_IMG_06_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/95677817/9976_APP1002822_IMG_07_0000_max_476x317.jpg",
+            "url": "10k/9976/95677817/9976_APP1002822_IMG_07_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/95677817/9976_APP1002822_IMG_08_0000_max_476x317.jpg",
+            "url": "10k/9976/95677817/9976_APP1002822_IMG_08_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/95677817/9976_APP1002822_IMG_09_0000_max_476x317.jpg",
+            "url": "10k/9976/95677817/9976_APP1002822_IMG_09_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/95677817/9976_APP1002822_IMG_10_0000_max_476x317.jpg",
+            "url": "10k/9976/95677817/9976_APP1002822_IMG_10_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/95677817/9976_APP1002822_IMG_11_0000_max_476x317.jpg",
+            "url": "10k/9976/95677817/9976_APP1002822_IMG_11_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/95677817/9976_APP1002822_IMG_12_0000_max_476x317.jpg",
+            "url": "10k/9976/95677817/9976_APP1002822_IMG_12_0000.jpg"
+          }
+        ],
+        "mainImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/95677817/9976_APP1002822_IMG_01_0000_max_476x317.jpg",
+        "mainMapImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/10k/9976/95677817/9976_APP1002822_IMG_01_0000_max_296x197.jpg"
+      },
+      "displayStatus": "",
+      "formattedBranchName": " by Apple Homes Limited, Buckingham",
+      "addedOrReduced": "Added on 04/08/2020",
+      "isRecent": false,
+      "formattedDistance": "",
+      "hasBrandPlus": true
+    }
+    }
+  ],
+  "resultCount": "1"
+}
