@@ -1,7 +1,9 @@
 package co.uk.ak.propertytracker;
 
 import co.uk.ak.propertytracker.model.PropertyModel;
+import co.uk.ak.propertytracker.model.PropertyUpdateRecordModel;
 import co.uk.ak.propertytracker.repository.PropertyRepository;
+import co.uk.ak.propertytracker.repository.PropertyUpdateRecordRepository;
 import co.uk.ak.propertytracker.rule.SmtpServerRule;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import org.junit.Rule;
@@ -16,6 +18,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.util.List;
 import java.util.Optional;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
@@ -41,6 +44,9 @@ public class PropertyTrackerIntegrationApplicationTests
 
    @Autowired
    private PropertyRepository propertyRepository;
+
+   @Autowired
+   private PropertyUpdateRecordRepository propertyUpdateRecordRepository;
 
    private static final long SINGLE_NON_LET_PROPERTY = 91967702L;
    private static final long SINGLE_LET_PROPERTY = 89887883L;
@@ -119,6 +125,12 @@ public class PropertyTrackerIntegrationApplicationTests
       final Optional<PropertyModel> byPropertyId = propertyRepository.findByPropertyId(SINGLE_LET_PROPERTY);
       assertThat(byPropertyId.isPresent()).isTrue();
       assertThat(byPropertyId.get().getDisplayStatus()).isEqualTo("Let Agreed");
+
+      final List<PropertyUpdateRecordModel> changes = propertyUpdateRecordRepository.findByPropertyPropertyId(SINGLE_LET_PROPERTY);
+      assertThat(changes).hasSize(1);
+      assertThat(changes.get(0).getField()).isEqualTo("displayStatus");
+      assertThat(changes.get(0).getOldValue()).isEqualTo("");
+      assertThat(changes.get(0).getNewValue()).isEqualTo("Let Agreed");
    }
 
    @Test
@@ -148,6 +160,7 @@ public class PropertyTrackerIntegrationApplicationTests
       final Optional<PropertyModel> savedProperty2 = propertyRepository.findByPropertyId(TWO_NON_LET_PROPERTIES_2);
       assertThat(savedProperty2.isPresent()).isTrue();
       assertThat(savedProperty2.get().getDisplayStatus()).isEqualTo("");
+
    }
 
    @Test
@@ -218,5 +231,12 @@ public class PropertyTrackerIntegrationApplicationTests
       final Optional<PropertyModel> savedProperty2 = propertyRepository.findByPropertyId(TWO_LET_PROPERTIES_2);
       assertThat(savedProperty2.isPresent()).isTrue();
       assertThat(savedProperty2.get().getDisplayStatus()).isEqualTo("");
+
+      final List<PropertyUpdateRecordModel> changes = propertyUpdateRecordRepository.findByPropertyPropertyId(TWO_LET_PROPERTIES_1);
+      assertThat(changes).hasSize(1);
+      assertThat(changes.get(0).getField()).isEqualTo("displayStatus");
+      assertThat(changes.get(0).getOldValue()).isEqualTo("");
+      assertThat(changes.get(0).getNewValue()).isEqualTo("Let Agreed");
+
    }
 }
