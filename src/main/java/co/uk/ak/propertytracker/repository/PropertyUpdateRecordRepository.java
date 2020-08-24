@@ -9,4 +9,6 @@ import java.util.List;
 public interface PropertyUpdateRecordRepository extends CrudRepository<PropertyUpdateRecordModel, Long>
 {
    List<PropertyUpdateRecordModel> findByCreationTimeGreaterThanAndPropertyChannel(Date referenceDate, String channel);
+
+   List<PropertyUpdateRecordModel> findByPropertyPropertyId(Long propertyId);
 }

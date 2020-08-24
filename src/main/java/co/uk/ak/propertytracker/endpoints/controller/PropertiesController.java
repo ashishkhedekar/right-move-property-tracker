@@ -23,6 +23,12 @@ public class PropertiesController
    private final PropertiesTrackerFacade trackerFacade;
    private final SearchCriteriaFacade searchCriteriaFacade;
 
+   @GetMapping("/")
+   public ResponseEntity<String> home()
+   {
+      return ResponseEntity.status(HttpStatus.OK).body("App is up and running");
+   }
+
    @GetMapping("/properties-to-let")
    public ResponseEntity<String> message(@RequestParam String locationId)
    {

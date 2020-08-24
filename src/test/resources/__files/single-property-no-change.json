@@ -1,0 +1,167 @@
+{
+  "properties": [
+    {
+      "id": 72533088,
+      "bedrooms": 4,
+      "numberOfImages": 19,
+      "numberOfFloorplans": 1,
+      "numberOfVirtualTours": 0,
+      "summary": "Offered for sale with NO UPPER CHAIN, a well presented four bedroom detached family home situated in a cul de sac location backing onto woodland. The property benefits from a refitted kitchen which is open through to the dining room, refitted bathroom and ensuite, gas to radiator central heating,...",
+      "displayAddress": "Pitchford Avenue, Buckingham",
+      "countryCode": "GB",
+      "location": {
+        "latitude": 52.00609,
+        "longitude": -0.974712
+      },
+      "propertySubType": "Detached",
+      "listingUpdate": {
+        "listingUpdateReason": "new",
+        "listingUpdateDate": "2020-08-14T19:07:03Z"
+      },
+      "premiumListing": false,
+      "featuredProperty": false,
+      "price": {
+        "amount": 419995,
+        "frequency": "not specified",
+        "currencyCode": "GBP",
+        "displayPrices": [
+          {
+            "displayPrice": "£419,995",
+            "displayPriceQualifier": ""
+          }
+        ]
+      },
+      "customer": {
+        "branchId": 8115,
+        "brandPlusLogoURI": "/company/clogo_rmchoice_2770_0000.jpeg",
+        "contactTelephone": "01280 475041",
+        "branchDisplayName": "Russell & Butler, Bucks, South Northants & North Oxon, Buckingham",
+        "branchName": "Buckingham",
+        "brandTradingName": "Russell & Butler, Bucks, South Northants & North Oxon",
+        "branchLandingPageUrl": "/estate-agents/agent/Russell-and-Butler-Bucks-South-Northants-and-North-Oxon/Buckingham-8115.html",
+        "development": false,
+        "showReducedProperties": true,
+        "commercial": false,
+        "showOnMap": true,
+        "enhancedListing": false,
+        "developmentContent": null,
+        "brandPlusLogoUrl": "https://media.rightmove.co.uk:443/dir/company/clogo_rmchoice_2770_0000_max_100x50.jpeg"
+      },
+      "distance": null,
+      "transactionType": "buy",
+      "productLabel": {
+        "productLabelText": ""
+      },
+      "commercial": false,
+      "development": false,
+      "residential": true,
+      "students": false,
+      "auction": false,
+      "feesApply": false,
+      "feesApplyText": null,
+      "displaySize": "",
+      "showOnMap": true,
+      "propertyUrl": "/property-for-sale/property-72533088.html",
+      "contactUrl": "/property-for-sale/contactBranch.html?propertyId=72533088",
+      "channel": "BUY",
+      "firstVisibleDate": "2020-08-14T19:01:53Z",
+      "keywords": [],
+      "keywordMatchType": "no_keyword",
+      "saved": null,
+      "hidden": null,
+      "onlineViewingsAvailable": false,
+      "propertyTypeFullDescription": "4 bedroom detached house for sale",
+      "heading": "",
+      "enhancedListing": false,
+      "propertyImages": {
+        "images": [
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_01_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_01_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_02_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_02_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_03_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_03_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_04_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_04_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_05_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_05_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_06_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_06_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_07_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_07_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_08_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_08_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_09_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_09_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_10_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_10_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_11_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_11_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_12_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_12_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_13_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_13_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_14_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_14_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_15_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_15_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_16_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_16_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_17_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_17_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_18_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_18_0000.jpg"
+          },
+          {
+            "srcUrl": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_19_0000_max_476x317.jpg",
+            "url": "9k/8115/72533088/8115_10383227_IMG_19_0000.jpg"
+          }
+        ],
+        "mainImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_01_0000_max_476x317.jpg",
+        "mainMapImageSrc": "https://media.rightmove.co.uk:443/dir/crop/10:9-16:9/9k/8115/72533088/8115_10383227_IMG_01_0000_max_296x197.jpg"
+      },
+      "displayStatus": "",
+      "formattedBranchName": " by Russell & Butler, Bucks, South Northants & North Oxon, Buckingham",
+      "addedOrReduced": "Added on 14/08/2020",
+      "isRecent": false,
+      "formattedDistance": "",
+      "hasBrandPlus": true
+    }
+  ],
+  "resultCount": "1"
+}

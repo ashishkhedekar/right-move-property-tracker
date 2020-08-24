@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,6 +27,7 @@ public class DefaultPropertyDao implements PropertyDao
    private final List<ChangeDetector> changeDetectors;
 
    @Override
+   @Transactional
    public void createOrUpdate(final PropertyDto propertyDto)
    {
       LOG.info("Number of change detectors are [{}]", changeDetectors.size() );
