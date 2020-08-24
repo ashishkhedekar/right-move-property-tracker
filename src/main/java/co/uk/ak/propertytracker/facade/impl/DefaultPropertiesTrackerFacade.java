@@ -33,30 +33,39 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
    @Override
    public void trackProperties(final SearchCriteriaDto searchCriteria)
    {
-      final Date reportStartTime = DateTime.now().toDate();
-      //Query RightMove
-      final RightMoveResult rightMoveResult = webClient.callRightMove(searchCriteria);
-      LOG.info("Found [{}] properties from web", rightMoveResult.getProperties().size());
-
-      //Save/update in DB
-      rightMoveResult.getProperties().forEach(rightMoveProperty -> {
-         final PropertyDto propertyDto = rightMovePropertyToPropertyDtoMapper.rightMovePropertyToPropertyDto(rightMoveProperty);
-         LOG.info("Property DTO found for id [{}] ", propertyDto.getId());
-         propertyDao.createOrUpdate(propertyDto);
-      });
-
-      //Generate Reports
-      final MarketMovementReport trackingResult = marketMovementReportService.generateMarketMovementReport(reportStartTime, searchCriteria.getChannel());
-
-      //send email
-      if (trackingResult.needsReporting())
+      try
       {
-         emailSender.sendLettingReportsEmail(trackingResult);
-         LOG.info("Email sent...!");
+         final Date reportStartTime = DateTime.now().toDate();
+         //Query RightMove
+         final RightMoveResult rightMoveResult = webClient.callRightMove(searchCriteria);
+         LOG.info("Found [{}] properties from web", rightMoveResult.getProperties().size());
+
+         //Save/update in DB
+         rightMoveResult.getProperties().forEach(rightMoveProperty -> {
+            final PropertyDto propertyDto = rightMovePropertyToPropertyDtoMapper.rightMovePropertyToPropertyDto(rightMoveProperty);
+            LOG.info("Property DTO found for id [{}] ", propertyDto.getId());
+            propertyDao.createOrUpdate(propertyDto);
+         });
+
+         //Generate Reports
+         final MarketMovementReport trackingResult = marketMovementReportService.generateMarketMovementReport(reportStartTime, searchCriteria.getChannel());
+
+         //send email
+         if (trackingResult.needsReporting())
+         {
+            emailSender.sendLettingReportsEmail(trackingResult);
+            LOG.info("Email sent...!");
+         }
+         else
+         {
+            LOG.info("Nothing to report.");
+         }
+         throw new RuntimeException("Ssss");
       }
-      else
+      catch (Exception e)
       {
-         LOG.info("Nothing to report.");
+         emailSender.sendSomethingWentWrongEmail(e.getMessage());
       }
+
    }
 }

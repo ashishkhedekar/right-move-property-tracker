@@ -26,6 +26,22 @@ public class DefaultEmailService implements EmailService
    private EmailSender emailSender;
 
    @Override
+   public void sendSomethingWentWrongEmail(String message)
+   {
+      final Map<String, Object> model = new HashMap<>();
+      model.put("message", message);
+
+      final Mail mail = Mail.builder().
+               to(emailNotificationRecipients)
+               .from("right.move.property.alerts@gmail.com")
+               .subject("Something went wrong while sending email, [" + simpleDateFormat.format(DateTime.now().toDate()) + "]")
+               .model(model)
+               .build();
+
+      emailSender.sendEmail(mail, "something-went-wrong.ftl");
+   }
+
+   @Override
    public void sendLettingReportsEmail(final MarketMovementReport trackingResult)
    {
       final Map<String, Object> model = new HashMap<>();
