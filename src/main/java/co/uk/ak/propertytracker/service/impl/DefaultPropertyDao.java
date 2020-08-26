@@ -7,11 +7,15 @@ import co.uk.ak.propertytracker.repository.PropertyRepository;
 import co.uk.ak.propertytracker.service.PropertyDao;
 import co.uk.ak.propertytracker.strategy.ChangeDetector;
 import lombok.AllArgsConstructor;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +42,8 @@ public class DefaultPropertyDao implements PropertyDao
          LOG.info("Property model found, going to update some attributes");
          final PropertyModel propertyModel = propertyModelOptional.get();
          changeDetectors.forEach(cd -> cd.detectAndPersist(propertyModel, propertyDto));
+         propertyModel.setLastPropertyUpdateReceived(DateTime.now().toDate());
+         propertyModel.setDaysOnMarket(calculateDaysOnMarket(propertyModel));
          propertyRepository.save(propertyModel);
       }
       else
@@ -46,5 +52,10 @@ public class DefaultPropertyDao implements PropertyDao
          final PropertyModel propertyModel = propertyDtoToPropertyModelMapper.propertyDtoPropertyModelMapper(propertyDto);
          propertyRepository.save(propertyModel);
       }
+   }
+
+   private int calculateDaysOnMarket(final PropertyModel propertyModel)
+   {
+      return Period.between(propertyModel.getFirstVisibleDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalDate.now()).getDays();
    }
 }

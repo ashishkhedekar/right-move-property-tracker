@@ -71,6 +71,7 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
       }
       catch (Exception e)
       {
+         e.printStackTrace();
          emailSender.sendSomethingWentWrongEmail(e.getMessage());
       }
    }

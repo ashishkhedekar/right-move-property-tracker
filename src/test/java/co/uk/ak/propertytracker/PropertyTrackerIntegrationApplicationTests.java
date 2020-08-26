@@ -6,6 +6,7 @@ import co.uk.ak.propertytracker.repository.PropertyRepository;
 import co.uk.ak.propertytracker.repository.PropertyUpdateRecordRepository;
 import co.uk.ak.propertytracker.rule.SmtpServerRule;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import org.joda.time.DateTime;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -86,6 +87,7 @@ public class PropertyTrackerIntegrationApplicationTests
       existingProperty.setPropertyId(SINGLE_NO_CHANGE_PROPERTY);
       existingProperty.setDisplayStatus("");
       existingProperty.setBedrooms(4);
+      existingProperty.setFirstVisibleDate(DateTime.now().minusDays(10).toDate());
       propertyRepository.save(existingProperty);
 
       stubFor(get(urlMatching("/api/_search\\?locationIdentifier=london(.)*"))
@@ -110,6 +112,7 @@ public class PropertyTrackerIntegrationApplicationTests
       existingProperty.setPropertyId(SINGLE_LET_PROPERTY);
       existingProperty.setDisplayStatus("");
       existingProperty.setBedrooms(4);
+      existingProperty.setFirstVisibleDate(DateTime.now().minusDays(10).toDate());
       propertyRepository.save(existingProperty);
 
       stubFor(get(urlMatching("/api/_search\\?locationIdentifier=london(.)*"))
@@ -206,12 +209,14 @@ public class PropertyTrackerIntegrationApplicationTests
       existingProperty1.setPropertyId(TWO_LET_PROPERTIES_1);
       existingProperty1.setDisplayStatus("");
       existingProperty1.setBedrooms(4);
+      existingProperty1.setFirstVisibleDate(DateTime.now().minusDays(10).toDate());
       propertyRepository.save(existingProperty1);
 
       final PropertyModel existingProperty2 = new PropertyModel();
       existingProperty2.setPropertyId(TWO_LET_PROPERTIES_2);
       existingProperty2.setDisplayStatus("");
       existingProperty2.setBedrooms(4);
+      existingProperty2.setFirstVisibleDate(DateTime.now().minusDays(10).toDate());
       propertyRepository.save(existingProperty2);
 
       stubFor(get(urlMatching("/api/_search\\?locationIdentifier=london(.)*"))

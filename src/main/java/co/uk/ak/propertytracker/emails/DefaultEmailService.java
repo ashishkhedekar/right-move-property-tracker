@@ -26,7 +26,7 @@ public class DefaultEmailService implements EmailService
    private EmailSender emailSender;
 
    @Override
-   public void sendSomethingWentWrongEmail(String message)
+   public void sendSomethingWentWrongEmail(final String message)
    {
       final Map<String, Object> model = new HashMap<>();
       model.put("message", message);

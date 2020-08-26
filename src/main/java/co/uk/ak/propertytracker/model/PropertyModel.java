@@ -33,8 +33,10 @@ public class PropertyModel extends AbstractModel
    //Market information
    private String channel;
    private Date firstVisibleDate;
+   private boolean onMarket = true;
    private Date offMarketDate;
-   private Long daysOnMarket;
+   private int daysOnMarket;
+   private Date lastPropertyUpdateReceived;
 
    @OneToMany(
             mappedBy = "property",
@@ -183,12 +185,12 @@ public class PropertyModel extends AbstractModel
       this.offMarketDate = offMarketDate;
    }
 
-   public Long getDaysOnMarket()
+   public int getDaysOnMarket()
    {
       return daysOnMarket;
    }
 
-   public void setDaysOnMarket(Long daysOnMarket)
+   public void setDaysOnMarket(int daysOnMarket)
    {
       this.daysOnMarket = daysOnMarket;
    }
@@ -201,5 +203,25 @@ public class PropertyModel extends AbstractModel
    public void setPropertyUpdateRecords(List<PropertyUpdateRecordModel> propertyUpdateRecords)
    {
       this.propertyUpdateRecords = propertyUpdateRecords;
+   }
+
+   public boolean isOnMarket()
+   {
+      return onMarket;
+   }
+
+   public void setOnMarket(boolean onMarket)
+   {
+      this.onMarket = onMarket;
+   }
+
+   public Date getLastPropertyUpdateReceived()
+   {
+      return lastPropertyUpdateReceived;
+   }
+
+   public void setLastPropertyUpdateReceived(Date lastPropertyUpdateReceived)
+   {
+      this.lastPropertyUpdateReceived = lastPropertyUpdateReceived;
    }
 }
