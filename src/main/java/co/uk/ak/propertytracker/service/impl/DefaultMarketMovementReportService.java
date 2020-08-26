@@ -9,6 +9,7 @@ import co.uk.ak.propertytracker.repository.PropertyRepository;
 import co.uk.ak.propertytracker.repository.PropertyUpdateRecordRepository;
 import co.uk.ak.propertytracker.service.MarketMovementReportService;
 import lombok.AllArgsConstructor;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -40,10 +41,13 @@ public class DefaultMarketMovementReportService implements MarketMovementReportS
       final List<PropertyUpdateRecordModel> propertyUpdates = propertyUpdateRecordRepository.findByCreationTimeGreaterThanAndPropertyChannel(reportStartTime, channel);
       LOG.info("update records found [{}]", propertyUpdates.size());
       propertyUpdates.stream()
-               .filter(p -> p.getField().equalsIgnoreCase("displayStatus"))
-               .forEach(p -> {
+               .filter(p -> p.getField().equalsIgnoreCase("displayStatus")).map(PropertyUpdateRecordModel::getProperty)
+               .forEach(property -> {
                   numberOfLetProperties.incrementAndGet();
-                  letProperties.add(propertyDtoToPropertyModelMapper.propertyModelPropertyDtoMapper(p.getProperty()));
+                  property.setOnMarket(false);
+                  property.setOffMarketDate(DateTime.now().toDate());
+                  propertyRepository.save(property);
+                  letProperties.add(propertyDtoToPropertyModelMapper.propertyModelPropertyDtoMapper(property));
                });
 
       final List<PropertyModel> newPropertiesOnTheMarket = propertyRepository.findByCreationTimeGreaterThan(reportStartTime);

@@ -26,13 +26,16 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
 {
    private static final Logger LOG = LoggerFactory.getLogger(DefaultPropertiesTrackerFacade.class);
 
+   private final ObjectMapper objectMapper;
+
    private final RightMoveWebClient webClient;
    private final RightMoveSearchResultDao rightMoveSearchResultDao;
-   private final RightMovePropertyToPropertyDtoMapper rightMovePropertyToPropertyDtoMapper;
+
    private final PropertyDao propertyDao;
    private final MarketMovementReportService marketMovementReportService;
-   private final EmailService emailSender;
-   private final ObjectMapper objectMapper;
+   private final EmailService emailService;
+
+   private final RightMovePropertyToPropertyDtoMapper rightMovePropertyToPropertyDtoMapper;
 
    @Override
    public void trackProperties(final SearchCriteriaDto searchCriteria)
@@ -61,7 +64,7 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
          //send email
          if (trackingResult.needsReporting())
          {
-            emailSender.sendLettingReportsEmail(trackingResult);
+            emailService.sendLettingReportsEmail(trackingResult);
             LOG.info("Email sent...!");
          }
          else
@@ -72,7 +75,13 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
       catch (Exception e)
       {
          e.printStackTrace();
-         emailSender.sendSomethingWentWrongEmail(e.getMessage());
+         emailService.sendSomethingWentWrongEmail(e.getMessage());
       }
+   }
+
+   @Override
+   public void findAndMarkOffMarketProperties()
+   {
+
    }
 }

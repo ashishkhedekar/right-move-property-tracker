@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 @AllArgsConstructor
 public class PropertiesController
@@ -45,7 +47,13 @@ public class PropertiesController
       {
          // Generating report for all search results
          LOG.info("Generating report for all search results");
-         searchCriteriaFacade.getAll().forEach(trackerFacade::trackProperties);
+
+         final List<SearchCriteriaDto> searchCriteriaFacadeAll = searchCriteriaFacade.getAll();
+         LOG.info("Found [{}] search criteria ", searchCriteriaFacadeAll.size());
+         searchCriteriaFacadeAll
+                  .stream()
+                  .peek(e -> LOG.info("Tracking properties for criteris [{}] ", e.getLocationIdentifier()))
+                  .forEach(trackerFacade::trackProperties);
       }
       return ResponseEntity.status(HttpStatus.OK).body("This app is doing some important stuff");
    }

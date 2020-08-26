@@ -21,7 +21,7 @@ public class Scheduler
 
    //Runs every house between 7am till 10pm
    @Scheduled(cron = "0 0 6-23 * * *")
-   public void runRightMoveQuery()
+   public void fetchRightMovePropertyUpdates()
    {
       LOG.info("Scheduler triggered");
       searchCriteriaFacade.getAll().forEach(propertiesTrackerFacade::trackProperties);
