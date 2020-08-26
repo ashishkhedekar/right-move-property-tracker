@@ -27,12 +27,12 @@ public class DefaultPropertyOffMarketReportService implements PropertyOffMarketR
    public MarketMovementReport generatePropertyOffMarketReport()
    {
       final Date cutOffDate = DateTime.now().withTimeAtStartOfDay().toDate();
-      final List<PropertyModel> offMarketProperties = propertyRepository.findByLastPropertyUpdateReceivedLessThan(cutOffDate);
+      final List<PropertyModel> offMarketProperties = propertyRepository.findByLastPropertyUpdateReceivedLessThanOrLastPropertyUpdateReceivedIsNull(cutOffDate);
 
       final List<PropertyDto> offMarketPropertiesDtos = new ArrayList<>();
 
       offMarketProperties.stream()
-               .filter(PropertyModel::isOnMarket)
+               .filter(e -> e.isOnMarket() == null || e.isOnMarket())
                .forEach(propertyModel -> {
                   propertyModel.setOnMarket(false);
                   propertyModel.setOffMarketDate(cutOffDate);
@@ -43,7 +43,7 @@ public class DefaultPropertyOffMarketReportService implements PropertyOffMarketR
 
       return MarketMovementReport.builder()
                .offMarketProperties(offMarketPropertiesDtos)
-               .numberOfOffMarketProperties(offMarketProperties.size())
+               .numberOfOffMarketProperties(offMarketPropertiesDtos.size())
                .build();
    }
 }

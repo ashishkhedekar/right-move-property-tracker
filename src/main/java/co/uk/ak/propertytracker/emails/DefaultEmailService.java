@@ -67,6 +67,23 @@ public class DefaultEmailService implements EmailService
       emailSender.sendEmail(mail, "right-move-lettings-report.ftl");
    }
 
+   @Override
+   public void sendDailyOffMarketPropertiesReportEmail(final MarketMovementReport marketMovementReport)
+   {
+      final Map<String, Object> model = new HashMap<>();
+      model.put("numberOfOffMarketProperties", marketMovementReport.getNumberOfOffMarketProperties());
+      model.put("offMarketProperties", marketMovementReport.getOffMarketProperties());
+
+      final Mail mail = Mail.builder().
+               to(emailNotificationRecipients)
+               .from("right.move.property.alerts@gmail.com")
+               .subject(buildSubject("Daily "))
+               .model(model)
+               .build();
+
+      emailSender.sendEmail(mail, "daily-off-market-properties-report.ftl");
+   }
+
    private String buildSubject(final String channel)
    {
       final StringBuilder subject = new StringBuilder();

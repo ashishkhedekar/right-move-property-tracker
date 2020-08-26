@@ -13,6 +13,6 @@ public interface PropertyRepository extends CrudRepository<PropertyModel, Long>
 
    List<PropertyModel> findByCreationTimeGreaterThan(Date reportStartTime);
 
-   List<PropertyModel> findByLastPropertyUpdateReceivedLessThan(Date cutOffTime);
+   List<PropertyModel> findByLastPropertyUpdateReceivedLessThanOrLastPropertyUpdateReceivedIsNull(Date cutOffTime);
 
 }

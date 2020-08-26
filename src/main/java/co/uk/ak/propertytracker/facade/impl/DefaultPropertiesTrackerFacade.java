@@ -10,6 +10,7 @@ import co.uk.ak.propertytracker.rightmove.client.RightMoveWebClient;
 import co.uk.ak.propertytracker.rightmove.dto.RightMoveResult;
 import co.uk.ak.propertytracker.service.MarketMovementReportService;
 import co.uk.ak.propertytracker.service.PropertyDao;
+import co.uk.ak.propertytracker.service.PropertyOffMarketReportService;
 import co.uk.ak.propertytracker.service.RightMoveSearchResultDao;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
@@ -32,8 +33,9 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
    private final RightMoveSearchResultDao rightMoveSearchResultDao;
 
    private final PropertyDao propertyDao;
-   private final MarketMovementReportService marketMovementReportService;
    private final EmailService emailService;
+   private final MarketMovementReportService marketMovementReportService;
+   private final PropertyOffMarketReportService propertyOffMarketReportService;
 
    private final RightMovePropertyToPropertyDtoMapper rightMovePropertyToPropertyDtoMapper;
 
@@ -59,17 +61,17 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
          });
 
          //Generate Reports
-         final MarketMovementReport trackingResult = marketMovementReportService.generateMarketMovementReport(reportStartTime, searchCriteria.getChannel());
+         final MarketMovementReport marketMovementReport = marketMovementReportService.generateMarketMovementReport(reportStartTime, searchCriteria.getChannel());
 
          //send email
-         if (trackingResult.needsReporting())
+         if (marketMovementReport.needsReporting())
          {
-            emailService.sendLettingReportsEmail(trackingResult);
-            LOG.info("Email sent...!");
+            emailService.sendLettingReportsEmail(marketMovementReport);
+            LOG.info("Hourly reporting : Email sent...!");
          }
          else
          {
-            LOG.info("Nothing to report.");
+            LOG.info("Hourly reporting : Nothing to report.");
          }
       }
       catch (Exception e)
@@ -82,6 +84,17 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
    @Override
    public void findAndMarkOffMarketProperties()
    {
+      final MarketMovementReport marketMovementReport = propertyOffMarketReportService.generatePropertyOffMarketReport();
+      //send email
+      if (marketMovementReport.needsReporting())
+      {
+         emailService.sendDailyOffMarketPropertiesReportEmail(marketMovementReport);
+         LOG.info("OffMarket Reporting : Email sent...!");
+      }
+      else
+      {
+         LOG.info("OffMarket Reporting : Nothing to report.");
+      }
 
    }
 }

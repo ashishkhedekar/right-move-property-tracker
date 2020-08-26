@@ -2,6 +2,7 @@ package co.uk.ak.propertytracker.dto;
 
 import lombok.Builder;
 import lombok.Data;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -21,6 +22,6 @@ public class MarketMovementReport
 
    public boolean needsReporting()
    {
-      return getNewProperties().size() > 0 || getOffMarketProperties().size() > 0;
+      return !CollectionUtils.isEmpty(newProperties) || !CollectionUtils.isEmpty(offMarketProperties);
    }
 }

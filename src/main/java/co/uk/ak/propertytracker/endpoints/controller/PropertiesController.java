@@ -64,4 +64,11 @@ public class PropertiesController
       searchCriteriaFacade.save(searchCriteriaDto);
       return ResponseEntity.status(HttpStatus.OK).body("Your search criteria was successfully saved");
    }
+
+   @GetMapping("/mark-off-market-properties")
+   public ResponseEntity<String> findAndMarkOffMarketProperties()
+   {
+      trackerFacade.findAndMarkOffMarketProperties();
+      return ResponseEntity.status(HttpStatus.OK).body("Properties marked off market");
+   }
 }

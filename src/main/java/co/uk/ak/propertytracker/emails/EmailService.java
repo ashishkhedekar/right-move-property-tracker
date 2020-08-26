@@ -8,4 +8,6 @@ public interface EmailService
 
    void sendLettingReportsEmail(MarketMovementReport trackingResult);
 
+   void sendDailyOffMarketPropertiesReportEmail(MarketMovementReport marketMovementReport);
+
 }

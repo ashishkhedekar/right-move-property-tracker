@@ -23,8 +23,16 @@ public class Scheduler
    @Scheduled(cron = "0 0 6-23 * * *")
    public void fetchRightMovePropertyUpdates()
    {
-      LOG.info("Scheduler triggered");
+      LOG.info("Scheduler triggered for fetchRightMovePropertyUpdates");
       searchCriteriaFacade.getAll().forEach(propertiesTrackerFacade::trackProperties);
-      LOG.info("Scheduler finished");
+      LOG.info("Scheduler finished for fetchRightMovePropertyUpdates");
+   }
+
+   @Scheduled(cron = "0 30 22 * * *")
+   public void findAndMarkOffMarketProperties()
+   {
+      LOG.info("Scheduler triggered for findAndMarkOffMarketProperties");
+      propertiesTrackerFacade.findAndMarkOffMarketProperties();
+      LOG.info("Scheduler finished for findAndMarkOffMarketProperties");
    }
 }
