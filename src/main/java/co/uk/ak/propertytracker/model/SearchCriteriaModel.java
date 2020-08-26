@@ -1,6 +1,9 @@
 package co.uk.ak.propertytracker.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "search_criteria")

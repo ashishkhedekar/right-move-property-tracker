@@ -31,10 +31,17 @@ public class DefaultEmailService implements EmailService
       final Map<String, Object> model = new HashMap<>();
       model.put("message", message);
 
+      final StringBuilder subject = new StringBuilder();
+      if (!isProduction())
+      {
+         subject.append("[TEST] ");
+      }
+      subject.append("Something went wrong while sending email, [").append(simpleDateFormat.format(DateTime.now().toDate())).append("]");
+
       final Mail mail = Mail.builder().
                to(emailNotificationRecipients)
                .from("right.move.property.alerts@gmail.com")
-               .subject("Something went wrong while sending email, [" + simpleDateFormat.format(DateTime.now().toDate()) + "]")
+               .subject(subject.toString())
                .model(model)
                .build();
 
@@ -63,7 +70,7 @@ public class DefaultEmailService implements EmailService
    private String buildSubject(final String channel)
    {
       final StringBuilder subject = new StringBuilder();
-      if (currentEnvironment == null || !currentEnvironment.equalsIgnoreCase("PRODUCTION"))
+      if (!isProduction())
       {
          subject.append("[TEST] ");
       }
@@ -73,6 +80,11 @@ public class DefaultEmailService implements EmailService
                .append(simpleDateFormat.format(DateTime.now().toDate()))
                .append("]");
       return subject.toString();
+   }
+
+   private boolean isProduction()
+   {
+      return currentEnvironment == null || !currentEnvironment.equalsIgnoreCase("PRODUCTION");
    }
 
    private String getChannelDisplayText(final String channel)

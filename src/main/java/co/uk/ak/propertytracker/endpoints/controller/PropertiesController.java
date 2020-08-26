@@ -37,6 +37,7 @@ public class PropertiesController
       {
             LOG.info("Getting properties for location [{}]", locationId);
             SearchCriteriaDto searchCriteria = new SearchCriteriaDto();
+            searchCriteria.setId(1L);
             searchCriteria.setLocationIdentifier(locationId);
             trackerFacade.trackProperties(searchCriteria);
       }
@@ -55,6 +56,4 @@ public class PropertiesController
       searchCriteriaFacade.save(searchCriteriaDto);
       return ResponseEntity.status(HttpStatus.OK).body("Your search criteria was successfully saved");
    }
-
-
 }

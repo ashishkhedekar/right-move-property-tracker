@@ -1,6 +1,5 @@
 package co.uk.ak.propertytracker.rightmove.client;
 
-import co.uk.ak.propertytracker.rightmove.dto.RightMoveResult;
 import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -31,9 +30,9 @@ public class RightMoveWebClient
    private RestTemplate restTemplate;
 
    @SneakyThrows
-   public RightMoveResult callRightMove(final SearchCriteriaDto searchCriteria)
+   public String callRightMove(final SearchCriteriaDto searchCriteria)
    {
-      return restTemplate.getForObject(URI.create(buildSearchUrl(searchCriteria)), RightMoveResult.class);
+      return restTemplate.getForObject(URI.create(buildSearchUrl(searchCriteria)), String.class);
    }
 
    private String buildSearchUrl(final SearchCriteriaDto searchCriteriaDto)

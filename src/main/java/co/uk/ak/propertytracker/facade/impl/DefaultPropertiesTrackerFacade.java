@@ -8,8 +8,10 @@ import co.uk.ak.propertytracker.facade.PropertiesTrackerFacade;
 import co.uk.ak.propertytracker.mapper.RightMovePropertyToPropertyDtoMapper;
 import co.uk.ak.propertytracker.rightmove.client.RightMoveWebClient;
 import co.uk.ak.propertytracker.rightmove.dto.RightMoveResult;
-import co.uk.ak.propertytracker.service.PropertyDao;
 import co.uk.ak.propertytracker.service.MarketMovementReportService;
+import co.uk.ak.propertytracker.service.PropertyDao;
+import co.uk.ak.propertytracker.service.RightMoveSearchResultDao;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
@@ -25,10 +27,12 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
    private static final Logger LOG = LoggerFactory.getLogger(DefaultPropertiesTrackerFacade.class);
 
    private final RightMoveWebClient webClient;
+   private final RightMoveSearchResultDao rightMoveSearchResultDao;
    private final RightMovePropertyToPropertyDtoMapper rightMovePropertyToPropertyDtoMapper;
    private final PropertyDao propertyDao;
    private final MarketMovementReportService marketMovementReportService;
    private final EmailService emailSender;
+   private final ObjectMapper objectMapper;
 
    @Override
    public void trackProperties(final SearchCriteriaDto searchCriteria)
@@ -37,7 +41,11 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
       {
          final Date reportStartTime = DateTime.now().toDate();
          //Query RightMove
-         final RightMoveResult rightMoveResult = webClient.callRightMove(searchCriteria);
+         final String rightMoveResponse = webClient.callRightMove(searchCriteria);
+
+         //Save the response from rightmove for future purpose
+         rightMoveSearchResultDao.save(rightMoveResponse, searchCriteria.getId());
+         final RightMoveResult rightMoveResult = objectMapper.readValue(rightMoveResponse, RightMoveResult.class);
          LOG.info("Found [{}] properties from web", rightMoveResult.getProperties().size());
 
          //Save/update in DB
@@ -60,12 +68,10 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
          {
             LOG.info("Nothing to report.");
          }
-         throw new RuntimeException("Ssss");
       }
       catch (Exception e)
       {
          emailSender.sendSomethingWentWrongEmail(e.getMessage());
       }
-
    }
 }

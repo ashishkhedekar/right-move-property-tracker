@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class SearchCriteriaDto
 {
+   private Long id;
    private String locationIdentifier;
    private int minBedrooms;
    private long maxPrice = 10000000;
