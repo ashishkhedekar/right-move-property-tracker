@@ -32,7 +32,7 @@ public class DefaultEmailService implements EmailService
       model.put("message", message);
 
       final StringBuilder subject = new StringBuilder();
-      if (!isProduction())
+      if (!isTest())
       {
          subject.append("[TEST] ");
       }
@@ -87,7 +87,7 @@ public class DefaultEmailService implements EmailService
    private String buildSubject(final String channel)
    {
       final StringBuilder subject = new StringBuilder();
-      if (!isProduction())
+      if (isTest())
       {
          subject.append("[TEST] ");
       }
@@ -99,7 +99,7 @@ public class DefaultEmailService implements EmailService
       return subject.toString();
    }
 
-   private boolean isProduction()
+   private boolean isTest()
    {
       return currentEnvironment == null || !currentEnvironment.equalsIgnoreCase("PRODUCTION");
    }
