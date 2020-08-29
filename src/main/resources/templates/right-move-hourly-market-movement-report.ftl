@@ -9,8 +9,15 @@
 <body class="bg-light">
 <h1>Today's summary!</h1>
 
-    <h3> Number of let properties:  ${numberOfOffMarketProperties} </h3>
-    <h3> Number of new properties on market:  ${numberOfNewProperties} </h3>
+    <#if offMarketProperties?size != 0>
+        <h3> Number of properties ${changeOfStatus}:  ${numberOfOffMarketProperties} </h3>
+    </#if>
+
+    <#if newProperties?size != 0>
+        <h3> Number of new properties on market:  ${numberOfNewProperties} </h3>
+    </#if>
+
+    ========================================================================================
 
     <#if offMarketProperties?size != 0>
 
@@ -33,7 +40,7 @@
                     Days to Let
                 </th>
                 <th>
-                    Is Premium
+                    Price
                 </th>
             </tr>
             <#list offMarketProperties as offMarketProperties>
@@ -56,7 +63,7 @@
                     <p>${offMarketProperties.daysOnMarket()}
                 </td>
                 <td>
-                    <p><#if offMarketProperties.premiumListing??>${offMarketProperties.premiumListing?string('Yes', 'No')}<#else>No</#if>
+                    <p>${offMarketProperties.displayPrice}
                 </td>
             </tr>
             </#list>
@@ -83,7 +90,7 @@
                 Days to Let
             </th>
             <th>
-                Is Premium
+                Price
             </th>
         </tr>
         <#list newProperties as newProperty>
@@ -106,7 +113,7 @@
                     <p>${newProperty.daysOnMarket()}
                 </td>
                 <td>
-                    <p><#if newProperty.premiumListing??>${newProperty.premiumListing?string('Yes', 'No')}<#else>No</#if>
+                    <p>${newProperty.displayPrice}
                 </td>
             </tr>
         </#list>

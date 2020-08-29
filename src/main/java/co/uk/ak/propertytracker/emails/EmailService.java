@@ -6,7 +6,7 @@ public interface EmailService
 {
    void sendSomethingWentWrongEmail(String message);
 
-   void sendLettingReportsEmail(MarketMovementReport trackingResult);
+   void sendHourlyMarketMovementReportEmail(MarketMovementReport trackingResult);
 
    void sendDailyOffMarketPropertiesReportEmail(MarketMovementReport marketMovementReport);
 

@@ -48,7 +48,7 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
          //Query RightMove
          final String rightMoveResponse = webClient.callRightMove(searchCriteria);
 
-         //Save the response from rightmove for future purpose
+         //Save the response from right move for future purpose
          rightMoveSearchResultDao.save(rightMoveResponse, searchCriteria.getId());
          final RightMoveResult rightMoveResult = objectMapper.readValue(rightMoveResponse, RightMoveResult.class);
          LOG.info("Found [{}] properties from web", rightMoveResult.getProperties().size());
@@ -66,7 +66,7 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
          //send email
          if (marketMovementReport.needsReporting())
          {
-            emailService.sendLettingReportsEmail(marketMovementReport);
+            emailService.sendHourlyMarketMovementReportEmail(marketMovementReport);
             LOG.info("Hourly reporting : Email sent...!");
          }
          else

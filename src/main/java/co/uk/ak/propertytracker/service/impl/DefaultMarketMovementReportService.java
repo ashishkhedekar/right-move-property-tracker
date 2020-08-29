@@ -34,20 +34,21 @@ public class DefaultMarketMovementReportService implements MarketMovementReportS
    public MarketMovementReport generateMarketMovementReport(final Date reportStartTime, final String channel)
    {
       //Generate Reports
-      final AtomicInteger numberOfLetProperties = new AtomicInteger();
-      final List<PropertyDto> letProperties = new ArrayList<>();
+      final AtomicInteger numberOfOffMarketProperties = new AtomicInteger();
+      final List<PropertyDto> offMarketProperties = new ArrayList<>();
 
       // Get Property Updates based on the channel
       final List<PropertyUpdateRecordModel> propertyUpdates = propertyUpdateRecordRepository.findByCreationTimeGreaterThanAndPropertyChannel(reportStartTime, channel);
       LOG.info("update records found [{}]", propertyUpdates.size());
       propertyUpdates.stream()
-               .filter(p -> p.getField().equalsIgnoreCase("displayStatus")).map(PropertyUpdateRecordModel::getProperty)
+               .filter(p -> p.getField().equalsIgnoreCase("displayStatus"))
+               .map(PropertyUpdateRecordModel::getProperty)
                .forEach(property -> {
-                  numberOfLetProperties.incrementAndGet();
+                  numberOfOffMarketProperties.incrementAndGet();
                   property.setOnMarket(false);
                   property.setOffMarketDate(DateTime.now().toDate());
                   propertyRepository.save(property);
-                  letProperties.add(propertyDtoToPropertyModelMapper.propertyModelPropertyDtoMapper(property));
+                  offMarketProperties.add(propertyDtoToPropertyModelMapper.propertyModelPropertyDtoMapper(property));
                });
 
       final List<PropertyModel> newPropertiesOnTheMarket = propertyRepository.findByCreationTimeGreaterThan(reportStartTime);
@@ -58,8 +59,8 @@ public class DefaultMarketMovementReportService implements MarketMovementReportS
 
       //Send Emails
       return MarketMovementReport.builder()
-               .numberOfOffMarketProperties(numberOfLetProperties.get())
-               .offMarketProperties(letProperties)
+               .numberOfOffMarketProperties(numberOfOffMarketProperties.get())
+               .offMarketProperties(offMarketProperties)
                .numberOfNewProperties(newPropertiesDtoOnTheMarket.size())
                .newProperties(newPropertiesDtoOnTheMarket)
                .channel(channel)

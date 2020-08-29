@@ -75,7 +75,7 @@ public class TrialController
                .offMarketProperties(properties)
                .build();
 
-      emailService.sendLettingReportsEmail(build);
+      emailService.sendHourlyMarketMovementReportEmail(build);
       return ResponseEntity.status(HttpStatus.OK).body(String.format("Email sent..!!!"));
 
    }

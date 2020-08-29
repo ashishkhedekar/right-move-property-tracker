@@ -49,13 +49,14 @@ public class DefaultEmailService implements EmailService
    }
 
    @Override
-   public void sendLettingReportsEmail(final MarketMovementReport trackingResult)
+   public void sendHourlyMarketMovementReportEmail(final MarketMovementReport trackingResult)
    {
       final Map<String, Object> model = new HashMap<>();
       model.put("numberOfOffMarketProperties", trackingResult.getNumberOfOffMarketProperties());
       model.put("offMarketProperties", trackingResult.getOffMarketProperties());
       model.put("numberOfNewProperties", trackingResult.getNumberOfNewProperties());
       model.put("newProperties", trackingResult.getNewProperties());
+      model.put("changeOfStatus", trackingResult.getChannel().equalsIgnoreCase("lettings") ? "let out" : "sold");
 
       final Mail mail = Mail.builder().
                to(emailNotificationRecipients)
@@ -64,7 +65,7 @@ public class DefaultEmailService implements EmailService
                .model(model)
                .build();
 
-      emailSender.sendEmail(mail, "right-move-lettings-report.ftl");
+      emailSender.sendEmail(mail, "right-move-hourly-market-movement-report.ftl");
    }
 
    @Override
