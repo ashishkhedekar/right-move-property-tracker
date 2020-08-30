@@ -1,9 +1,6 @@
 package co.uk.ak.propertytracker.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "search_criteria")
@@ -22,6 +19,8 @@ public class SearchCriteriaModel extends AbstractModel
    private String currencyCode;
    private String channel;
    private boolean isFetching;
+   @OneToOne
+   private LocationModel location;
 
    public String getLocationIdentifier()
    {
@@ -141,5 +140,15 @@ public class SearchCriteriaModel extends AbstractModel
    public void setFetching(boolean fetching)
    {
       isFetching = fetching;
+   }
+
+   public LocationModel getLocation()
+   {
+      return location;
+   }
+
+   public void setLocation(LocationModel location)
+   {
+      this.location = location;
    }
 }

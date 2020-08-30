@@ -1,12 +1,15 @@
 package co.uk.ak.propertytracker.facade.impl;
 
+import co.uk.ak.propertytracker.dto.LocationDto;
 import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
 import co.uk.ak.propertytracker.facade.SearchCriteriaFacade;
 import co.uk.ak.propertytracker.mapper.SearchCriteriaMapper;
 import co.uk.ak.propertytracker.model.LettingsSearchCriteriaModel;
+import co.uk.ak.propertytracker.model.LocationModel;
 import co.uk.ak.propertytracker.model.SalesSearchCriteriaModel;
 import co.uk.ak.propertytracker.model.SearchCriteriaModel;
 import co.uk.ak.propertytracker.repository.SearchCriteriaRepository;
+import co.uk.ak.propertytracker.service.LocationDao;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,12 +26,18 @@ public class DefaultSearchCriteriaFacade implements SearchCriteriaFacade
 
    private final SearchCriteriaMapper searchCriteriaMapper;
    private final SearchCriteriaRepository searchCriteriaRepository;
+   private final LocationDao locationDao;
 
    @Override
    public void save(final SearchCriteriaDto searchCriteriaDto)
    {
       //check if search criteria already exists
       final SearchCriteriaModel searchCriteriaModel = searchCriteriaMapper.toSearchCriteriaModel(searchCriteriaDto);
+      final LocationDto locationDto = LocationDto.builder()
+               .locationIdentifier(searchCriteriaDto.getLocationIdentifier())
+               .build();
+      final LocationModel locationModel = locationDao.getOrCreate(locationDto);
+      searchCriteriaModel.setLocation(locationModel);
       searchCriteriaRepository.save(searchCriteriaModel);
    }
 
