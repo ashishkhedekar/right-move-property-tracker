@@ -18,7 +18,7 @@ public class MarketMovementReport
 
    private List<PropertyDto> offMarketProperties;
 
-   private String channel;
+   private Channel channel;
 
    public boolean needsReporting()
    {

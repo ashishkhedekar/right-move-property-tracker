@@ -28,7 +28,7 @@ public class PropertyDto
    private String displaySize;
    private String propertyUrl;
    private String contactUrl;
-   private String channel;
+   private Channel channel;
    private String firstVisibleDate;
    private String heading;
    private Boolean enhancedListing;

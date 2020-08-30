@@ -71,4 +71,6 @@ public class PropertiesController
       trackerFacade.findAndMarkOffMarketProperties();
       return ResponseEntity.status(HttpStatus.OK).body("Properties marked off market");
    }
+
+
 }

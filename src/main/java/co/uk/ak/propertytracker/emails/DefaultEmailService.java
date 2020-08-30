@@ -1,5 +1,6 @@
 package co.uk.ak.propertytracker.emails;
 
+import co.uk.ak.propertytracker.dto.Channel;
 import co.uk.ak.propertytracker.dto.MarketMovementReport;
 import co.uk.ak.propertytracker.emails.dto.Mail;
 import org.joda.time.DateTime;
@@ -56,12 +57,12 @@ public class DefaultEmailService implements EmailService
       model.put("offMarketProperties", trackingResult.getOffMarketProperties());
       model.put("numberOfNewProperties", trackingResult.getNumberOfNewProperties());
       model.put("newProperties", trackingResult.getNewProperties());
-      model.put("changeOfStatus", trackingResult.getChannel().equalsIgnoreCase("lettings") ? "let out" : "sold");
+      model.put("changeOfStatus", trackingResult.getChannel() == Channel.RENT ? "let out" : "sold");
 
       final Mail mail = Mail.builder().
                to(emailNotificationRecipients)
                .from("right.move.property.alerts@gmail.com")
-               .subject(buildSubject(trackingResult.getChannel()))
+               .subject(buildSubject(getChannelDisplayText(trackingResult.getChannel())))
                .model(model)
                .build();
 
@@ -85,14 +86,14 @@ public class DefaultEmailService implements EmailService
       emailSender.sendEmail(mail, "daily-off-market-properties-report.ftl");
    }
 
-   private String buildSubject(final String channel)
+   private String buildSubject(final String typeOfReport)
    {
       final StringBuilder subject = new StringBuilder();
       if (isTest())
       {
          subject.append("[TEST] ");
       }
-      subject.append(String.format("%s report for Buckingham", getChannelDisplayText(channel))) // todo - change the hard-coding of buckingham
+      subject.append(String.format("%s report for Buckingham", typeOfReport)) // todo - change the hard-coding of buckingham
                .append(" - ")
                .append("[")
                .append(simpleDateFormat.format(DateTime.now().toDate()))
@@ -105,8 +106,8 @@ public class DefaultEmailService implements EmailService
       return currentEnvironment == null || !currentEnvironment.equalsIgnoreCase("PRODUCTION");
    }
 
-   private String getChannelDisplayText(final String channel)
+   private String getChannelDisplayText(final Channel channel)
    {
-      return channel.equalsIgnoreCase("BUY") ? "Sales" : "Lettings";
+      return channel == Channel.BUY ? "Sales" : "Lettings";
    }
 }

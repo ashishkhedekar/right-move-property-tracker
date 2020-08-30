@@ -1,5 +1,6 @@
 package co.uk.ak.propertytracker.endpoints.searchcriteriadto;
 
+import co.uk.ak.propertytracker.dto.Channel;
 import lombok.Data;
 
 @Data
@@ -16,7 +17,7 @@ public class SearchCriteriaDto
    private String viewType = "LIST";
    private String areaSizeUnit = "sqft";
    private String currencyCode = "GBP";
-   private String channel = "RENT";
+   private Channel channel = Channel.RENT;
    private boolean isFetching = false;
 
    //Lettings

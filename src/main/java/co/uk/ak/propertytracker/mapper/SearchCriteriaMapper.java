@@ -1,5 +1,6 @@
 package co.uk.ak.propertytracker.mapper;
 
+import co.uk.ak.propertytracker.dto.Channel;
 import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
 import co.uk.ak.propertytracker.model.LettingsSearchCriteriaModel;
 import co.uk.ak.propertytracker.model.SalesSearchCriteriaModel;
@@ -11,7 +12,7 @@ public interface SearchCriteriaMapper
 {
    default SearchCriteriaModel toSearchCriteriaModel(SearchCriteriaDto searchCriteriaDto)
    {
-      if (searchCriteriaDto != null && searchCriteriaDto.getChannel() != null && searchCriteriaDto.getChannel().equalsIgnoreCase("RENT"))
+      if (searchCriteriaDto != null && searchCriteriaDto.getChannel() != null && searchCriteriaDto.getChannel() == Channel.RENT)
       {
          return toLettingsSearchCriteriaModel(searchCriteriaDto);
       }

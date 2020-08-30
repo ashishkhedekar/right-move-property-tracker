@@ -1,5 +1,6 @@
 package co.uk.ak.propertytracker.service.impl;
 
+import co.uk.ak.propertytracker.dto.Channel;
 import co.uk.ak.propertytracker.dto.MarketMovementReport;
 import co.uk.ak.propertytracker.dto.PropertyDto;
 import co.uk.ak.propertytracker.mapper.PropertyDtoToPropertyModelMapper;
@@ -31,14 +32,14 @@ public class DefaultMarketMovementReportService implements MarketMovementReportS
    private final PropertyRepository propertyRepository;
 
    @Override
-   public MarketMovementReport generateMarketMovementReport(final Date reportStartTime, final String channel)
+   public MarketMovementReport generateMarketMovementReport(final Date reportStartTime, final Channel channel)
    {
       //Generate Reports
       final AtomicInteger numberOfOffMarketProperties = new AtomicInteger();
       final List<PropertyDto> offMarketProperties = new ArrayList<>();
 
       // Get Property Updates based on the channel
-      final List<PropertyUpdateRecordModel> propertyUpdates = propertyUpdateRecordRepository.findByCreationTimeGreaterThanAndPropertyChannel(reportStartTime, channel);
+      final List<PropertyUpdateRecordModel> propertyUpdates = propertyUpdateRecordRepository.findByCreationTimeGreaterThanAndPropertyChannel(reportStartTime, channel.getCode());
       LOG.info("update records found [{}]", propertyUpdates.size());
       propertyUpdates.stream()
                .filter(p -> p.getField().equalsIgnoreCase("displayStatus"))
