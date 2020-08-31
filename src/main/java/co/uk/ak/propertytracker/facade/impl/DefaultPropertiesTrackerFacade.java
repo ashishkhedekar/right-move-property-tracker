@@ -8,10 +8,7 @@ import co.uk.ak.propertytracker.facade.PropertiesTrackerFacade;
 import co.uk.ak.propertytracker.mapper.RightMovePropertyToPropertyDtoMapper;
 import co.uk.ak.propertytracker.rightmove.client.RightMoveWebClient;
 import co.uk.ak.propertytracker.rightmove.dto.RightMoveResult;
-import co.uk.ak.propertytracker.service.MarketMovementReportService;
-import co.uk.ak.propertytracker.service.PropertyDao;
-import co.uk.ak.propertytracker.service.PropertyOffMarketReportService;
-import co.uk.ak.propertytracker.service.RightMoveSearchResultDao;
+import co.uk.ak.propertytracker.service.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import org.joda.time.DateTime;
@@ -19,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 
 @Service
@@ -33,6 +31,7 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
    private final RightMoveSearchResultDao rightMoveSearchResultDao;
 
    private final PropertyDao propertyDao;
+   private final LocationDao locationDao;
    private final EmailService emailService;
    private final MarketMovementReportService marketMovementReportService;
    private final PropertyOffMarketReportService propertyOffMarketReportService;
@@ -40,6 +39,7 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
    private final RightMovePropertyToPropertyDtoMapper rightMovePropertyToPropertyDtoMapper;
 
    @Override
+   @Transactional
    public void trackProperties(final SearchCriteriaDto searchCriteria)
    {
       try
@@ -51,13 +51,13 @@ public class DefaultPropertiesTrackerFacade implements PropertiesTrackerFacade
          //Save the response from right move for future purpose
          rightMoveSearchResultDao.save(rightMoveResponse, searchCriteria.getId());
          final RightMoveResult rightMoveResult = objectMapper.readValue(rightMoveResponse, RightMoveResult.class);
-         LOG.info("Found [{}] properties from web", rightMoveResult.getProperties().size());
+         LOG.info("Received [{}] properties from web", rightMoveResult.getProperties().size());
 
          //Save/update in DB
          rightMoveResult.getProperties().forEach(rightMoveProperty -> {
             final PropertyDto propertyDto = rightMovePropertyToPropertyDtoMapper.rightMovePropertyToPropertyDto(rightMoveProperty);
-            LOG.info("Property DTO found for id [{}] ", propertyDto.getId());
             propertyDao.createOrUpdate(propertyDto);
+            locationDao.associateProperty(searchCriteria.getLocationIdentifier(), propertyDto.getId());
          });
 
          //Generate Reports

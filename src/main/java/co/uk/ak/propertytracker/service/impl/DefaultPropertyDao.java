@@ -11,8 +11,8 @@ import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -32,25 +32,25 @@ public class DefaultPropertyDao implements PropertyDao
 
    @Override
    @Transactional
-   public void createOrUpdate(final PropertyDto propertyDto)
+   public PropertyModel createOrUpdate(final PropertyDto propertyDto)
    {
-      LOG.info("Number of change detectors are [{}]", changeDetectors.size() );
-
-      final Optional<PropertyModel> propertyModelOptional = propertyRepository.findByPropertyId(Long.valueOf(propertyDto.getId()));
+      final Optional<PropertyModel> propertyModelOptional = propertyRepository.findByPropertyId(propertyDto.getId());
       if (propertyModelOptional.isPresent())
       {
-         LOG.info("Property model found, going to update some attributes");
+         LOG.info("Property model found for property id [{}], going to update some attributes", propertyDto.getId());
          final PropertyModel propertyModel = propertyModelOptional.get();
          changeDetectors.forEach(cd -> cd.detectAndPersist(propertyModel, propertyDto));
          propertyModel.setLastPropertyUpdateReceived(DateTime.now().toDate());
          propertyModel.setDaysOnMarket(calculateDaysOnMarket(propertyModel));
          propertyRepository.save(propertyModel);
+         return propertyModel;
       }
       else
       {
-         LOG.info("Going to save property model for the first time");
+         LOG.info("Going to save property model with property_id [{}] for the first time", propertyDto.getId());
          final PropertyModel propertyModel = propertyDtoToPropertyModelMapper.propertyDtoPropertyModelMapper(propertyDto);
          propertyRepository.save(propertyModel);
+         return propertyModel;
       }
    }
 

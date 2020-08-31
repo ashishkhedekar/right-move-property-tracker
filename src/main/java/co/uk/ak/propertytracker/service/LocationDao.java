@@ -6,4 +6,6 @@ import co.uk.ak.propertytracker.model.LocationModel;
 public interface LocationDao
 {
    LocationModel getOrCreate(LocationDto locationDto);
+
+   void associateProperty(String locationIdentifier, Long propertyId);
 }

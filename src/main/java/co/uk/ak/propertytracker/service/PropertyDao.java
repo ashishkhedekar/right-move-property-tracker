@@ -1,8 +1,9 @@
 package co.uk.ak.propertytracker.service;
 
 import co.uk.ak.propertytracker.dto.PropertyDto;
+import co.uk.ak.propertytracker.model.PropertyModel;
 
 public interface PropertyDao
 {
-   void createOrUpdate(PropertyDto propertyDto);
+   PropertyModel createOrUpdate(PropertyDto propertyDto);
 }

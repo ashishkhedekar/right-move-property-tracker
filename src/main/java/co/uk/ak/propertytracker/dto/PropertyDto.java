@@ -11,7 +11,7 @@ import java.time.format.DateTimeFormatter;
 @Builder
 public class PropertyDto
 {
-   private Integer id;
+   private Long id;
    private Integer bedrooms;
    private String summary;
    private String displayAddress;

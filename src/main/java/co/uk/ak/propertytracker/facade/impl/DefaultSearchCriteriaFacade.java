@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -32,13 +33,35 @@ public class DefaultSearchCriteriaFacade implements SearchCriteriaFacade
    public void save(final SearchCriteriaDto searchCriteriaDto)
    {
       //check if search criteria already exists
-      final SearchCriteriaModel searchCriteriaModel = searchCriteriaMapper.toSearchCriteriaModel(searchCriteriaDto);
+      final Optional<SearchCriteriaModel> existingSearchCriteriaOptional = searchCriteriaRepository.findByMinBedroomsAndMaxPriceAndChannelAndLocationLocationIdentifier(
+               searchCriteriaDto.getMinBedrooms(),
+               searchCriteriaDto.getMaxPrice(),
+               searchCriteriaDto.getChannel().getCode(),
+               searchCriteriaDto.getLocationIdentifier());
+
+      if (existingSearchCriteriaOptional.isEmpty())
+      {
+         //Insert if does not exist
+         final SearchCriteriaModel searchCriteriaModel = searchCriteriaMapper.toSearchCriteriaModel(searchCriteriaDto);
+         searchCriteriaModel.setLocation(getOrCreateLocation(searchCriteriaDto));
+         searchCriteriaRepository.save(searchCriteriaModel);
+      }
+      else
+      {
+         LOG.warn("Search Criteria with Location Identifier [{}] already exists ", searchCriteriaDto.getLocationIdentifier());
+         final SearchCriteriaModel searchCriteriaModel = existingSearchCriteriaOptional.get();
+         searchCriteriaModel.setLocation(getOrCreateLocation(searchCriteriaDto));
+         //Populate other fields for update operation if necessary
+         searchCriteriaModel.setAreaSizeUnit(searchCriteriaDto.getAreaSizeUnit());
+      }
+   }
+
+   private LocationModel getOrCreateLocation(SearchCriteriaDto searchCriteriaDto)
+   {
       final LocationDto locationDto = LocationDto.builder()
                .locationIdentifier(searchCriteriaDto.getLocationIdentifier())
                .build();
-      final LocationModel locationModel = locationDao.getOrCreate(locationDto);
-      searchCriteriaModel.setLocation(locationModel);
-      searchCriteriaRepository.save(searchCriteriaModel);
+      return locationDao.getOrCreate(locationDto);
    }
 
    @Override
@@ -58,5 +81,11 @@ public class DefaultSearchCriteriaFacade implements SearchCriteriaFacade
                   }
                });
       return searchCriteriaDtos;
+   }
+
+   @Override
+   public Optional<SearchCriteriaDto> findByLocationIdentifier()
+   {
+      return Optional.empty();
    }
 }

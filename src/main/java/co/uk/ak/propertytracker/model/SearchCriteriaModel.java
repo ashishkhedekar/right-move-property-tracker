@@ -7,7 +7,6 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class SearchCriteriaModel extends AbstractModel
 {
-   private String locationIdentifier;
    private int minBedrooms;
    private long maxPrice;
    private int numberOfPropertiesPerPage;
@@ -21,16 +20,6 @@ public class SearchCriteriaModel extends AbstractModel
    private boolean isFetching;
    @OneToOne
    private LocationModel location;
-
-   public String getLocationIdentifier()
-   {
-      return locationIdentifier;
-   }
-
-   public void setLocationIdentifier(String locationIdentifier)
-   {
-      this.locationIdentifier = locationIdentifier;
-   }
 
    public int getMinBedrooms()
    {

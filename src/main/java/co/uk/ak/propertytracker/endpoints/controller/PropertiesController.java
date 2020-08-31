@@ -10,8 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -37,32 +35,24 @@ public class PropertiesController
       // Used for testing
       if (locationId.equalsIgnoreCase("leeds") || locationId.equalsIgnoreCase("london"))
       {
-            LOG.info("Getting properties for location [{}]", locationId);
-            SearchCriteriaDto searchCriteria = new SearchCriteriaDto();
-            searchCriteria.setId(1L);
-            searchCriteria.setLocationIdentifier(locationId);
-            trackerFacade.trackProperties(searchCriteria);
+            searchCriteriaFacade.getAll().stream()
+                  .filter(e -> e.getLocationIdentifier().equalsIgnoreCase(locationId))
+                  .findFirst()
+                  .ifPresent(trackerFacade::trackProperties);
       }
       else
       {
          // Generating report for all search results
          LOG.info("Generating report for all search results");
 
-         final List<SearchCriteriaDto> searchCriteriaFacadeAll = searchCriteriaFacade.getAll();
-         LOG.info("Found [{}] search criteria ", searchCriteriaFacadeAll.size());
-         searchCriteriaFacadeAll
+         final List<SearchCriteriaDto> searchCriteriaAll = searchCriteriaFacade.getAll();
+         LOG.info("Found [{}] search criteria ", searchCriteriaAll.size());
+         searchCriteriaAll
                   .stream()
                   .peek(e -> LOG.info("Tracking properties for criteris [{}] ", e.getLocationIdentifier()))
                   .forEach(trackerFacade::trackProperties);
       }
       return ResponseEntity.status(HttpStatus.OK).body("This app is doing some important stuff");
-   }
-
-   @PostMapping(path = "/search-criteria")
-   public ResponseEntity<String> createSearchCriteria(@RequestBody final SearchCriteriaDto searchCriteriaDto)
-   {
-      searchCriteriaFacade.save(searchCriteriaDto);
-      return ResponseEntity.status(HttpStatus.OK).body("Your search criteria was successfully saved");
    }
 
    @GetMapping("/mark-off-market-properties")

@@ -6,6 +6,7 @@ import co.uk.ak.propertytracker.model.LettingsSearchCriteriaModel;
 import co.uk.ak.propertytracker.model.SalesSearchCriteriaModel;
 import co.uk.ak.propertytracker.model.SearchCriteriaModel;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface SearchCriteriaMapper
@@ -25,9 +26,8 @@ public interface SearchCriteriaMapper
    LettingsSearchCriteriaModel toLettingsSearchCriteriaModel(SearchCriteriaDto searchCriteriaDto);
    SalesSearchCriteriaModel toSalesSearchCriteriaModel(SearchCriteriaDto searchCriteriaDto);
 
+   @Mapping(target = "locationIdentifier", source = "location.locationIdentifier")
    SearchCriteriaDto lettingsSearchCriteriaModelToSearchCriteriaDto(LettingsSearchCriteriaModel lettingsSearchCriteriaModel);
+   @Mapping(target = "locationIdentifier", source = "location.locationIdentifier")
    SearchCriteriaDto salesSearchCriteriaModelToSearchCriteriaDto(SalesSearchCriteriaModel salesSearchCriteriaModel);
-
-
-
 }

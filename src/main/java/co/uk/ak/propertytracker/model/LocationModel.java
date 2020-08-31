@@ -1,7 +1,7 @@
 package co.uk.ak.propertytracker.model;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "locations")
@@ -11,7 +11,7 @@ public class LocationModel extends AbstractModel
    private String locationIdentifier;
    private String description;
    @OneToMany(fetch = FetchType.LAZY)
-   private List<PropertyModel> properties;
+   private Set<PropertyModel> properties;
 
    public String getLocationIdentifier()
    {
@@ -33,12 +33,12 @@ public class LocationModel extends AbstractModel
       this.description = description;
    }
 
-   public List<PropertyModel> getProperties()
+   public Set<PropertyModel> getProperties()
    {
       return properties;
    }
 
-   public void setProperties(List<PropertyModel> properties)
+   public void setProperties(Set<PropertyModel> properties)
    {
       this.properties = properties;
    }
