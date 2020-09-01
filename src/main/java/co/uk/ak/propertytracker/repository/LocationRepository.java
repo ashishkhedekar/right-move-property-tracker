@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface LocationRepository extends CrudRepository<LocationModel, Long>
 {
    Optional<LocationModel> findByLocationIdentifier(String locationIdentifier);
+
+   Optional<LocationModel> findByPropertiesPropertyId(Long propertyId);
 }

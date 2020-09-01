@@ -1,8 +1,11 @@
 package co.uk.ak.propertytracker.facade.impl;
 
 import co.uk.ak.propertytracker.dto.Channel;
+import co.uk.ak.propertytracker.dto.PropertyUpdateRecordDto;
 import co.uk.ak.propertytracker.facade.PropertyUpdateRecordFacade;
+import co.uk.ak.propertytracker.mapper.PropertyUpdateRecordModelMapper;
 import co.uk.ak.propertytracker.model.PropertyUpdateRecordModel;
+import co.uk.ak.propertytracker.repository.LocationRepository;
 import co.uk.ak.propertytracker.repository.PropertyUpdateRecordRepository;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -11,6 +14,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import static java.util.stream.Collectors.groupingBy;
+import static java.util.stream.Collectors.toSet;
 
 @Service
 @AllArgsConstructor
@@ -18,11 +26,15 @@ public class DefaultPropertyUpdateRecordFacade implements PropertyUpdateRecordFa
 {
    private static final Logger LOG = LoggerFactory.getLogger(DefaultPropertyUpdateRecordFacade.class);
 
+   private final PropertyUpdateRecordModelMapper propertyUpdateRecordModelMapper;
    private final PropertyUpdateRecordRepository propertyUpdateRecordRepository;
+   private final LocationRepository locationRepository;
 
    @Override
-   public int getStats(final Date reportStartDate, final Channel channel, final String type)
+   public Map<String, Set<PropertyUpdateRecordDto>> getStats(final Date reportStartDate, final Channel channel, final String type)
    {
+      LOG.info("Report start date is [{}]", reportStartDate);
+
       String field = null;
       if (type != null && type.equalsIgnoreCase("offMarket"))
       {
@@ -30,7 +42,12 @@ public class DefaultPropertyUpdateRecordFacade implements PropertyUpdateRecordFa
       }
 
       final List<PropertyUpdateRecordModel> propertyUpdateRecords = propertyUpdateRecordRepository.findByCreationTimeGreaterThanAndFieldAndPropertyChannel(reportStartDate, field, channel.getCode());
-      LOG.info("Number of properties let [{}] ", propertyUpdateRecords.size());
-      return propertyUpdateRecords.size();
+
+      LOG.info("Found [{}] property update records ", propertyUpdateRecords.size());
+
+      return propertyUpdateRecords.stream()
+               .map(propertyUpdateRecordModelMapper::propertyUpdateRecordModelToDto)
+               .collect(groupingBy(PropertyUpdateRecordDto::getLocationIdentifier, toSet()));
+
    }
 }

@@ -6,4 +6,7 @@ import co.uk.ak.propertytracker.model.PropertyModel;
 public interface PropertyDao
 {
    PropertyModel createOrUpdate(PropertyDto propertyDto);
+
+   PropertyDto findProperty(Long propertyId);
+
 }

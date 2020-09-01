@@ -58,4 +58,11 @@ public class DefaultPropertyDao implements PropertyDao
    {
       return Period.between(propertyModel.getFirstVisibleDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(), LocalDate.now()).getDays();
    }
+
+   @Override
+   public PropertyDto findProperty(Long propertyId)
+   {
+      final Optional<PropertyModel> propertyModel = propertyRepository.findByPropertyId(propertyId);
+      return propertyModel.map(propertyDtoToPropertyModelMapper::propertyModelPropertyDtoMapper).orElse(null);
+   }
 }

@@ -64,4 +64,20 @@ public class DefaultLocationDao implements LocationDao
          }
       }
    }
+
+   @Override
+   public LocationModel findLocationForProperty(PropertyModel propertyModel)
+   {
+      final Optional<LocationModel> locationModelOptional = locationRepository.findByPropertiesPropertyId(propertyModel.getPropertyId());
+      if (locationModelOptional.isPresent())
+      {
+         return locationModelOptional.get();
+      }
+      else
+      {
+         final LocationModel unknownLocation = new LocationModel();
+         unknownLocation.setLocationIdentifier("UNKNOWN");
+         return unknownLocation;
+      }
+   }
 }
