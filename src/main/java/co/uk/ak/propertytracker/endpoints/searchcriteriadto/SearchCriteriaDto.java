@@ -1,9 +1,15 @@
 package co.uk.ak.propertytracker.endpoints.searchcriteriadto;
 
 import co.uk.ak.propertytracker.dto.Channel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class SearchCriteriaDto
 {
    private Long id;

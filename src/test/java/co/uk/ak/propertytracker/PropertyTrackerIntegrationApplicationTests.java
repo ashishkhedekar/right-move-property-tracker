@@ -1,12 +1,17 @@
 package co.uk.ak.propertytracker;
 
+import co.uk.ak.propertytracker.dto.Channel;
+import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
 import co.uk.ak.propertytracker.model.PropertyModel;
 import co.uk.ak.propertytracker.model.PropertyUpdateRecordModel;
 import co.uk.ak.propertytracker.repository.PropertyRepository;
 import co.uk.ak.propertytracker.repository.PropertyUpdateRecordRepository;
 import co.uk.ak.propertytracker.rule.SmtpServerRule;
+import co.uk.ak.propertytracker.scheduler.Scheduler;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import org.joda.time.DateTime;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -49,6 +55,9 @@ public class PropertyTrackerIntegrationApplicationTests
    @Autowired
    private PropertyUpdateRecordRepository propertyUpdateRecordRepository;
 
+   @Autowired
+   private Scheduler scheduler;
+
    private static final long SINGLE_NON_LET_PROPERTY = 91967702L;
    private static final long SINGLE_LET_PROPERTY = 89887883L;
    private static final long SINGLE_NO_CHANGE_PROPERTY = 72533088L;
@@ -58,6 +67,24 @@ public class PropertyTrackerIntegrationApplicationTests
    private static final long SINGLE_NO_CHANGE_PROPERTY_2 = 95677817L;
    private static final long TWO_LET_PROPERTIES_1 = 90674429L;
    private static final long TWO_LET_PROPERTIES_2 = 71205657L;
+
+   @Before
+   public void setup() throws Exception
+   {
+      final SearchCriteriaDto searchCriteria = SearchCriteriaDto
+               .builder()
+               .channel(Channel.RENT)
+               .locationIdentifier("london")
+               .build();
+
+      //Create location
+      mvc.perform(
+               MockMvcRequestBuilders.post("/search-criteria")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(asJsonString(searchCriteria)))
+               .andExpect(status().isOk());
+
+   }
 
    @Test
    public void testSingleNewProperty() throws Exception
@@ -72,8 +99,7 @@ public class PropertyTrackerIntegrationApplicationTests
       final Optional<PropertyModel> byPropertyId = propertyRepository.findByPropertyId(SINGLE_NON_LET_PROPERTY);
       assertThat(byPropertyId.isPresent()).isFalse();
 
-      mvc.perform(MockMvcRequestBuilders.get("/properties-to-let?locationId=london"))
-               .andExpect(status().isOk());
+      scheduler.fetchRightMovePropertyUpdates();
 
       final Optional<PropertyModel> savedProperty = propertyRepository.findByPropertyId(SINGLE_NON_LET_PROPERTY);
       assertThat(savedProperty.isPresent()).isTrue();
@@ -96,8 +122,7 @@ public class PropertyTrackerIntegrationApplicationTests
                         .withHeader("Content-Type", APPLICATION_JSON_VALUE)
                         .withBodyFile("single-property-no-change.json")));
 
-      mvc.perform(MockMvcRequestBuilders.get("/properties-to-let?locationId=london"))
-               .andExpect(status().isOk());
+      scheduler.fetchRightMovePropertyUpdates();
 
       //Verify property saved and has correct status
       final Optional<PropertyModel> byPropertyId = propertyRepository.findByPropertyId(SINGLE_NO_CHANGE_PROPERTY);
@@ -152,9 +177,7 @@ public class PropertyTrackerIntegrationApplicationTests
       final Optional<PropertyModel> secondProperty = propertyRepository.findByPropertyId(TWO_NON_LET_PROPERTIES_2);
       assertThat(secondProperty.isPresent()).isFalse();
 
-
-      mvc.perform(MockMvcRequestBuilders.get("/properties-to-let?locationId=london"))
-               .andExpect(status().isOk());
+      scheduler.fetchRightMovePropertyUpdates();
 
       final Optional<PropertyModel> savedProperty1 = propertyRepository.findByPropertyId(TWO_NON_LET_PROPERTIES_1);
       assertThat(savedProperty1.isPresent()).isTrue();
@@ -189,8 +212,7 @@ public class PropertyTrackerIntegrationApplicationTests
                         .withBodyFile("two-properties-not-let.json")));
 
 
-      mvc.perform(MockMvcRequestBuilders.get("/properties-to-let?locationId=london"))
-               .andExpect(status().isOk());
+      scheduler.fetchRightMovePropertyUpdates();
 
       final Optional<PropertyModel> savedProperty1 = propertyRepository.findByPropertyId(SINGLE_NO_CHANGE_PROPERTY_1);
       assertThat(savedProperty1.isPresent()).isTrue();
@@ -225,9 +247,7 @@ public class PropertyTrackerIntegrationApplicationTests
                         .withHeader("Content-Type", APPLICATION_JSON_VALUE)
                         .withBodyFile("two-properties-one-let.json")));
 
-
-      mvc.perform(MockMvcRequestBuilders.get("/properties-to-let?locationId=london"))
-               .andExpect(status().isOk());
+      scheduler.fetchRightMovePropertyUpdates();
 
       final Optional<PropertyModel> savedProperty1 = propertyRepository.findByPropertyId(TWO_LET_PROPERTIES_1);
       assertThat(savedProperty1.isPresent()).isTrue();
@@ -242,6 +262,13 @@ public class PropertyTrackerIntegrationApplicationTests
       assertThat(changes.get(0).getField()).isEqualTo("displayStatus");
       assertThat(changes.get(0).getOldValue()).isEqualTo("");
       assertThat(changes.get(0).getNewValue()).isEqualTo("Let Agreed");
+   }
 
+   public static String asJsonString(final Object obj) {
+      try {
+         return new ObjectMapper().writeValueAsString(obj);
+      } catch (Exception e) {
+         throw new RuntimeException(e);
+      }
    }
 }
