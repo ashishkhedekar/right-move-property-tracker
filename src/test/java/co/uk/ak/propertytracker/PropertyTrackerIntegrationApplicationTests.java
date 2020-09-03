@@ -1,6 +1,7 @@
 package co.uk.ak.propertytracker;
 
 import co.uk.ak.propertytracker.dto.Channel;
+import co.uk.ak.propertytracker.dto.LocationDto;
 import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
 import co.uk.ak.propertytracker.model.PropertyModel;
 import co.uk.ak.propertytracker.model.PropertyUpdateRecordModel;
@@ -8,6 +9,7 @@ import co.uk.ak.propertytracker.repository.PropertyRepository;
 import co.uk.ak.propertytracker.repository.PropertyUpdateRecordRepository;
 import co.uk.ak.propertytracker.rule.SmtpServerRule;
 import co.uk.ak.propertytracker.scheduler.Scheduler;
+import co.uk.ak.propertytracker.service.LocationService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
 import org.joda.time.DateTime;
@@ -31,6 +33,7 @@ import java.util.Optional;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
@@ -57,6 +60,9 @@ public class PropertyTrackerIntegrationApplicationTests
 
    @Autowired
    private Scheduler scheduler;
+
+   @Autowired
+   private LocationService locationService;
 
    private static final long SINGLE_NON_LET_PROPERTY = 91967702L;
    private static final long SINGLE_LET_PROPERTY = 89887883L;
@@ -101,9 +107,8 @@ public class PropertyTrackerIntegrationApplicationTests
 
       scheduler.fetchRightMovePropertyUpdates();
 
-      final Optional<PropertyModel> savedProperty = propertyRepository.findByPropertyId(SINGLE_NON_LET_PROPERTY);
-      assertThat(savedProperty.isPresent()).isTrue();
-      assertThat(savedProperty.get().getDisplayStatus()).isEqualTo("");
+      assertThatPropertySavedWithDisplayStatus(SINGLE_NON_LET_PROPERTY, "");
+      assertThatPropertyAssociatedWithLocation(SINGLE_NON_LET_PROPERTY, "london");
    }
 
    @Test
@@ -125,9 +130,8 @@ public class PropertyTrackerIntegrationApplicationTests
       scheduler.fetchRightMovePropertyUpdates();
 
       //Verify property saved and has correct status
-      final Optional<PropertyModel> byPropertyId = propertyRepository.findByPropertyId(SINGLE_NO_CHANGE_PROPERTY);
-      assertThat(byPropertyId.isPresent()).isTrue();
-      assertThat(byPropertyId.get().getDisplayStatus()).isEqualTo("");
+      assertThatPropertySavedWithDisplayStatus(SINGLE_NO_CHANGE_PROPERTY, "");
+      assertThatPropertyAssociatedWithLocation(SINGLE_NO_CHANGE_PROPERTY, "london");
    }
 
    @Test
@@ -149,16 +153,9 @@ public class PropertyTrackerIntegrationApplicationTests
       mvc.perform(MockMvcRequestBuilders.get("/properties-to-let?locationId=london"))
                .andExpect(status().isOk());
 
-      //Verify property saved and has correct status
-      final Optional<PropertyModel> byPropertyId = propertyRepository.findByPropertyId(SINGLE_LET_PROPERTY);
-      assertThat(byPropertyId.isPresent()).isTrue();
-      assertThat(byPropertyId.get().getDisplayStatus()).isEqualTo("Let Agreed");
-
-      final List<PropertyUpdateRecordModel> changes = propertyUpdateRecordRepository.findByPropertyPropertyId(SINGLE_LET_PROPERTY);
-      assertThat(changes).hasSize(1);
-      assertThat(changes.get(0).getField()).isEqualTo("displayStatus");
-      assertThat(changes.get(0).getOldValue()).isEqualTo("");
-      assertThat(changes.get(0).getNewValue()).isEqualTo("Let Agreed");
+      assertThatPropertySavedWithDisplayStatus(SINGLE_LET_PROPERTY, "Let Agreed");
+      assertThatPropertyAssociatedWithLocation(SINGLE_LET_PROPERTY, "london");
+      assertThatUpdateRecordAdded(SINGLE_LET_PROPERTY, "displayStatus", "", "Let Agreed");
    }
 
    @Test
@@ -179,14 +176,8 @@ public class PropertyTrackerIntegrationApplicationTests
 
       scheduler.fetchRightMovePropertyUpdates();
 
-      final Optional<PropertyModel> savedProperty1 = propertyRepository.findByPropertyId(TWO_NON_LET_PROPERTIES_1);
-      assertThat(savedProperty1.isPresent()).isTrue();
-      assertThat(savedProperty1.get().getDisplayStatus()).isEqualTo("");
-
-      final Optional<PropertyModel> savedProperty2 = propertyRepository.findByPropertyId(TWO_NON_LET_PROPERTIES_2);
-      assertThat(savedProperty2.isPresent()).isTrue();
-      assertThat(savedProperty2.get().getDisplayStatus()).isEqualTo("");
-
+      assertThatPropertySavedWithDisplayStatus(TWO_NON_LET_PROPERTIES_1, "");
+      assertThatPropertySavedWithDisplayStatus(TWO_NON_LET_PROPERTIES_2, "");
    }
 
    @Test
@@ -214,13 +205,8 @@ public class PropertyTrackerIntegrationApplicationTests
 
       scheduler.fetchRightMovePropertyUpdates();
 
-      final Optional<PropertyModel> savedProperty1 = propertyRepository.findByPropertyId(SINGLE_NO_CHANGE_PROPERTY_1);
-      assertThat(savedProperty1.isPresent()).isTrue();
-      assertThat(savedProperty1.get().getDisplayStatus()).isEqualTo("");
-
-      final Optional<PropertyModel> savedProperty2 = propertyRepository.findByPropertyId(SINGLE_NO_CHANGE_PROPERTY_2);
-      assertThat(savedProperty2.isPresent()).isTrue();
-      assertThat(savedProperty2.get().getDisplayStatus()).isEqualTo("");
+      assertThatPropertySavedWithDisplayStatus(SINGLE_NO_CHANGE_PROPERTY_1, "");
+      assertThatPropertySavedWithDisplayStatus(SINGLE_NO_CHANGE_PROPERTY_2, "");
    }
 
    @Test
@@ -249,19 +235,41 @@ public class PropertyTrackerIntegrationApplicationTests
 
       scheduler.fetchRightMovePropertyUpdates();
 
-      final Optional<PropertyModel> savedProperty1 = propertyRepository.findByPropertyId(TWO_LET_PROPERTIES_1);
-      assertThat(savedProperty1.isPresent()).isTrue();
-      assertThat(savedProperty1.get().getDisplayStatus()).isEqualTo("Let Agreed");
+      assertThatPropertySavedWithDisplayStatus(TWO_LET_PROPERTIES_1, "Let Agreed");
+      assertThatPropertySavedWithDisplayStatus(TWO_LET_PROPERTIES_2, "");
+      assertThatUpdateRecordAdded(TWO_LET_PROPERTIES_1, "displayStatus", "", "Let Agreed");
+   }
 
-      final Optional<PropertyModel> savedProperty2 = propertyRepository.findByPropertyId(TWO_LET_PROPERTIES_2);
-      assertThat(savedProperty2.isPresent()).isTrue();
-      assertThat(savedProperty2.get().getDisplayStatus()).isEqualTo("");
+   private void assertThatPropertySavedWithDisplayStatus(final long propertyId, final String displayStatus)
+   {
+      final Optional<PropertyModel> property = propertyRepository.findByPropertyId(propertyId);
+      if (property.isPresent())
+      {
+         assertThat(property.get().getDisplayStatus()).isEqualTo(displayStatus);
+      }
+      else
+      {
+         fail("Property with id " + propertyId + " was not saved in the DB");
+      }
+   }
 
-      final List<PropertyUpdateRecordModel> changes = propertyUpdateRecordRepository.findByPropertyPropertyId(TWO_LET_PROPERTIES_1);
+   private void assertThatPropertyAssociatedWithLocation(final long propertyId, final String locationIdentifier)
+   {
+      final LocationDto location = locationService.findLocationByLocationIdentifier(locationIdentifier);
+      assertThat(location.getProperties()).isNotEmpty();
+
+      final boolean propertyAssociatedWithLocation = location.getProperties().stream()
+               .anyMatch(p -> p.getId() == propertyId);
+      assertThat(propertyAssociatedWithLocation).isTrue();
+   }
+
+   private void assertThatUpdateRecordAdded(long propertyId, String field, String oldValue, String newValue)
+   {
+      final List<PropertyUpdateRecordModel> changes = propertyUpdateRecordRepository.findByPropertyPropertyId(propertyId);
       assertThat(changes).hasSize(1);
-      assertThat(changes.get(0).getField()).isEqualTo("displayStatus");
-      assertThat(changes.get(0).getOldValue()).isEqualTo("");
-      assertThat(changes.get(0).getNewValue()).isEqualTo("Let Agreed");
+      assertThat(changes.get(0).getField()).isEqualTo(field);
+      assertThat(changes.get(0).getOldValue()).isEqualTo(oldValue);
+      assertThat(changes.get(0).getNewValue()).isEqualTo(newValue);
    }
 
    public static String asJsonString(final Object obj) {

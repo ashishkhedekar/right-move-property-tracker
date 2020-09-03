@@ -10,7 +10,7 @@ public class LocationModel extends AbstractModel
 {
    private String locationIdentifier;
    private String description;
-   @OneToMany(fetch = FetchType.LAZY)
+   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL )
    private Set<PropertyModel> properties;
 
    public String getLocationIdentifier()
