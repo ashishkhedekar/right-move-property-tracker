@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -68,16 +69,23 @@ public class DefaultLocationDao implements LocationDao
    @Override
    public LocationModel findLocationForProperty(PropertyModel propertyModel)
    {
-      final Optional<LocationModel> locationModelOptional = locationRepository.findByPropertiesPropertyId(propertyModel.getPropertyId());
-      if (locationModelOptional.isPresent())
+      final List<LocationModel> locations = locationRepository.findByProperties_PropertyId(propertyModel.getPropertyId());
+      if (!locations.isEmpty())
       {
-         return locationModelOptional.get();
+         return locations.get(0);
       }
       else
       {
+         LOG.warn("Location with identifier [{}] not found, creating UNKNOWN", propertyModel.getPropertyId());
          final LocationModel unknownLocation = new LocationModel();
          unknownLocation.setLocationIdentifier("UNKNOWN");
          return unknownLocation;
       }
+   }
+
+   @Override
+   public Optional<LocationModel> findLocationForLocationIdentifier(String locationIdentifier)
+   {
+      return locationRepository.findByLocationIdentifier(locationIdentifier);
    }
 }

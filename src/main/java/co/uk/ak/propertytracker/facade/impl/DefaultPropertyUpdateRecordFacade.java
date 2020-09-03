@@ -33,8 +33,6 @@ public class DefaultPropertyUpdateRecordFacade implements PropertyUpdateRecordFa
    @Override
    public Map<String, Set<PropertyUpdateRecordDto>> getStats(final Date reportStartDate, final Channel channel, final String type)
    {
-      LOG.info("Report start date is [{}]", reportStartDate);
-
       String field = null;
       if (type != null && type.equalsIgnoreCase("offMarket"))
       {
@@ -42,8 +40,6 @@ public class DefaultPropertyUpdateRecordFacade implements PropertyUpdateRecordFa
       }
 
       final List<PropertyUpdateRecordModel> propertyUpdateRecords = propertyUpdateRecordRepository.findByCreationTimeGreaterThanAndFieldAndPropertyChannel(reportStartDate, field, channel.getCode());
-
-      LOG.info("Found [{}] property update records ", propertyUpdateRecords.size());
 
       return propertyUpdateRecords.stream()
                .map(propertyUpdateRecordModelMapper::propertyUpdateRecordModelToDto)
