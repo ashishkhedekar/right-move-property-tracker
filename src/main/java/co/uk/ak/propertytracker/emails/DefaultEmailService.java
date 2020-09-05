@@ -33,7 +33,7 @@ public class DefaultEmailService implements EmailService
       model.put("message", message);
 
       final StringBuilder subject = new StringBuilder();
-      if (!isTest())
+      if (isTest())
       {
          subject.append("[TEST] ");
       }
