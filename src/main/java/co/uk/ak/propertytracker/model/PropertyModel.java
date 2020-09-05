@@ -1,6 +1,7 @@
 package co.uk.ak.propertytracker.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,13 +39,14 @@ public class PropertyModel extends AbstractModel
    private Date offMarketDate;
    private Integer daysOnMarket;
    private Date lastPropertyUpdateReceived;
+   private Boolean registered;
 
    @OneToMany(
             mappedBy = "property",
             cascade = CascadeType.ALL,
             orphanRemoval = true
    )
-   private List<PropertyUpdateRecordModel> propertyUpdateRecords;
+   private List<PropertyUpdateRecordModel> propertyUpdateRecords = new ArrayList<>();
 
    public Long getPropertyId()
    {
@@ -224,5 +226,15 @@ public class PropertyModel extends AbstractModel
    public void setLastPropertyUpdateReceived(Date lastPropertyUpdateReceived)
    {
       this.lastPropertyUpdateReceived = lastPropertyUpdateReceived;
+   }
+
+   public Boolean getRegistered()
+   {
+      return registered;
+   }
+
+   public void setRegistered(Boolean registered)
+   {
+      this.registered = registered;
    }
 }

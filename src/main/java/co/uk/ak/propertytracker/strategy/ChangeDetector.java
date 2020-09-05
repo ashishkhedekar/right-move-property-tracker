@@ -3,7 +3,6 @@ package co.uk.ak.propertytracker.strategy;
 import co.uk.ak.propertytracker.dto.PropertyDto;
 import co.uk.ak.propertytracker.model.PropertyModel;
 import co.uk.ak.propertytracker.model.PropertyUpdateRecordModel;
-import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,28 +16,29 @@ public interface ChangeDetector
 {
    Logger LOG = LoggerFactory.getLogger(ChangeDetector.class);
 
-   default PropertyModel detectAndPersist(final PropertyModel propertyModel, final PropertyDto propertyDto)
+   default PropertyUpdateRecordModel detectAndPersist(final PropertyModel propertyModel, final PropertyDto propertyDto)
    {
       try
       {
          if (propertyChangedPredicate(propertyDto).test(propertyModel))
          {
+            LOG.info("Going to create update record");
             final PropertyUpdateRecordModel propertyUpdateRecordModel = new PropertyUpdateRecordModel();
             propertyUpdateRecordModel.setProperty(propertyModel);
             propertyUpdateRecordModel.setField(modelFieldName());
-            propertyUpdateRecordModel.setOldValue(modelGetMethod().invoke(propertyModel).toString());
-            propertyUpdateRecordModel.setNewValue(dtoGetMethod().invoke(propertyDto).toString());
-            propertyModel.getPropertyUpdateRecords().add(propertyUpdateRecordModel);
-
-            modelSetMethod().invoke(propertyModel, dtoGetMethod().invoke(propertyDto).toString());
-            propertyModel.setModificationTime(DateTime.now().toDate());
+            final Object oldValue = modelGetMethod().invoke(propertyModel);
+            propertyUpdateRecordModel.setOldValue(oldValue != null ? oldValue.toString() : null);
+            final Object newValue = dtoGetMethod().invoke(propertyDto);
+            propertyUpdateRecordModel.setNewValue(newValue != null ? newValue.toString() : null);
+            modelSetMethod().invoke(propertyModel, newValue != null ? modelFieldType().cast(newValue): null);
+            return propertyUpdateRecordModel;
          }
       }
       catch (IllegalAccessException|InvocationTargetException e)
       {
          LOG.warn("Something went wrong while detecting change for property [{}] ", propertyDto.getId());
       }
-      return propertyModel;
+      return null;
    }
 
    Predicate<PropertyModel> propertyChangedPredicate(final PropertyDto propertyDto);
@@ -46,6 +46,8 @@ public interface ChangeDetector
    String dtoFieldName();
 
    String modelFieldName();
+
+   Class<?> modelFieldType();
 
    private Method modelGetMethod()
    {
@@ -63,7 +65,7 @@ public interface ChangeDetector
    {
       try
       {
-         return PropertyModel.class.getMethod("set" + capitalize(modelFieldName()), String.class);
+         return PropertyModel.class.getMethod("set" + capitalize(modelFieldName()), modelFieldType());
       }
       catch (NoSuchMethodException e)
       {

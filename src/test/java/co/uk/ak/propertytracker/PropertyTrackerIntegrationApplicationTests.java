@@ -109,6 +109,7 @@ public class PropertyTrackerIntegrationApplicationTests
 
       assertThatPropertySavedWithDisplayStatus(SINGLE_NON_LET_PROPERTY, "");
       assertThatPropertyAssociatedWithLocation(SINGLE_NON_LET_PROPERTY, "london");
+      assertThatUpdateRecordAdded(SINGLE_NON_LET_PROPERTY, "registered", null, "true");
    }
 
    @Test
@@ -177,7 +178,9 @@ public class PropertyTrackerIntegrationApplicationTests
       scheduler.fetchRightMovePropertyUpdates();
 
       assertThatPropertySavedWithDisplayStatus(TWO_NON_LET_PROPERTIES_1, "");
+      assertThatUpdateRecordAdded(TWO_NON_LET_PROPERTIES_1, "registered", null, "true");
       assertThatPropertySavedWithDisplayStatus(TWO_NON_LET_PROPERTIES_2, "");
+      assertThatUpdateRecordAdded(TWO_NON_LET_PROPERTIES_2, "registered", null, "true");
    }
 
    @Test

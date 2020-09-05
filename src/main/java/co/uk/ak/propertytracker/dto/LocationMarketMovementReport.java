@@ -20,4 +20,8 @@ public class LocationMarketMovementReport
    private int numberOfSoldProperties;
 
    private List<PropertyDto> soldProperties;
+
+   private int numberOfNewProperties;
+
+   private List<PropertyDto> newProperties;
 }

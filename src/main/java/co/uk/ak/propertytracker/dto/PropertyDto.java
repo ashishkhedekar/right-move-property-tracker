@@ -42,6 +42,8 @@ public class PropertyDto
    private String fullPropertyUrl;
    private String mainMapImageSrc;
 
+   private Boolean registered;
+
    public int daysOnMarket()
    {
       return Period.between(LocalDate.parse(firstVisibleDate, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")), LocalDate.now()).getDays();

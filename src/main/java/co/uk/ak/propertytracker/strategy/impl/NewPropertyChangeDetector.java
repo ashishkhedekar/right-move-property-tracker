@@ -3,34 +3,35 @@ package co.uk.ak.propertytracker.strategy.impl;
 import co.uk.ak.propertytracker.dto.PropertyDto;
 import co.uk.ak.propertytracker.model.PropertyModel;
 import co.uk.ak.propertytracker.strategy.ChangeDetector;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.BooleanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Predicate;
 
 @Service
-public class DisplayStatusChangeDetector implements ChangeDetector
+public class NewPropertyChangeDetector implements ChangeDetector
 {
-   public Predicate<PropertyModel> propertyChangedPredicate(final PropertyDto propertyDto)
+   @Override
+   public Predicate<PropertyModel> propertyChangedPredicate(PropertyDto propertyDto)
    {
-      return model -> (!StringUtils.equalsIgnoreCase(propertyDto.getDisplayStatus(), model.getDisplayStatus()));
+      return model -> BooleanUtils.isNotTrue(model.getRegistered()) && BooleanUtils.isTrue(propertyDto.getRegistered());
    }
 
    @Override
    public String dtoFieldName()
    {
-      return "displayStatus";
+      return "registered";
    }
 
    @Override
    public String modelFieldName()
    {
-      return "displayStatus";
+      return "registered";
    }
 
    @Override
    public Class<?> modelFieldType()
    {
-      return String.class;
+      return Boolean.class;
    }
 }

@@ -54,6 +54,11 @@ public class PropertiesJsonController
                   .map(u -> propertyDao.findProperty(u.getPropertyId()))
                   .collect(Collectors.toList());
 
+         final List<PropertyDto> newProperties = propertyUpdateRecordDtos.stream()
+                  .filter(u -> u.getField().equalsIgnoreCase("registered") && u.getNewValue().equalsIgnoreCase("true"))
+                  .map(u -> propertyDao.findProperty(u.getPropertyId()))
+                  .collect(Collectors.toList());
+
          final Optional<LocationModel> location = locationDao.findLocationForLocationIdentifier(e);
 
          final LocationMarketMovementReport locationMarketMovementReport = LocationMarketMovementReport.builder()
@@ -62,6 +67,8 @@ public class PropertiesJsonController
                   .numberOfLetProperties(letProperties.size())
                   .soldProperties(soldProperties)
                   .numberOfSoldProperties(soldProperties.size())
+                  .newProperties(newProperties)
+                  .numberOfNewProperties(newProperties.size())
                   .locationName(location.isPresent() ? location.get().getDescription() : "UNKNOWN")
                   .build();
          locationMarketMovementReports.add(locationMarketMovementReport);

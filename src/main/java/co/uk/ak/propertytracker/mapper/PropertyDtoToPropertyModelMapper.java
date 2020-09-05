@@ -24,6 +24,7 @@ public interface PropertyDtoToPropertyModelMapper
    @Mapping(target = "propertyId", source = "id")
    @Mapping(target = "mainMapImageSrc", source = "propertyImages.mainMapImageSrc")
    @Mapping(target = "lastPropertyUpdateReceived", expression = "java(new java.util.Date())")
+   @Mapping(target = "registered", ignore = true)
    PropertyModel propertyDtoPropertyModelMapper(final PropertyDto propertyDto);
 
    default String fullPropertyUrl(final PropertyModel propertyModel)

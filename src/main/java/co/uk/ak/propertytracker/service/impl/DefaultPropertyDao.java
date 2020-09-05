@@ -3,6 +3,7 @@ package co.uk.ak.propertytracker.service.impl;
 import co.uk.ak.propertytracker.dto.PropertyDto;
 import co.uk.ak.propertytracker.mapper.PropertyDtoToPropertyModelMapper;
 import co.uk.ak.propertytracker.model.PropertyModel;
+import co.uk.ak.propertytracker.model.PropertyUpdateRecordModel;
 import co.uk.ak.propertytracker.repository.PropertyRepository;
 import co.uk.ak.propertytracker.service.PropertyDao;
 import co.uk.ak.propertytracker.strategy.ChangeDetector;
@@ -17,7 +18,9 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -32,25 +35,35 @@ public class DefaultPropertyDao implements PropertyDao
 
    @Override
    @Transactional
-   public PropertyModel createOrUpdate(final PropertyDto propertyDto)
+   public void createOrUpdate(final PropertyDto propertyDto)
    {
       final Optional<PropertyModel> propertyModelOptional = propertyRepository.findByPropertyId(propertyDto.getId());
       if (propertyModelOptional.isPresent())
       {
          LOG.info("Property model found for property id [{}], going to update some attributes", propertyDto.getId());
          final PropertyModel propertyModel = propertyModelOptional.get();
-         changeDetectors.forEach(cd -> cd.detectAndPersist(propertyModel, propertyDto));
+         final List<PropertyUpdateRecordModel> updateRecordModels = changeDetectors.stream()
+                  .map(cd -> cd.detectAndPersist(propertyModel, propertyDto))
+                  .filter(Objects::nonNull)
+                  .collect(Collectors.toList());
+
+         propertyModel.getPropertyUpdateRecords().addAll(updateRecordModels);
          propertyModel.setLastPropertyUpdateReceived(DateTime.now().toDate());
          propertyModel.setDaysOnMarket(calculateDaysOnMarket(propertyModel));
          propertyRepository.save(propertyModel);
-         return propertyModel;
       }
       else
       {
          LOG.info("Going to save property model with property_id [{}] for the first time", propertyDto.getId());
          final PropertyModel propertyModel = propertyDtoToPropertyModelMapper.propertyDtoPropertyModelMapper(propertyDto);
+         propertyDto.setRegistered(true);
+         final List<PropertyUpdateRecordModel> updateRecordModels = changeDetectors.stream()
+                  .map(cd -> cd.detectAndPersist(propertyModel, propertyDto))
+                  .filter(Objects::nonNull)
+                  .collect(Collectors.toList());
+
+         propertyModel.getPropertyUpdateRecords().addAll(updateRecordModels);
          propertyRepository.save(propertyModel);
-         return propertyModel;
       }
    }
 
