@@ -19,7 +19,7 @@ public class Scheduler
    private final PropertiesTrackerFacade propertiesTrackerFacade;
    private final SearchCriteriaFacade searchCriteriaFacade;
 
-   //Runs every house between 7am till 10pm
+   //Runs every house between 6am till 11pm
    @Scheduled(cron = "0 0 6-23 * * *")
    public void fetchRightMovePropertyUpdates()
    {

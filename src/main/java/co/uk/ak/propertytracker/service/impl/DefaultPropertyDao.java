@@ -75,6 +75,7 @@ public class DefaultPropertyDao implements PropertyDao
    @Override
    public PropertyDto findProperty(Long propertyId)
    {
+      LOG.info("Finding property by id [{}]", propertyId);
       final Optional<PropertyModel> propertyModel = propertyRepository.findByPropertyId(propertyId);
       return propertyModel.map(propertyDtoToPropertyModelMapper::propertyModelPropertyDtoMapper).orElse(null);
    }
