@@ -13,4 +13,6 @@ public interface PropertyUpdateRecordRepository extends CrudRepository<PropertyU
    List<PropertyUpdateRecordModel> findByPropertyPropertyId(Long propertyId);
 
    List<PropertyUpdateRecordModel> findByCreationTimeGreaterThanAndFieldAndPropertyChannel(Date reportStartDate, String field, String channel);
+
+   List<PropertyUpdateRecordModel> findByCreationTimeGreaterThan(Date reportStartDate);
 }

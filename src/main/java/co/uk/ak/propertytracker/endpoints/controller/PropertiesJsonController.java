@@ -4,6 +4,7 @@ import co.uk.ak.propertytracker.dto.Channel;
 import co.uk.ak.propertytracker.dto.LocationMarketMovementReport;
 import co.uk.ak.propertytracker.dto.PropertyDto;
 import co.uk.ak.propertytracker.dto.PropertyUpdateRecordDto;
+import co.uk.ak.propertytracker.facade.LocationFacade;
 import co.uk.ak.propertytracker.facade.PropertyUpdateRecordFacade;
 import co.uk.ak.propertytracker.model.LocationModel;
 import co.uk.ak.propertytracker.service.LocationDao;
@@ -31,6 +32,53 @@ public class PropertiesJsonController
    private final PropertyUpdateRecordFacade propertyUpdateRecordFacade;
    private final PropertyDao propertyDao;
    private final LocationDao locationDao;
+
+   private final LocationFacade locationFacade;
+
+   @CrossOrigin(origins = "http://localhost:4200")
+   @GetMapping("/market-summary")
+   public ResponseEntity<List<LocationMarketMovementReport>> summary(@RequestParam(defaultValue = "21") int numberOfDays)
+   {
+      final Date reportStartDate = DateTime.now().minusDays(numberOfDays).toDate();
+      final Map<String, Set<PropertyUpdateRecordDto>> stats = propertyUpdateRecordFacade.getSummary(reportStartDate);
+
+      List<LocationMarketMovementReport> locationMarketMovementReports = new ArrayList<>();
+
+      stats.keySet().forEach(locationIdentifier -> {
+
+         final Set<PropertyUpdateRecordDto> propertyUpdateRecordDtos = stats.get(locationIdentifier);
+         LOG.info("PropertyUpdateRecordDto found are [{}]", propertyUpdateRecordDtos.size());
+
+         final int numberOfLetProperties = propertyUpdateRecordDtos.stream()
+                 .filter(u -> u.getField().equalsIgnoreCase("displayStatus") && u.getNewValue()
+                         .equalsIgnoreCase("Let Agreed")).map(PropertyUpdateRecordDto::getPropertyId)
+                 .collect(Collectors.toSet()).size();
+
+         final int numberOfSoldProperties = propertyUpdateRecordDtos.stream()
+                 .filter(u -> u.getField().equalsIgnoreCase("displayStatus") && u.getNewValue()
+                         .equalsIgnoreCase("Sold STC")).map(PropertyUpdateRecordDto::getPropertyId)
+                 .collect(Collectors.toSet()).size();
+
+         final Optional<LocationModel> location = locationDao.findLocationForLocationIdentifier(locationIdentifier);
+
+         final LocationMarketMovementReport locationMarketMovementReport = LocationMarketMovementReport.builder()
+                 .locationIdentifier(locationIdentifier)
+                 .numberOfLetProperties(numberOfLetProperties)
+                 .numberOfSoldProperties(numberOfSoldProperties)
+                 .locationName(location.isPresent() ? location.get().getDescription() : "UNKNOWN")
+                 .build();
+         locationMarketMovementReports.add(locationMarketMovementReport);
+      });
+      return ResponseEntity.status(HttpStatus.OK).body(locationMarketMovementReports);
+   }
+
+   @CrossOrigin(origins = "http://localhost:4200")
+   @GetMapping("/market-details")
+   public ResponseEntity<Set<PropertyDto>> getMarketDetails(@RequestParam(required = false) String locationIdentifier, @RequestParam(defaultValue = "21") int numberOfDays) {
+      final Date cutOffDate = DateTime.now().minusDays(numberOfDays).toDate();
+      final Set<PropertyDto> locationModels = locationFacade.findRecentlyOffMarketProperties("REGION%5E239", cutOffDate);
+      return ResponseEntity.status(HttpStatus.OK).body(locationModels);
+   }
 
    @CrossOrigin(origins = "http://localhost:4200")
    @GetMapping("/properties-stats")

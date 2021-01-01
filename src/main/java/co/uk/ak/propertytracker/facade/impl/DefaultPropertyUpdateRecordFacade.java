@@ -5,7 +5,6 @@ import co.uk.ak.propertytracker.dto.PropertyUpdateRecordDto;
 import co.uk.ak.propertytracker.facade.PropertyUpdateRecordFacade;
 import co.uk.ak.propertytracker.mapper.PropertyUpdateRecordModelMapper;
 import co.uk.ak.propertytracker.model.PropertyUpdateRecordModel;
-import co.uk.ak.propertytracker.repository.LocationRepository;
 import co.uk.ak.propertytracker.repository.PropertyUpdateRecordRepository;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
@@ -28,7 +27,6 @@ public class DefaultPropertyUpdateRecordFacade implements PropertyUpdateRecordFa
 
    private final PropertyUpdateRecordModelMapper propertyUpdateRecordModelMapper;
    private final PropertyUpdateRecordRepository propertyUpdateRecordRepository;
-   private final LocationRepository locationRepository;
 
    @Override
    public Map<String, Set<PropertyUpdateRecordDto>> getStats(final Date reportStartDate, final Channel channel, final String type)
@@ -45,5 +43,15 @@ public class DefaultPropertyUpdateRecordFacade implements PropertyUpdateRecordFa
                .map(propertyUpdateRecordModelMapper::propertyUpdateRecordModelToDto)
                .collect(groupingBy(PropertyUpdateRecordDto::getLocationIdentifier, toSet()));
 
+   }
+
+   @Override
+   public Map<String, Set<PropertyUpdateRecordDto>> getSummary(Date reportStartDate) {
+
+      final List<PropertyUpdateRecordModel> propertyUpdateRecords = propertyUpdateRecordRepository.findByCreationTimeGreaterThan(reportStartDate);
+
+      return propertyUpdateRecords.stream()
+              .map(propertyUpdateRecordModelMapper::propertyUpdateRecordModelToDto)
+              .collect(groupingBy(PropertyUpdateRecordDto::getLocationIdentifier, toSet()));
    }
 }

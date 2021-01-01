@@ -10,4 +10,6 @@ import java.util.Set;
 public interface PropertyUpdateRecordFacade
 {
    Map<String, Set<PropertyUpdateRecordDto>> getStats(Date reportStartDate, Channel channel, String type);
+
+   Map<String, Set<PropertyUpdateRecordDto>> getSummary(Date reportStartDate);
 }
