@@ -39,8 +39,8 @@ public class ApplicationConfiguration
       return new WebMvcConfigurer() {
          @Override
          public void addCorsMappings(CorsRegistry registry) {
-            registry.addMapping("/market-details").allowedOrigins("http://localhost:4200", "https://aqueous-retreat-09818.herokuapp.com/");
-            registry.addMapping("/market-summary").allowedOrigins("http://localhost:4200", "https://aqueous-retreat-09818.herokuapp.com/");
+            registry.addMapping("/market-details").allowedOrigins("http://localhost:4200", "https://aqueous-retreat-09818.herokuapp.com");
+            registry.addMapping("/market-summary").allowedOrigins("http://localhost:4200", "https://aqueous-retreat-09818.herokuapp.com");
          }
       };
    }
