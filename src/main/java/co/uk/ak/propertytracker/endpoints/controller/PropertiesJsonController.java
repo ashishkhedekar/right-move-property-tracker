@@ -36,7 +36,6 @@ public class PropertiesJsonController
 
    private final LocationFacade locationFacade;
 
-   @CrossOrigin(origins = "http://localhost:4200")
    @GetMapping("/market-summary")
    public ResponseEntity<List<LocationMarketMovementReport>> summary(@RequestParam(defaultValue = "21") int numberOfDays)
    {
@@ -73,7 +72,6 @@ public class PropertiesJsonController
       return ResponseEntity.status(HttpStatus.OK).body(locationMarketMovementReports);
    }
 
-   @CrossOrigin(origins = "http://localhost:4200")
    @GetMapping("/market-details")
    public ResponseEntity<Set<PropertyWsDto>> getMarketDetails(@RequestParam(required = false) String locationIdentifier, @RequestParam(defaultValue = "21") int numberOfDays) {
       final Date cutOffDate = DateTime.now().minusDays(numberOfDays).toDate();
