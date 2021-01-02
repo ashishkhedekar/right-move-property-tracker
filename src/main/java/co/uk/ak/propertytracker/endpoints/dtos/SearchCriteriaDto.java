@@ -1,4 +1,4 @@
-package co.uk.ak.propertytracker.endpoints.searchcriteriadto;
+package co.uk.ak.propertytracker.endpoints.dtos;
 
 import co.uk.ak.propertytracker.dto.Channel;
 import lombok.AllArgsConstructor;

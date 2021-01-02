@@ -1,7 +1,7 @@
 package co.uk.ak.propertytracker.facade.impl;
 
 import co.uk.ak.propertytracker.dto.LocationDto;
-import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
+import co.uk.ak.propertytracker.endpoints.dtos.SearchCriteriaDto;
 import co.uk.ak.propertytracker.facade.SearchCriteriaFacade;
 import co.uk.ak.propertytracker.mapper.SearchCriteriaMapper;
 import co.uk.ak.propertytracker.model.LettingsSearchCriteriaModel;

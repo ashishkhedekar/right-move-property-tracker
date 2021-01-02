@@ -1,6 +1,6 @@
 package co.uk.ak.propertytracker.endpoints.controller;
 
-import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
+import co.uk.ak.propertytracker.endpoints.dtos.SearchCriteriaDto;
 import co.uk.ak.propertytracker.facade.SearchCriteriaFacade;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

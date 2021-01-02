@@ -4,6 +4,7 @@ import co.uk.ak.propertytracker.dto.Channel;
 import co.uk.ak.propertytracker.dto.LocationMarketMovementReport;
 import co.uk.ak.propertytracker.dto.PropertyDto;
 import co.uk.ak.propertytracker.dto.PropertyUpdateRecordDto;
+import co.uk.ak.propertytracker.endpoints.dtos.PropertyWsDto;
 import co.uk.ak.propertytracker.facade.LocationFacade;
 import co.uk.ak.propertytracker.facade.PropertyUpdateRecordFacade;
 import co.uk.ak.propertytracker.model.LocationModel;
@@ -74,9 +75,9 @@ public class PropertiesJsonController
 
    @CrossOrigin(origins = "http://localhost:4200")
    @GetMapping("/market-details")
-   public ResponseEntity<Set<PropertyDto>> getMarketDetails(@RequestParam(required = false) String locationIdentifier, @RequestParam(defaultValue = "21") int numberOfDays) {
+   public ResponseEntity<Set<PropertyWsDto>> getMarketDetails(@RequestParam(required = false) String locationIdentifier, @RequestParam(defaultValue = "21") int numberOfDays) {
       final Date cutOffDate = DateTime.now().minusDays(numberOfDays).toDate();
-      final Set<PropertyDto> locationModels = locationFacade.findRecentlyOffMarketProperties("REGION%5E239", cutOffDate);
+      final Set<PropertyWsDto> locationModels = locationFacade.findRecentlyOffMarketProperties("REGION%5E239", cutOffDate);
       return ResponseEntity.status(HttpStatus.OK).body(locationModels);
    }
 

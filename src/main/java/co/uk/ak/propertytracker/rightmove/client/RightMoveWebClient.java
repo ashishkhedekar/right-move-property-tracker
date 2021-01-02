@@ -1,6 +1,6 @@
 package co.uk.ak.propertytracker.rightmove.client;
 
-import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
+import co.uk.ak.propertytracker.endpoints.dtos.SearchCriteriaDto;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;

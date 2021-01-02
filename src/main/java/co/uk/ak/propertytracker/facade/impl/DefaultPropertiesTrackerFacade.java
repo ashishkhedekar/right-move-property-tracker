@@ -3,7 +3,7 @@ package co.uk.ak.propertytracker.facade.impl;
 import co.uk.ak.propertytracker.dto.MarketMovementReport;
 import co.uk.ak.propertytracker.dto.PropertyDto;
 import co.uk.ak.propertytracker.emails.EmailService;
-import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
+import co.uk.ak.propertytracker.endpoints.dtos.SearchCriteriaDto;
 import co.uk.ak.propertytracker.facade.PropertiesTrackerFacade;
 import co.uk.ak.propertytracker.mapper.RightMovePropertyToPropertyDtoMapper;
 import co.uk.ak.propertytracker.rightmove.client.RightMoveWebClient;

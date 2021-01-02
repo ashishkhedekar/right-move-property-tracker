@@ -2,7 +2,7 @@ package co.uk.ak.propertytracker;
 
 import co.uk.ak.propertytracker.dto.Channel;
 import co.uk.ak.propertytracker.dto.LocationDto;
-import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
+import co.uk.ak.propertytracker.endpoints.dtos.SearchCriteriaDto;
 import co.uk.ak.propertytracker.model.PropertyModel;
 import co.uk.ak.propertytracker.model.PropertyUpdateRecordModel;
 import co.uk.ak.propertytracker.repository.PropertyRepository;

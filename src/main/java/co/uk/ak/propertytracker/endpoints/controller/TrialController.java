@@ -4,7 +4,7 @@ import co.uk.ak.propertytracker.dto.MarketMovementReport;
 import co.uk.ak.propertytracker.dto.PropertyDto;
 import co.uk.ak.propertytracker.dto.PropertyImagesDto;
 import co.uk.ak.propertytracker.emails.EmailService;
-import co.uk.ak.propertytracker.endpoints.searchcriteriadto.SearchCriteriaDto;
+import co.uk.ak.propertytracker.endpoints.dtos.SearchCriteriaDto;
 import co.uk.ak.propertytracker.facade.DummyFacade;
 import co.uk.ak.propertytracker.facade.SearchCriteriaFacade;
 import lombok.AllArgsConstructor;
