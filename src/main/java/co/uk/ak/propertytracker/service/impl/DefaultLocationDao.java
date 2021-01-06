@@ -53,7 +53,7 @@ public class DefaultLocationDao implements LocationDao
    @Override
    public void associateProperty(final String locationIdentifier, final Long propertyId)
    {
-      final Optional<LocationModel> locationModelOptional = locationRepository.findById(locationIdentifier);
+      final Optional<LocationModel> locationModelOptional = locationRepository.findByLocationIdentifier(locationIdentifier);
       final Optional<PropertyModel> propertyModelOptional = propertyRepository.findByPropertyId(propertyId);
       if (locationModelOptional.isPresent() && propertyModelOptional.isPresent())
       {
