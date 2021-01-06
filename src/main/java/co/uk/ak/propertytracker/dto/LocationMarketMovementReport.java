@@ -9,15 +9,15 @@ import java.util.List;
 @Builder
 public class LocationMarketMovementReport
 {
-   private String locationIdentifier;
+   private Long locationId;
 
    private String locationName;
 
-   private int numberOfLetProperties;
+   private long numberOfLetProperties;
 
    private List<PropertyDto> letProperties;
 
-   private int numberOfSoldProperties;
+   private long numberOfSoldProperties;
 
    private List<PropertyDto> soldProperties;
 

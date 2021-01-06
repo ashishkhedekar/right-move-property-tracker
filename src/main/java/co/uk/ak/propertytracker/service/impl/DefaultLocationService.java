@@ -22,7 +22,7 @@ public class DefaultLocationService implements LocationService
    @Transactional
    public LocationDto findLocationByLocationIdentifier(String locationIdentifier)
    {
-      final Optional<LocationModel> locationModelOptional = locationRepository.findByLocationIdentifier(locationIdentifier);
+      final Optional<LocationModel> locationModelOptional = locationRepository.findById(locationIdentifier);
       return locationModelOptional.map(locationMapper::locationModelToLocationDto).orElse(null);
    }
 }

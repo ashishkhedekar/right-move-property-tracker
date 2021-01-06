@@ -17,5 +17,5 @@ public class PropertyWsDto {
 	private String firstVisibleDate;
 	private String offMarketDate;
 	private String mainMapImageSrc;
-	private Integer daysOnMarket;
+	private Long daysOnMarket;
 }

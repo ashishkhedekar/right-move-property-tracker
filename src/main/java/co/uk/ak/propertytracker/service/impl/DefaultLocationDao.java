@@ -15,6 +15,8 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @AllArgsConstructor
@@ -29,7 +31,7 @@ public class DefaultLocationDao implements LocationDao
    @Override
    public LocationModel getOrCreate(final LocationDto locationDto)
    {
-      final Optional<LocationModel> locationModel = locationRepository.findByLocationIdentifier(locationDto.getLocationIdentifier());
+      final Optional<LocationModel> locationModel = locationRepository.findById(locationDto.getLocationIdentifier());
       if (locationModel.isPresent())
       {
          return locationModel.get();
@@ -42,9 +44,16 @@ public class DefaultLocationDao implements LocationDao
    }
 
    @Override
+   public List<LocationModel> getAllLocations() {
+      return StreamSupport
+              .stream(locationRepository.findAll().spliterator(), false)
+              .collect(Collectors.toList());
+   }
+
+   @Override
    public void associateProperty(final String locationIdentifier, final Long propertyId)
    {
-      final Optional<LocationModel> locationModelOptional = locationRepository.findByLocationIdentifier(locationIdentifier);
+      final Optional<LocationModel> locationModelOptional = locationRepository.findById(locationIdentifier);
       final Optional<PropertyModel> propertyModelOptional = propertyRepository.findByPropertyId(propertyId);
       if (locationModelOptional.isPresent() && propertyModelOptional.isPresent())
       {
@@ -84,8 +93,8 @@ public class DefaultLocationDao implements LocationDao
    }
 
    @Override
-   public Optional<LocationModel> findLocationForLocationIdentifier(String locationIdentifier)
+   public Optional<LocationModel> findLocationForLocationId(Long locationIdentifier)
    {
-      return locationRepository.findByLocationIdentifier(locationIdentifier);
+      return locationRepository.findById(locationIdentifier);
    }
 }
