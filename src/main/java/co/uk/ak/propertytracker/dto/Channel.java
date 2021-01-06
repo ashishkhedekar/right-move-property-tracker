@@ -2,7 +2,7 @@ package co.uk.ak.propertytracker.dto;
 
 public enum Channel
 {
-   BUY("BUY"), RENT("RENT");
+   BUY("BUY"), RENT("RENT"), COMMERCIAL_BUY("COMMERCIAL_BUY");
 
    private final String code;
 
