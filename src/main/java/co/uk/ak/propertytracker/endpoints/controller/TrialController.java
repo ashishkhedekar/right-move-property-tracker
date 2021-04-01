@@ -6,6 +6,7 @@ import co.uk.ak.propertytracker.dto.PropertyImagesDto;
 import co.uk.ak.propertytracker.emails.EmailService;
 import co.uk.ak.propertytracker.endpoints.dtos.SearchCriteriaDto;
 import co.uk.ak.propertytracker.facade.DummyFacade;
+import co.uk.ak.propertytracker.facade.PropertyFacade;
 import co.uk.ak.propertytracker.facade.SearchCriteriaFacade;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,14 +23,22 @@ import java.util.List;
 public class TrialController
 {
    private SearchCriteriaFacade searchCriteriaFacade;
+   private PropertyFacade propertyFacade;
    private final DummyFacade dummyFacade;
    private final EmailService emailService;
 
    @GetMapping(path = "/search-criteria")
-   public ResponseEntity<String> getAllSearchCriteria()
+   public ResponseEntity<List<SearchCriteriaDto>> getAllSearchCriteria()
    {
       final List<SearchCriteriaDto> all = searchCriteriaFacade.getAll();
-      return ResponseEntity.status(HttpStatus.OK).body("All good, found " + all.size() + " criteria");
+      return ResponseEntity.status(HttpStatus.OK).body(all);
+   }
+
+   @GetMapping(path = "/properties")
+   public ResponseEntity<String> getAllProperties()
+   {
+      return ResponseEntity.status(HttpStatus.OK)
+              .body(String.format("There are currently [%s] properties", propertyFacade.countAll()));
    }
 
    @GetMapping(path = "/howmany")
