@@ -13,6 +13,8 @@ public class LocationMarketMovementReport
 
    private String locationName;
 
+   private String description;
+
    private long numberOfLetProperties;
 
    private List<PropertyDto> letProperties;

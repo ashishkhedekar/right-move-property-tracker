@@ -49,6 +49,7 @@ public class PropertiesJsonController
                           .numberOfLetProperties(numberOfLetProperties)
                           .numberOfSoldProperties(numberOfSoldProperties)
                           .locationName(locationDto.getDescription())
+                          .description(locationDto.getDescription())
                           .build();
          locationMarketMovementReports.add(locationMarketMovementReport);
       });
