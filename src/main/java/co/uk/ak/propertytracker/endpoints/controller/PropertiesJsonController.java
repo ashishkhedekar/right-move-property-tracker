@@ -28,13 +28,15 @@ public class PropertiesJsonController
    private final LocationFacade locationFacade;
 
    @GetMapping("/market-summary")
-   public ResponseEntity<List<LocationMarketMovementReport>> summary(@RequestParam(defaultValue = "21") int numberOfDays)
+   public ResponseEntity<List<LocationMarketMovementReport>> summary(@RequestParam(defaultValue = "21") int numberOfDays,
+           @RequestParam(defaultValue = "1") final int minBedrooms,
+           @RequestParam(defaultValue = "20") final int maxBedrooms)
    {
       final Date reportStartDate = DateTime.now().minusDays(numberOfDays).toDate();
       final List<LocationMarketMovementReport> locationMarketMovementReports = new ArrayList<>();
       locationFacade.getAllLocations().forEach(locationDto -> {
          LOG.info("Getting data for Location id [{}] and identifier [{}] ", locationDto.getId(), locationDto.getLocationIdentifier());
-         final Set<PropertyWsDto> locationWsDtos = locationFacade.findRecentlyOffMarketProperties(locationDto.getId(), reportStartDate);
+         final Set<PropertyWsDto> locationWsDtos = locationFacade.findRecentlyOffMarketProperties(locationDto.getId(), reportStartDate, minBedrooms, maxBedrooms);
 
          final long numberOfLetProperties = locationWsDtos.stream()
                  .filter(locationWsDto -> locationWsDto.getChannel() == Channel.RENT)
@@ -57,9 +59,11 @@ public class PropertiesJsonController
    }
 
    @GetMapping("/market-details")
-   public ResponseEntity<Set<PropertyWsDto>> getMarketDetails(@RequestParam(required = false) Long locationId, @RequestParam(defaultValue = "21") int numberOfDays) {
+   public ResponseEntity<Set<PropertyWsDto>> getMarketDetails(@RequestParam(required = false) Long locationId, @RequestParam(defaultValue = "21") int numberOfDays,
+           @RequestParam(defaultValue = "1") final int minBedrooms,
+           @RequestParam(defaultValue = "20") final int maxBedrooms) {
       final Date cutOffDate = DateTime.now().minusDays(numberOfDays).toDate();
-      final Set<PropertyWsDto> locationModels = locationFacade.findRecentlyOffMarketProperties(locationId, cutOffDate);
+      final Set<PropertyWsDto> locationModels = locationFacade.findRecentlyOffMarketProperties(locationId, cutOffDate, minBedrooms, maxBedrooms);
       return ResponseEntity.status(HttpStatus.OK).body(locationModels);
    }
 

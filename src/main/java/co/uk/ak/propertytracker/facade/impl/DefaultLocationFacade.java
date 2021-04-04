@@ -34,13 +34,14 @@ public class DefaultLocationFacade implements LocationFacade {
 
 	@Override
 	public Set<PropertyWsDto> findRecentlyOffMarketProperties(final Long locationId,
-			final Date offMarketDate) {
+			final Date offMarketDate, final int minBedrooms, final int maxBedrooms) {
 
 		final Optional<LocationModel> locationForLocationIdentifier = locationDao
 				.findLocationForLocationId(locationId);
 
 		return locationForLocationIdentifier.map(locationModel -> locationModel.getProperties().stream()
 				.filter(property -> property.getOffMarketDate() != null && property.getOffMarketDate().after(offMarketDate) && !property.isOnMarket())
+				.filter(property -> property.getBedrooms() >= minBedrooms & property.getBedrooms() <= maxBedrooms)
 				.map(propertyModelToPropertyWsDtoMapper::propertyModelPropertyWsDtoMapper)
 				.collect(Collectors.toSet())).orElseGet(Set::of);
 	}

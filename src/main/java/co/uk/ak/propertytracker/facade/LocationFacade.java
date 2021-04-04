@@ -11,5 +11,5 @@ public interface LocationFacade {
 
 	List<LocationDto> getAllLocations();
 
-	Set<PropertyWsDto> findRecentlyOffMarketProperties(final Long locationIdentifier, final Date offMarketDate);
+	Set<PropertyWsDto> findRecentlyOffMarketProperties(final Long locationIdentifier, final Date offMarketDate, final int minBedrooms, final int maxBedrooms);
 }
