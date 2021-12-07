@@ -24,6 +24,9 @@ public class EmailSender
    @Value("${current.environment}")
    private String currentEnvironment;
 
+   @Value("${disable.emails}")
+   private boolean disableEmails;
+
    @Autowired
    private JavaMailSender sender;
 
@@ -32,6 +35,9 @@ public class EmailSender
 
    public void sendEmail(final Mail mail, final String emailTemplateName)
    {
+      if (disableEmails) {
+         return;
+      }
       sender.send(mimeMessage -> {
          MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, StandardCharsets.UTF_8.name());
          message.setFrom(mail.getFrom());
